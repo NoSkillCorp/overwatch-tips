@@ -1,6 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Gaming Objects</h1>
+<h1>Listing des <%= @type.pluralize %></h1>
+
+
+<div class="row">
+  <% @gaming_objects.each do |gaming_object| %>
+  
+    <div class="col-md-4">
+      <%= link_to gaming_object do %>
+        <%= gaming_object.name %> <%= gaming_object.description %>
+      <% end %>
+    </div>
+    
+  <% end %>
+  
+</div>
+
+
+
 
 <table>
   <thead>

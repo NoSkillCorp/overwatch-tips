@@ -3,7 +3,8 @@ class GamingObjectsController < ApplicationController
 
   # GET /gaming_objects
   def index
-    @gaming_objects = GamingObject.where(type: params[:type])
+    @type = params[:type]
+    @gaming_objects = GamingObject.where(type: @type)
   end
 
   # GET /gaming_objects/1
