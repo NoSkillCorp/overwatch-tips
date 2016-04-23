@@ -21,23 +21,53 @@
 <script>
   $(document).ready(function(){
     
+    function clearError(category) {
+      var errors = $('.error');
+      for (var i = 0; i < errors.length; i++) {
+        errors[i].parentNode.removeChild(errors[i]);
+      }
+      
+      var hasError = $('.has-error');
+      for (var i = 0; i < hasError.length; i++) {
+        hasError[i].className="form-group";
+      }
+    }
+    
     function appendTip(data, category) {
-        $('.'+category).append(data);
-        $('.form-'+category+'-title').val("");
-        $('.form-'+category+'-description').val("");
+      clearError(category);
+      $('.'+category).append(data);
+      $('.form-'+category+'-title').val("");
+      $('.form-'+category+'-description').val("");
+    }
+    
+    
+    function markError(errors, category) {
+      clearError(category);
+      for (var error in errors) {
+        var parent = $('.form-'+category+'-'+error).parent();
+        if (!parent.hasClass("has-error")) {
+          parent.toggleClass('has-error');
+        }
+        for (var elem in errors[error]) {
+          parent.append('<p class="error">'+errors[error][elem]+'</p>')
+        }
+      }
     }
     
     $('#form-against').on('ajax:success', function(e, data, status, xhr){
       appendTip(data, 'against');
     }).on('ajax:error',function(e, xhr, status, error){
+      markError(xhr.responseJSON, 'against');
     });
     $('#form-as').on('ajax:success', function(e, data, status, xhr){
       appendTip(data, 'as');
     }).on('ajax:error',function(e, xhr, status, error){
+      markError(xhr.responseJSON, 'as');
     });
     $('#form-with').on('ajax:success', function(e, data, status, xhr){
       appendTip(data, 'with');
     }).on('ajax:error',function(e, xhr, status, error){
+      markError(xhr.responseJSON, 'with');
     });
   });
 </script>
