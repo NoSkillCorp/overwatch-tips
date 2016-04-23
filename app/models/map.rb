@@ -1,0 +1,3 @@
+class Map < GamingObject
+    
+end

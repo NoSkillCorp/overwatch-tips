@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :gaming_objects
   resources :tips
   root 'home#index'
   
