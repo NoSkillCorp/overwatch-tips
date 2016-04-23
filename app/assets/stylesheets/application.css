@@ -13,10 +13,6 @@
  *= require_tree .
  *= require_self
  */
-@font-face {
-    font-family: Nirmala;
-    src: font-url('Nirmala.ttf') format('truetype');
-}
  
 body {
     font-family: Nirmala;
