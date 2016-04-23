@@ -5,11 +5,14 @@
 .tip_score_panel {
     font-size: 2.5rem;
     font-weight: bold;
-    width: 3rem;
+    //width: 3rem;
     margin-right: 1rem;
     
     .vote_links {
         font-size: 1.25rem;
+    }
+    .tip_posneg_scores {
+        font-size: 1rem;
     }
 }
 

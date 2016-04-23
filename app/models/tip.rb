@@ -2,7 +2,7 @@ class Tip < ActiveRecord::Base
     CATEGORIES = ["as", "with", "against"]
     
     belongs_to :gaming_object
-    has_many :votes
+    has_many :votes, dependent: :destroy
 
     validates :category, inclusion: { in: CATEGORIES, message: "%{value} is not a valid category" }
     validates :description, presence: true
