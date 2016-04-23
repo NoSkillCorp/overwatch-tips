@@ -1,15 +1,18 @@
 <% tip ||= Tip.new %>
 
 <div class="col-md-12">
-    <div class="panel panel-default text-center">
+    <div class="panel panel-default text-center tip_panel" id="tip_<%= tip.id %>">
       <div class="panel-body">
-        <div class="pull-left tip_score">
-          <%= tip.score %>
+        <div class="pull-left tip_score_panel">
+          <div class="tip_score">
+            <%= tip.score %>  
+          </div>
+          
           <div class="vote_links">
-            <%= link_to upvote_tip_path(tip), remote: true, method: :post do %>
+            <%= link_to upvote_tip_path(tip), remote: true, method: :post, class: "upvote_tip" do %>
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             <% end %>
-            <%= link_to downvote_tip_path(tip), remote: true, method: :post do %>
+            <%= link_to downvote_tip_path(tip), remote: true, method: :post, class: "downvote_tip" do %>
               <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             <% end %>
           </div>

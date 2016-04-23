@@ -2,11 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.tip_score {
+.tip_score_panel {
     font-size: 2.5rem;
     font-weight: bold;
     width: 3rem;
     margin-right: 1rem;
+    
+    .vote_links {
+        font-size: 1.25rem;
+    }
 }
 
 .tip_description {

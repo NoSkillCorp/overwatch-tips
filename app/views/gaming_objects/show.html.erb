@@ -61,5 +61,21 @@
       });
     <% end %>
     
+
+    function update_score(button, bonus){
+      tip = button.closest('.tip_panel');
+      score = tip.find('.tip_score');
+      score.text(parseInt(score.text()) + bonus);
+      console.log(score);
+    }
+    
+    $('.upvote_tip').on('click', function() {
+      update_score($(this), 1);
+    });
+    
+    $('.downvote_tip').on('click', function() {
+      update_score($(this), -1);
+    });
+    
   });
 </script>
