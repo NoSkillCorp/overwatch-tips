@@ -19,13 +19,7 @@
         <td><%= gaming_object.description %></td>
         <td><%= gaming_object.type %></td>
         <td><%= link_to 'Show', gaming_object %></td>
-        <td><%= link_to 'Edit', edit_gaming_object_path(gaming_object) %></td>
-        <td><%= link_to 'Destroy', gaming_object, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Gaming object', new_gaming_object_path %>
