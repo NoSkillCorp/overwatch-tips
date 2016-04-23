@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @tip.description %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @tip.title %>
+</p>
+
+<%= link_to 'Edit', edit_tip_path(@tip) %> |
+<%= link_to 'Back', tips_path %>

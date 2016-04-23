@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :tips
+  resources :characters
+  resources :maps
   root 'home#index'
   
   resources :home, only: [:index]
