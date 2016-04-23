@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  resources :gaming_objects
+  resources :characters, controller: :gaming_objects, type: "Character", only: [:index, :show]
+  resources :maps, controller: :gaming_objects, type: "Map", only: [:index, :show]
   resources :tips
   root 'home#index'
   
