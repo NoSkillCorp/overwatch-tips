@@ -1,17 +1,23 @@
-<p id="notice"><%= notice %></p>
+<h1> <%= @gaming_object.name %> Tips </h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @gaming_object.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @gaming_object.description %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @gaming_object.type %>
-</p>
-
+<div class="row">
+  <% @tips_hash.each do |category, category_tips| %>
+    <div class="col-md-4 <%= category %>">
+      <h2>Playing <%= category %> <%= @gaming_object.name %></h2>
+      <div class="row">
+        <% category_tips.each do |tip| %>
+          <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= tip.title %>
+              </div>
+              <div class="panel-body">
+                <%= tip.description %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

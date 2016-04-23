@@ -1,5 +1,5 @@
 class GamingObjectsController < ApplicationController
-  before_action :set_gaming_object, only: [:show, :edit, :update, :destroy]
+  before_action :set_gaming_object, only: [:show]
 
   # GET /gaming_objects
   def index
@@ -9,6 +9,7 @@ class GamingObjectsController < ApplicationController
 
   # GET /gaming_objects/1
    def show
+     @tips_hash = @gaming_object.tips.to_a.group_by(&:category)
    end
 
 

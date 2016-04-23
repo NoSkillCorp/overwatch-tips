@@ -4,16 +4,24 @@
 
 
 <div class="row">
-  <% @gaming_objects.each do |gaming_object| %>
-  
-    <div class="col-md-4 gaming_object_cel">
-      <%= link_to gaming_object do %>
-        <div class="gaming_object_image"><%= image_tag gaming_object.image_path %></div>
-        <div class="gaming_object_name"><%= gaming_object.name %></div>
-        <div class="gaming_object_description"><%= gaming_object.description %></div>
-      <% end %>
-    </div>
+  <% if @type.to_s == "Character" %>
+    <% @gaming_objects.each do |gaming_object| %>
+      <div class="col-md-2 gaming_object_cel">
+        <%= link_to gaming_object do %>
+            <div class="gaming_object_image"><%= image_tag gaming_object.image_path %></div>
+        <% end %>
+      </div>
+    <% end %>
     
+  <% elsif @type.to_s == "Map" %>
+    <% @gaming_objects.each do |gaming_object| %>
+      <div class="col-md-4 gaming_object_cel">
+        <%= link_to gaming_object do %>
+          <div class="gaming_object_image"><%= image_tag gaming_object.image_path %></div>
+          <div class="gaming_object_name"><%= gaming_object.name %></div>
+          <div class="gaming_object_description"><%= gaming_object.description %></div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
-  
 </div>
