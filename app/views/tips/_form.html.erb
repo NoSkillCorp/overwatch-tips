@@ -1,20 +1,12 @@
 <%= form_for(@tip, remote: true, html: {role: :form, 'data-model' => 'tip', id: 'form-'+category.to_s}) do |f| %>
   <%# Added Bootstrap classes, and help-block container for error messages %>
   <div class="panel panel-default">
-    <div class="panel-heading">
-      <div class="form-group" style="margin-bottom: 0px;">
-        <%= f.text_field :category, :value => category, class: 'hidden' %>
-        <%= f.text_field :gaming_object_id , :value => gaming_object.id, class: 'hidden' %>
-        <%#= f.label :title , class: 'control-label' %>
-        <%= f.text_field :title, class: 'form-control form-'+category+'-title', placeholder: "Got a tip for people playing #{category} #{@gaming_object.name} ?" %>
-        <span class="help-block hidden"></span>
-      </div>
-    </div>
   
     <%# Added Bootstrap classes, and help-block container for error messages %>
     <div class="panel-body">
       <div class="form-group">
-        <%#= f.label :description, class: 'control-label' %>
+        <%= f.text_field :category, :value => category, class: 'hidden' %>
+        <%= f.text_field :gaming_object_id , :value => gaming_object.id, class: 'hidden' %>
         <%= f.text_area :description, class: 'form-control form-'+category+'-description', rows: 5, placeholder: "Describe your tip !" %>
         <span class="help-block hidden"></span>
       </div>

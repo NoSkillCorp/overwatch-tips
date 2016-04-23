@@ -36,7 +36,6 @@
     function appendTip(data, category) {
       clearError(category);
       $('.'+category).append(data);
-      $('.form-'+category+'-title').val("");
       $('.form-'+category+'-description').val("");
     }
     
@@ -54,20 +53,13 @@
       }
     }
     
-    $('#form-against').on('ajax:success', function(e, data, status, xhr){
-      appendTip(data, 'against');
-    }).on('ajax:error',function(e, xhr, status, error){
-      markError(xhr.responseJSON, 'against');
-    });
-    $('#form-as').on('ajax:success', function(e, data, status, xhr){
-      appendTip(data, 'as');
-    }).on('ajax:error',function(e, xhr, status, error){
-      markError(xhr.responseJSON, 'as');
-    });
-    $('#form-with').on('ajax:success', function(e, data, status, xhr){
-      appendTip(data, 'with');
-    }).on('ajax:error',function(e, xhr, status, error){
-      markError(xhr.responseJSON, 'with');
-    });
+    <% @tips_hash.keys.each do |category| %>
+      $('#form-<%= category %>').on('ajax:success', function(e, data, status, xhr){
+        appendTip(data, "<%= category %>");
+      }).on('ajax:error',function(e, xhr, status, error){
+        markError(xhr.responseJSON, '<%= category %>');
+      });
+    <% end %>
+    
   });
 </script>
