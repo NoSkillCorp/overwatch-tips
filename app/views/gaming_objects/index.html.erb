@@ -6,37 +6,14 @@
 <div class="row">
   <% @gaming_objects.each do |gaming_object| %>
   
-    <div class="col-md-4">
+    <div class="col-md-4 gaming_object_cel">
       <%= link_to gaming_object do %>
-        <%= gaming_object.name %> <%= gaming_object.description %>
+        <div class="gaming_object_image"><%= image_tag gaming_object.image_path %></div>
+        <div class="gaming_object_name"><%= gaming_object.name %></div>
+        <div class="gaming_object_description"><%= gaming_object.description %></div>
       <% end %>
     </div>
     
   <% end %>
   
 </div>
-
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @gaming_objects.each do |gaming_object| %>
-      <tr>
-        <td><%= gaming_object.name %></td>
-        <td><%= gaming_object.description %></td>
-        <td><%= gaming_object.type %></td>
-        <td><%= link_to 'Show', gaming_object %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

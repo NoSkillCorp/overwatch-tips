@@ -34,10 +34,12 @@ html {
   position: relative;
   min-height: 100%;
 }
-body {
+
+.main-container {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
 .footer {
   color: #777;
   position: absolute;
