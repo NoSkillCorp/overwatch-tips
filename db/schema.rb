@@ -11,34 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423113827) do
+ActiveRecord::Schema.define(version: 20160423123353) do
 
-  create_table "characters", force: :cascade do |t|
+  create_table "gaming_objects", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "image_path"
+    t.string   "type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  create_table "maps", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "image_path"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "tip_map_relations", force: :cascade do |t|
-    t.integer  "tip_id"
-    t.integer  "map_id"
-    t.string   "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "tip_map_relations", ["map_id"], name: "index_tip_map_relations_on_map_id"
-  add_index "tip_map_relations", ["tip_id"], name: "index_tip_map_relations_on_tip_id"
 
   create_table "tips", force: :cascade do |t|
     t.text     "description"

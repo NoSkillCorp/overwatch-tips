@@ -1,10 +1,10 @@
-<%= form_for(@map) do |f| %>
-  <% if @map.errors.any? %>
+<%= form_for(@gaming_object) do |f| %>
+  <% if @gaming_object.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@map.errors.count, "error") %> prohibited this map from being saved:</h2>
+      <h2><%= pluralize(@gaming_object.errors.count, "error") %> prohibited this gaming_object from being saved:</h2>
 
       <ul>
-      <% @map.errors.full_messages.each do |message| %>
+      <% @gaming_object.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -20,8 +20,8 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :image_path %><br>
-    <%= f.text_field :image_path %>
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
   </div>
   <div class="actions">
     <%= f.submit %>

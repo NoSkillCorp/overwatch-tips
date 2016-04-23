@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  tip_id: 
-  map_id: 
-  category: MyString
+  name: MyString
+  description: MyText
+  type: 
 
 two:
-  tip_id: 
-  map_id: 
-  category: MyString
+  name: MyString
+  description: MyText
+  type: 

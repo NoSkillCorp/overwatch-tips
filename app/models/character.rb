@@ -1,4 +1,3 @@
-class Character < ActiveRecord::Base
-    include OverwatchObject
+class Character < GamingObject
     
 end
