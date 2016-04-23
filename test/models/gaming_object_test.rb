@@ -7,6 +7,7 @@ class GamingObjectTest < ActiveSupport::TestCase
     assert_respond_to gaming_object, :name
     assert_respond_to gaming_object, :description
     assert_respond_to gaming_object, :type
+    assert_respond_to gaming_object, :image_path
   end
   
   test "should have STI map & character" do
