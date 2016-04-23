@@ -8,5 +8,11 @@ class GamingObjectTest < ActiveSupport::TestCase
     assert_equal ["mymap"], GamingObject.where(type: "Map").pluck(:name)
     assert_equal ["mycharacter"], GamingObject.where(type: "Character").pluck(:name)
   end
+  
+  test "has_many tips" do
+    map = Map.create(name: "mymap", description: "test")
+    map.tips.build(title:"mytip", description: "test").save
+    assert_equal ["mytip"], map.tips.pluck(:title)
+  end
 
 end
