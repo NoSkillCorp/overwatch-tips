@@ -10,16 +10,7 @@
       <h2>Playing <%= category %> <%= @gaming_object.name %></h2>
       <div class="row">
         <% category_tips.each do |tip| %>
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <%= tip.title %>
-              </div>
-              <div class="panel-body">
-                <%= tip.description %>
-              </div>
-            </div>
-          </div>
+          <%= render partial: "tips/show", locals: { tip: tip } %>
         <% end %>
       </div>
       <%= render partial: 'form', locals: {category: category, gaming_object: @gaming_object} %>

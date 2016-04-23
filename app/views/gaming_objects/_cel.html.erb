@@ -1,11 +1,8 @@
 <% gaming_object ||= GamingObject.new %>
 <% klass ||= nil %>
 
-
-
 <div class="gaming_object_cel <%= klass %>">
     <%= link_to gaming_object do %>
         <div class="gaming_object_image"><%= image_tag gaming_object.image_path %></div>
     <% end %>
 </div>
-    
