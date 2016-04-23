@@ -12,34 +12,44 @@
  *
  *= require_tree .
  *= require_self
+ *
+ *********************** COLOR SET ****************************
+ * orange : ffc60e,ffd240,ffdc6a
+ * jaune : ffed0e, fff140, fff46a
+ * bleu : 2a22b2, 120D70, 1A148f
+ * violet : 5D16AD, 37076D, 460B8A
+ **************************************************************
  */
+ 
  
 body {
     font-family: Nirmala;
 }
 #menu.navbar-default .navbar-brand {
-    color: rgba(255, 255, 255, 1);
+    font-size: 24px;
+    color: #a17b00;
 }
 #menu.navbar-default {
-    font-size: 18px;
-    background-color: rgba(255, 199, 14, 1);
+    font-size: 22px;
+    background-color: #ffc70e;
     border-width: 0px;
-    border-radius: 50px;
 }
 #menu.navbar-default .navbar-nav>li>a {
-    color: rgba(255, 255, 255, 1);
-    background-color: rgba(248, 248, 248, 0);
+    background-color: #ffc70e;
 }
+
 #menu.navbar-default .navbar-nav>li>a:hover,
 #menu.navbar-default .navbar-nav>li>a:focus {
     color: rgba(255, 255, 255, 1);
-    background-color: rgba(255, 218, 82, 1);
+    font-weight: bold;
+    background-color: #ffd240;
+    
 }
 #menu.navbar-default .navbar-nav>.active>a,
 #menu.navbar-default .navbar-nav>.active>a:hover,
 #menu.navbar-default .navbar-nav>.active>a:focus {
-    color: rgba(59, 59, 59, 1);
-    background-color: rgba(255, 237, 173, 1);
+    color: #a17b00;
+    background-color: #ffdc6a;
 }
 #menu.navbar-default .navbar-toggle {
     border-color: #ffedad;
