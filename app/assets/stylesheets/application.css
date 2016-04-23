@@ -26,45 +26,6 @@ body {
     font-family: Nirmala;
 }
 
-#menu.navbar-default .navbar-brand {
-    font-size: 24px;
-    color: #a17b00;
-}
-#menu.navbar-default {
-    font-size: 22px;
-    background-color: #ffc70e;
-    border-width: 0px;
-}
-#menu.navbar-default .navbar-nav>li>a {
-    background-color: #ffc70e;
-}
-
-#menu.navbar-default .navbar-nav>li>a:hover,
-#menu.navbar-default .navbar-nav>li>a:focus {
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    background-color: #ffd240;
-    
-}
-#menu.navbar-default .navbar-nav>.active>a,
-#menu.navbar-default .navbar-nav>.active>a:hover,
-#menu.navbar-default .navbar-nav>.active>a:focus {
-    background-color: #ffdc6a;
-}
-#menu.navbar-default .navbar-toggle {
-    border-color: #ffedad;
-}
-#menu.navbar-default .navbar-toggle:hover,
-#menu.navbar-default .navbar-toggle:focus {
-    background-color: #ffedad;
-}
-#menu.navbar-default .navbar-toggle .icon-bar {
-    background-color: #ffedad;
-}
-#menu.navbar-default .navbar-toggle:hover .icon-bar,
-#menu.navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: #ffc70e;
-}
     
 .footer {
 }
