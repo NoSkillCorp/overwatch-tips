@@ -1,8 +1,4 @@
 class Tip < ActiveRecord::Base
-    has_one :tip_map_relation
-    
-    def map
-       tip_map_relation.map 
-    end
+    belongs_to :gaming_object
     
 end
