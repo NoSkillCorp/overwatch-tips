@@ -7,7 +7,7 @@
       <div class="form-group">
         <%= f.text_field :category, :value => category, class: 'hidden' %>
         <%= f.text_field :gaming_object_id , :value => gaming_object.id, class: 'hidden' %>
-        <%= f.text_area :description, class: 'form-control form-'+category+'-description', rows: 5, placeholder: "Describe your tip !" %>
+        <%= f.text_area :description, class: 'form-control form-'+category+'-description', rows: 5, placeholder: "Got a tip for people playing #{category} #{@gaming_object.name} ?" %>
         <span class="help-block hidden"></span>
       </div>
           
