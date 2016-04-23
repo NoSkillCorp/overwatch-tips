@@ -39,4 +39,16 @@ class TipTest < ActiveSupport::TestCase
     assert_equal(2, @tip.positive_score)
     assert_equal(-2, @tip.negative_score)
   end
+  
+  test "upvote" do
+    assert_equal 0, @tip.score
+    @tip.upvote
+    assert_equal 1, @tip.score
+  end
+  
+  test "downvote" do
+    assert_equal 0, @tip.score
+    @tip.downvote
+    assert_equal(-1, @tip.score)
+  end
 end

@@ -22,4 +22,12 @@ class Tip < ActiveRecord::Base
     def negative_score
         votes.negatives.sum(:weight)
     end
+    
+    def upvote
+        votes.build(weight: 1).save
+    end
+    
+    def downvote
+        votes.build(weight: -1).save
+    end
 end

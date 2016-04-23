@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   
   resources :characters, controller: :gaming_objects, type: "Character", only: [:index, :show]
   resources :maps, controller: :gaming_objects, type: "Map", only: [:index, :show]
-  resources :tips, only: [:create]
+  
+  resources :tips, only: [:create] do
+    member do
+      post :upvote
+      post :downvote
+    end
+  end
   root 'home#index'
   
   resources :home, only: [:index]
