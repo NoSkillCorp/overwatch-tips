@@ -1,5 +1,12 @@
 <% tip ||= Tip.new %>
 
-Title: <%= tip.title %>
-<br />
-Description : <%= tip.description %>
+<div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= tip.title %>
+      </div>
+      <div class="panel-body">
+        <%= tip.description %>
+      </div>
+    </div>
+</div>

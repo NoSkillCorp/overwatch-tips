@@ -6,22 +6,38 @@
 
 <div class="row">
   <% @tips_hash.each do |category, category_tips| %>
-    <div class="col-md-4 <%= category %>">
+    <div class="col-md-4">
       <h2>Playing <%= category %> <%= @gaming_object.name %></h2>
-      <div class="row">
+      <div class="row <%= category %>">
         <% category_tips.each do |tip| %>
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <%= tip.title %>
-              </div>
-              <div class="panel-body">
-                <%= tip.description %>
-              </div>
-            </div>
-          </div>
+          <%= render partial: "tips/show", locals: { tip: tip } %>
         <% end %>
       </div>
+      <%= render partial: 'tips/form', locals: {category: category, gaming_object: @gaming_object} %>
     </div>
   <% end %>
 </div>
+
+<script>
+  $(document).ready(function(){
+    
+    function appendTip(data, category) {
+        $('.'+category).append(data);
+        $('.form-'+category+'-title').val("");
+        $('.form-'+category+'-description').val("");
+    }
+    
+    $('#form-against').on('ajax:success', function(e, data, status, xhr){
+      appendTip(data, 'against');
+    }).on('ajax:error',function(e, xhr, status, error){
+    });
+    $('#form-as').on('ajax:success', function(e, data, status, xhr){
+      appendTip(data, 'as');
+    }).on('ajax:error',function(e, xhr, status, error){
+    });
+    $('#form-with').on('ajax:success', function(e, data, status, xhr){
+      appendTip(data, 'width');
+    }).on('ajax:error',function(e, xhr, status, error){
+    });
+  });
+</script>
