@@ -1,3 +1,32 @@
 // Place all the styles related to the GamingObjects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.text_wrapper {
+    width: 100%;
+    position: absolute;
+    top: 45%;
+}
+
+.gaming_object_name {
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+    top:45%;
+    opacity: 0.25;
+    //visibility: hidden;
+}
+.gaming_object_image {
+    position:relative;
+}
+
+.gaming_object_image:hover .gaming_object_name {
+    font-weight: bold;
+    opacity: 1;
+    //visibility: visible;
+}
+
+.gaming_object_image:hover img {
+    opacity: 0.75;
+}
