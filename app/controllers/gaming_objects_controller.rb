@@ -9,7 +9,7 @@ class GamingObjectsController < ApplicationController
 
   # GET /gaming_objects/1
    def show
-     @tips_hash = @gaming_object.tips.to_a.group_by(&:category)
+     @tips_hash = @gaming_object.tips_hash
      @tip = @gaming_object.tips.build
    end
 
