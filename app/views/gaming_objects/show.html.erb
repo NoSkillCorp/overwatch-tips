@@ -23,7 +23,10 @@
     
     function appendTip(data, category) {
         $('.'+category).append(data);
+        $('.form-'+category+'-title').val("");
+        $('.form-'+category+'-description').val("");
     }
+    
     $('#form-against').on('ajax:success', function(e, data, status, xhr){
       appendTip(data, 'against');
     }).on('ajax:error',function(e, xhr, status, error){
@@ -34,7 +37,7 @@
     });
     $('#form-with').on('ajax:success', function(e, data, status, xhr){
       appendTip(data, 'width');
-    }).on('.'+data.category,function(e, xhr, status, error){
+    }).on('ajax:error',function(e, xhr, status, error){
     });
   });
 </script>

@@ -6,7 +6,7 @@
         <%= f.text_field :category, :value => category, class: 'hidden' %>
         <%= f.text_field :gaming_object_id , :value => gaming_object.id, class: 'hidden' %>
         <%#= f.label :title , class: 'control-label' %>
-        <%= f.text_field :title, class: 'form-control' %>
+        <%= f.text_field :title, class: 'form-control form-'+category+'-title' %>
         <span class="help-block hidden"></span>
       </div>
     </div>
@@ -15,7 +15,7 @@
     <div class="panel-body">
       <div class="form-group">
         <%#= f.label :description, class: 'control-label' %>
-        <%= f.text_area :description, class: 'form-control', rows: 5 %>
+        <%= f.text_area :description, class: 'form-control form-'+category+'-description', rows: 5 %>
         <span class="help-block hidden"></span>
       </div>
           
@@ -24,6 +24,5 @@
         <%= f.submit 'Submit', class: 'btn btn-default' %>
       </div>
     </div>
-
   </div>
 <% end %>
