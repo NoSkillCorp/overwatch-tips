@@ -20,16 +20,20 @@
 
 <script>
   $(document).ready(function(){
+    
+    function appendTip(data, category) {
+        $('.'+category).append(data);
+    }
     $('#form-against').on('ajax:success', function(e, data, status, xhr){
-      $('.against').append(data);
+      appendTip(data, 'against');
     }).on('ajax:error',function(e, xhr, status, error){
     });
     $('#form-as').on('ajax:success', function(e, data, status, xhr){
-      $('.as').append(data);
+      appendTip(data, 'as');
     }).on('ajax:error',function(e, xhr, status, error){
     });
     $('#form-with').on('ajax:success', function(e, data, status, xhr){
-      $('.with').append(data);
+      appendTip(data, 'width');
     }).on('.'+data.category,function(e, xhr, status, error){
     });
   });
