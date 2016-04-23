@@ -19,8 +19,9 @@ class GamingObjectTest < ActiveSupport::TestCase
   
   test "has_many tips" do
     map = Map.create(name: "mymap", description: "test")
-    map.tips.build(title:"mytip", description: "test", category: "as").save
-    assert_equal ["mytip"], map.tips.pluck(:title)
+    map.tips.build(description: "test", category: "as").save
+    map.tips.build(description: "retest", category: "as").save
+    assert_equal ["test", "retest"], map.tips.pluck(:description)
   end
 
 end
