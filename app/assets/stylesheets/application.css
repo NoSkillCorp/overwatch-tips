@@ -17,3 +17,40 @@
 body {
     font-family: Nirmala;
 }
+#menu.navbar-default .navbar-brand {
+    color: rgba(255, 255, 255, 1);
+}
+#menu.navbar-default {
+    font-size: 18px;
+    background-color: rgba(255, 199, 14, 1);
+    border-width: 0px;
+    border-radius: 50px;
+}
+#menu.navbar-default .navbar-nav>li>a {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+#menu.navbar-default .navbar-nav>li>a:hover,
+#menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 218, 82, 1);
+}
+#menu.navbar-default .navbar-nav>.active>a,
+#menu.navbar-default .navbar-nav>.active>a:hover,
+#menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(59, 59, 59, 1);
+    background-color: rgba(255, 237, 173, 1);
+}
+#menu.navbar-default .navbar-toggle {
+    border-color: #ffedad;
+}
+#menu.navbar-default .navbar-toggle:hover,
+#menu.navbar-default .navbar-toggle:focus {
+    background-color: #ffedad;
+}
+#menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffedad;
+}
+#menu.navbar-default .navbar-toggle:hover .icon-bar,
+#menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #ffc70e;}
