@@ -1,17 +1,4 @@
-<%= form_for(@tip, remote: true, html: {role: :form, 'data-model' => 'tip'}) do |f| %>
-
-  <% if @tip.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tip.errors.count, "error") %> prohibited this tip from being saved:</h2>
-
-      <ul>
-      <% @tip.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for(@tip, remote: true, html: {role: :form, 'data-model' => 'tip', id: 'form-'+category.to_s}) do |f| %>
   <%# Added Bootstrap classes, and help-block container for error messages %>
   <div class="form-group">
     <%= f.text_field :category, :value => category, class: 'hidden' %>

@@ -13,7 +13,24 @@
           <%= render partial: "tips/show", locals: { tip: tip } %>
         <% end %>
       </div>
-      <%= render partial: 'form', locals: {category: category, gaming_object: @gaming_object} %>
+      <%= render partial: 'tips/form', locals: {category: category, gaming_object: @gaming_object} %>
     </div>
   <% end %>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('#form-against').on('ajax:success', function(e, data, status, xhr){
+      $('.against').append("<%= render partial: 'tips/show', locals: {tip: Tip.new(Json.parse("+data+")) } %>");
+    }).on('ajax:error',function(e, xhr, status, error){
+    });
+    $('#form-as').on('ajax:success', function(e, data, status, xhr){
+      $('.as').append("<%= j render partial: 'tips/show', locals: {tip: @tip } %>");
+    }).on('ajax:error',function(e, xhr, status, error){
+    });
+    $('#form-with').on('ajax:success', function(e, data, status, xhr){
+      $('.with').append("<%= j render partial: 'tips/show', locals: {tip: @tip } %>");
+    }).on('.'+data.category,function(e, xhr, status, error){
+    });
+  });
+</script>
