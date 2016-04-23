@@ -49,3 +49,8 @@ html {
   height: 60px;
   background-color: #f5f5f5;
 }
+
+.error {
+  color : #a94442;
+}
+
