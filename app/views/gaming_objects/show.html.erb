@@ -6,9 +6,9 @@
 
 <div class="row">
   <% @tips_hash.each do |category, category_tips| %>
-    <div class="col-md-4 <%= category %>">
+    <div class="col-md-4">
       <h2>Playing <%= category %> <%= @gaming_object.name %></h2>
-      <div class="row">
+      <div class="row <%= category %>">
         <% category_tips.each do |tip| %>
           <%= render partial: "tips/show", locals: { tip: tip } %>
         <% end %>
@@ -21,15 +21,15 @@
 <script>
   $(document).ready(function(){
     $('#form-against').on('ajax:success', function(e, data, status, xhr){
-      $('.against').append("<%= render partial: 'tips/show', locals: {tip: @tip } %>");
+      $('.against').append(data);
     }).on('ajax:error',function(e, xhr, status, error){
     });
     $('#form-as').on('ajax:success', function(e, data, status, xhr){
-      $('.as').append("<%= j render partial: 'tips/show', locals: {tip: @tip } %>");
+      $('.as').append(data);
     }).on('ajax:error',function(e, xhr, status, error){
     });
     $('#form-with').on('ajax:success', function(e, data, status, xhr){
-      $('.with').append("<%= j render partial: 'tips/show', locals: {tip: @tip } %>");
+      $('.with').append(data);
     }).on('.'+data.category,function(e, xhr, status, error){
     });
   });
