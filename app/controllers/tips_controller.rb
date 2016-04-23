@@ -6,7 +6,8 @@ class TipsController < ApplicationController
     @tip = Tip.new(tip_params)
     
     if @tip.save
-      render json: @tip
+      #render json: @tip
+      render partial: 'tips/show', locals: { tip: @tip }
     else
       render json: @tip.errors, status: :unprocessable_entity
     end

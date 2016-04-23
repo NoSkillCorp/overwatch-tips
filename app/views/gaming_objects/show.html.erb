@@ -21,7 +21,7 @@
 <script>
   $(document).ready(function(){
     $('#form-against').on('ajax:success', function(e, data, status, xhr){
-      $('.against').append("<%= render partial: 'tips/show', locals: {tip: Tip.new(Json.parse("+data+")) } %>");
+      $('.against').append("<%= render partial: 'tips/show', locals: {tip: @tip } %>");
     }).on('ajax:error',function(e, xhr, status, error){
     });
     $('#form-as').on('ajax:success', function(e, data, status, xhr){
