@@ -24,10 +24,20 @@ class Tip < ActiveRecord::Base
     end
     
     def upvote(user_cookie)
-        votes.build(weight: 1, user_cookie: user_cookie).save
+        existing_vote = votes.find_by(user_cookie: user_cookie)
+        if existing_vote.blank?
+            votes.build(weight: 1, user_cookie: user_cookie).save
+        else
+            existing_vote.update(weight: 1) if existing_vote.weight < 0
+        end
     end
     
     def downvote(user_cookie)
-        votes.build(weight: -1, user_cookie: user_cookie).save
+        existing_vote = votes.find_by(user_cookie: user_cookie)
+        if existing_vote.blank?
+            votes.build(weight: -1, user_cookie: user_cookie).save
+        else
+            existing_vote.update(weight: -1) if existing_vote.weight > 0
+        end
     end
 end
