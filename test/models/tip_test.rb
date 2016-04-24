@@ -44,10 +44,14 @@ class TipTest < ActiveSupport::TestCase
     assert_equal 0, @tip.score
     @tip.upvote("user_cookie")
     assert_equal 1, @tip.score
+    @tip.upvote("user_cookie")
+    assert_equal 1, @tip.score
   end
   
   test "downvote" do
     assert_equal 0, @tip.score
+    @tip.downvote("user_cookie")
+    assert_equal(-1, @tip.score)
     @tip.downvote("user_cookie")
     assert_equal(-1, @tip.score)
   end
