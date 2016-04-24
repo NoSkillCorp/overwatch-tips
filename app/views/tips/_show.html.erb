@@ -15,10 +15,13 @@
           </div>
           
           <div class="vote_links">
-            <%= link_to upvote_tip_path(tip), remote: true, method: :post, class: "upvote_tip btn btn-default btn-sm" do %>
+            <% upvote_class = tip.is_upvoted?(@user_cookie) ? "btn-success" : "btn-default" %>
+            <%= link_to upvote_tip_path(tip), remote: true, method: :post, class: "upvote_tip btn #{upvote_class} btn-sm" do %>
               <i class="fa fa-plus" aria-hidden="true"></i>
             <% end %>
-            <%= link_to downvote_tip_path(tip), remote: true, method: :post, class: "downvote_tip btn btn-default btn-sm" do %>
+            
+            <% downvote_class = tip.is_downvoted?(@user_cookie) ? "btn-danger" : "btn-default" %>
+            <%= link_to downvote_tip_path(tip), remote: true, method: :post, class: "downvote_tip btn #{downvote_class} btn-sm" do %>
               <i class="fa fa-minus" aria-hidden="true"></i>
             <% end %>
           </div>

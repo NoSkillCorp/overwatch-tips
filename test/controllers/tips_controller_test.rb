@@ -7,7 +7,7 @@ class TipsControllerTest < ActionController::TestCase
 
   test "should create tip" do
     assert_difference('Tip.count') do
-      post :create, tip: { description: "test", gaming_object_id: @character.id, category: "as"}
+      post :create, tip: { description: "test", gaming_object_id: @character.id, category: "as" }
     end
   end
   

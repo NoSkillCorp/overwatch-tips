@@ -9,10 +9,7 @@ class ApplicationController < ActionController::Base
   
     def generate_user_cookie
       cookies["user_id"] = SecureRandom.hex unless cookies.has_key?("user_id")
-    end
-    
-    def user_cookie
-      cookies["user_id"]
+      @user_cookie = cookies["user_id"]
     end
     
     

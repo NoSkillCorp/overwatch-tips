@@ -61,4 +61,16 @@ class TipTest < ActiveSupport::TestCase
     @tip.upvote("user_cookie")
     assert_equal 1, @tip.score
   end
+  
+  test "is_upvoted?" do
+    @tip.upvote("user_cookie")
+    assert @tip.is_upvoted?("user_cookie")
+    assert_not @tip.is_upvoted?("user_cookie2")
+  end
+  
+  test "is_downvoted?" do
+    @tip.downvote("user_cookie")
+    assert @tip.is_downvoted?("user_cookie")
+    assert_not @tip.is_downvoted?("user_cookie2")
+  end
 end
