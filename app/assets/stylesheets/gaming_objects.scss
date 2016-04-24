@@ -14,17 +14,17 @@
     font-size: 2.5rem;
     text-align: center;
     top:45%;
-    opacity: 0.25;
-    //visibility: hidden;
+    font-weight: bold;
+    //opacity: 0.25;
+    visibility: hidden;
 }
 .gaming_object_image {
     position:relative;
 }
 
 .gaming_object_image:hover .gaming_object_name {
-    font-weight: bold;
-    opacity: 1;
-    //visibility: visible;
+    //opacity: 1;
+    visibility: visible;
 }
 
 .gaming_object_image:hover img {
