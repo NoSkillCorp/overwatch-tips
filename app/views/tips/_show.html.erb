@@ -9,10 +9,10 @@
           </div>
           
           <div class="vote_links">
-            <%= link_to upvote_tip_path(tip), remote: true, method: :post, class: "upvote_tip" do %>
+            <%= link_to upvote_tip_path(tip), remote: true, method: :post, class: "upvote_tip btn btn-default btn-sm" do %>
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             <% end %>
-            <%= link_to downvote_tip_path(tip), remote: true, method: :post, class: "downvote_tip" do %>
+            <%= link_to downvote_tip_path(tip), remote: true, method: :post, class: "downvote_tip btn btn-default btn-sm" do %>
               <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             <% end %>
           </div>
