@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423210444) do
+ActiveRecord::Schema.define(version: 20160424103530) do
 
   create_table "gaming_objects", force: :cascade do |t|
     t.string   "name"
@@ -36,10 +36,12 @@ ActiveRecord::Schema.define(version: 20160423210444) do
   create_table "votes", force: :cascade do |t|
     t.integer  "weight"
     t.integer  "tip_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "user_cookie"
   end
 
+  add_index "votes", ["tip_id", "user_cookie"], name: "index_votes_on_tip_id_and_user_cookie"
   add_index "votes", ["tip_id"], name: "index_votes_on_tip_id"
 
 end

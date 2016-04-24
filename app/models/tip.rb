@@ -23,11 +23,11 @@ class Tip < ActiveRecord::Base
         votes.negatives.sum(:weight).abs
     end
     
-    def upvote
-        votes.build(weight: 1).save
+    def upvote(user_cookie)
+        votes.build(weight: 1, user_cookie: user_cookie).save
     end
     
-    def downvote
-        votes.build(weight: -1).save
+    def downvote(user_cookie)
+        votes.build(weight: -1, user_cookie: user_cookie).save
     end
 end

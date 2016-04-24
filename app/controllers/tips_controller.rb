@@ -14,12 +14,12 @@ class TipsController < ApplicationController
   end
   
   def upvote
-    @tip.upvote
+    @tip.upvote(user_cookie)
     render json: @tip
   end
   
   def downvote
-    @tip.downvote
+    @tip.downvote(user_cookie)
     render json: @tip
   end
 
