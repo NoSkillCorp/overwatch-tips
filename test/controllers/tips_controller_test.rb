@@ -25,4 +25,26 @@ class TipsControllerTest < ActionController::TestCase
     end
   end
   
+  test "should change vote score" do
+    tip = Tip.create(description: "bla", category: "as", gaming_object: @character)
+    assert_equal 0, tip.score
+    post :upvote, id: tip.id
+    assert_equal 1, tip.score
+    post :downvote, id: tip.id
+    assert_equal -1, tip.score
+  end
+  
+  test "several people should be able to vote" do
+    tip = Tip.create(description: "bla", category: "as", gaming_object: @character)
+    assert_equal 0, tip.score
+    post :downvote, id: tip.id
+    assert_equal -1, tip.score
+    cookies["user_id"] = "user_cookie1"
+    post :downvote, id: tip.id
+    assert_equal -2, tip.score
+    cookies["user_id"] = "user_cookie2"
+    post :upvote, id: tip.id
+    assert_equal -1, tip.score
+  end
+  
 end
