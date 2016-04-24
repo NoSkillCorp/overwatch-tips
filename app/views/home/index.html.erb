@@ -1,2 +1,8 @@
 
 <h1>Welcome To Overwatch - tips</h1>
+
+<div class="row">
+    <% @tips.each do |tip| %>
+        <%= render partial: "tips/show", locals: { tip: tip, with_gaming_object_description: true, klass: "col-md-6" } %>
+    <% end %>
+</div>

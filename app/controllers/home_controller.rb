@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-      @characters = Character.all
+      @tips = Tip.order(created_at: :desc).limit(10)
   end
 end

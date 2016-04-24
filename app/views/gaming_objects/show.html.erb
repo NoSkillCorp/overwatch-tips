@@ -7,7 +7,7 @@
 <div class="row">
   <% @tips_hash.each do |category, category_tips| %>
     <div class="col-md-4">
-      <h2>Playing <%= category %> <%= @gaming_object.name %></h2>
+      <h2><%= playing_sentence(category, @gaming_object) %></h2>
       <div class="row <%= category %>">
         <% category_tips.each do |tip| %>
           <%= render partial: "tips/show", locals: { tip: tip } %>

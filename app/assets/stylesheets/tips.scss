@@ -17,5 +17,17 @@
     }
 }
 
-.tip_description {
+.gaming_object_icon{
+    height: 5rem;
+}
+
+.tip_gaming_object_description {
+    margin-right: 1rem;
+}
+
+.tip_panel .panel-body {
+    word-wrap: break-word;
+    .playing_sentence {
+        color: grey;
+    }
 }
