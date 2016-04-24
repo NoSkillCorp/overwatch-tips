@@ -16,18 +16,42 @@ class Tip < ActiveRecord::Base
     end
     
     def positive_score
-        votes.positives.sum(:weight)
+        votes.positives.count
     end
     
     def negative_score
-        votes.negatives.sum(:weight)
+        votes.negatives.count
     end
     
-    def upvote
-        votes.build(weight: 1).save
+    def is_voted?(user_cookie)
+        votes.where(user_cookie: user_cookie).count > 0
     end
     
-    def downvote
-        votes.build(weight: -1).save
+    def is_upvoted?(user_cookie)
+        votes.positives.where(user_cookie: user_cookie).count > 0
+    end
+    
+    def is_downvoted?(user_cookie)
+        votes.negatives.where(user_cookie: user_cookie).count > 0
+    end
+    
+    #either creates a vote, or change the weight of an existing one
+    def upvote(user_cookie)
+        existing_vote = votes.find_by(user_cookie: user_cookie)
+        if existing_vote.blank?
+            votes.build(weight: 1, user_cookie: user_cookie).save
+        else
+            existing_vote.update(weight: 1) if existing_vote.weight < 0
+        end
+    end
+    
+    #either creates a vote, or change the weight of an existing one
+    def downvote(user_cookie)
+        existing_vote = votes.find_by(user_cookie: user_cookie)
+        if existing_vote.blank?
+            votes.build(weight: -1, user_cookie: user_cookie).save
+        else
+            existing_vote.update(weight: -1) if existing_vote.weight > 0
+        end
     end
 end

@@ -1,18 +1,27 @@
 <% tip ||= Tip.new %>
 
 <div class="col-md-12">
-    <div class="panel panel-default tip_panel" id="tip_<%= tip.id %>">
+    <div class="panel panel-default tip_panel <%= tip.is_voted?(@user_cookie) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>">
       <div class="panel-body">
         <div class="pull-left tip_score_panel text-center">
           <div class="tip_score">
-            <%= tip.score %>  
+            <%= tip.score %>
+          </div>
+          
+          <div class="tip_posneg_scores">
+            +<span class="tip_positive_score"><%= tip.positive_score %></span>
+            /
+            -<span class="tip_negative_score"><%= tip.negative_score %></span>
           </div>
           
           <div class="vote_links">
-            <%= link_to upvote_tip_path(tip), remote: true, method: :post, class: "upvote_tip btn btn-default btn-sm" do %>
+            <% upvote_class = tip.is_upvoted?(@user_cookie) ? "btn-success" : "btn-default" %>
+            <%= link_to upvote_tip_path(tip), remote: true, method: :post, class: "upvote_tip btn #{upvote_class} btn-sm" do %>
               <i class="fa fa-plus" aria-hidden="true"></i>
             <% end %>
-            <%= link_to downvote_tip_path(tip), remote: true, method: :post, class: "downvote_tip btn btn-default btn-sm" do %>
+            
+            <% downvote_class = tip.is_downvoted?(@user_cookie) ? "btn-danger" : "btn-default" %>
+            <%= link_to downvote_tip_path(tip), remote: true, method: :post, class: "downvote_tip btn #{downvote_class} btn-sm" do %>
               <i class="fa fa-minus" aria-hidden="true"></i>
             <% end %>
           </div>

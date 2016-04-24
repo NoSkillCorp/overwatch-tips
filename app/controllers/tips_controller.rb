@@ -6,7 +6,6 @@ class TipsController < ApplicationController
     @tip = Tip.new(tip_params)
     
     if @tip.save
-      #render json: @tip
       render partial: 'tips/show', locals: { tip: @tip }
     else
       render json: @tip.errors, status: :unprocessable_entity
@@ -14,12 +13,12 @@ class TipsController < ApplicationController
   end
   
   def upvote
-    @tip.upvote
+    @tip.upvote(@user_cookie)
     render json: @tip
   end
   
   def downvote
-    @tip.downvote
+    @tip.downvote(@user_cookie)
     render json: @tip
   end
 
