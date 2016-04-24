@@ -41,8 +41,8 @@
         <% if with_gaming_object_description %>
           <span class="playing_sentence"><%= playing_sentence(tip.category, tip.gaming_object) %></span><br />
         <% end %>
-        <%= tip.description %>
-        
+        <span class="tip_description"><%= tip.description %></span><br />
+        <span class="time_ago pull-right"><%= time_ago_in_words(tip.created_at)%> ago</span>
       </div>
     </div>
 </div>
