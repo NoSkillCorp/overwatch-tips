@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  *
  *********************** COLOR SET ****************************
  * orange : ffc60e,ffd240,ffdc6a
@@ -28,6 +29,7 @@ body {
 
     
 .footer {
+  padding-top: 1rem;
 }
 
 html {
