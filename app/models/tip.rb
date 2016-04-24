@@ -23,6 +23,10 @@ class Tip < ActiveRecord::Base
         votes.negatives.count
     end
     
+    def is_voted?(user_cookie)
+        votes.where(user_cookie: user_cookie).count > 0
+    end
+    
     def is_upvoted?(user_cookie)
         votes.positives.where(user_cookie: user_cookie).count > 0
     end

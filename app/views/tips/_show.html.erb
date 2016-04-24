@@ -1,7 +1,7 @@
 <% tip ||= Tip.new %>
 
 <div class="col-md-12">
-    <div class="panel panel-default tip_panel" id="tip_<%= tip.id %>">
+    <div class="panel panel-default tip_panel <%= tip.is_voted?(@user_cookie) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>">
       <div class="panel-body">
         <div class="pull-left tip_score_panel text-center">
           <div class="tip_score">
