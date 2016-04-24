@@ -68,6 +68,12 @@
     function update_score(tip, bonus){
       var score = tip.find('.tip_score');
       score.text(parseInt(score.text()) + bonus);
+      if(bonus > 0){
+        var posneg_score = tip.find('.tip_positive_score');
+      } else {
+        var posneg_score = tip.find('.tip_negative_score');
+      }
+      posneg_score.text(parseInt(posneg_score.text()) + 1);
     }
     
     function bind_score_events(elements){

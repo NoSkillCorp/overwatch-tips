@@ -5,7 +5,13 @@
       <div class="panel-body">
         <div class="pull-left tip_score_panel text-center">
           <div class="tip_score">
-            <%= tip.score %>  
+            <%= tip.score %>
+          </div>
+          
+          <div class="tip_posneg_scores">
+            +<span class="tip_positive_score"><%= tip.positive_score %></span>
+            /
+            -<span class="tip_negative_score"><%= tip.negative_score %></span>
           </div>
           
           <div class="vote_links">

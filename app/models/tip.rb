@@ -20,7 +20,7 @@ class Tip < ActiveRecord::Base
     end
     
     def negative_score
-        votes.negatives.sum(:weight)
+        votes.negatives.sum(:weight).abs
     end
     
     def upvote
