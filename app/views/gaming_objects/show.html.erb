@@ -37,6 +37,8 @@
     function appendTip(data, category) {
       clearError(category);
       $('.'+category).append(data);
+      var new_tip_panel = $(".tip_panel", $('.'+category)).last();
+      bind_score_events(new_tip_panel);
       $('.form-'+category+'-description').val("");
     }
     
@@ -63,21 +65,26 @@
     <% end %>
     
 
-    function update_score(button, bonus){
-      tip = button.closest('.tip_panel');
-      score = tip.find('.tip_score');
+    function update_score(tip, bonus){
+      var score = tip.find('.tip_score');
       score.text(parseInt(score.text()) + bonus);
     }
     
-    $('.upvote_tip').on('click', function() {
-      update_score($(this), 1);
-      event.preventDefault(); // Prevent link from following its href
-    });
+    function bind_score_events(elements){
+      elements.find('.upvote_tip').on('click', function() {
+        var tip_panel = $(this).closest('.tip_panel');
+        update_score(tip_panel, 1);
+        event.preventDefault(); // Prevent link from following its href
+      });
+      
+      elements.find('.downvote_tip').on('click', function() {
+        var tip_panel = $(this).closest('.tip_panel');
+        update_score(tip_panel, -1);
+        event.preventDefault(); // Prevent link from following its href
+      });
+    }
     
-    $('.downvote_tip').on('click', function() {
-      update_score($(this), -1);
-      event.preventDefault(); // Prevent link from following its href
-    });
+    bind_score_events($('.tip_panel'));
     
   });
 </script>
