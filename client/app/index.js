@@ -20,5 +20,6 @@ ReactOnRails.register({
         {/* <-- INSERT APP HERE -!> */}
       </Provider>
     )
-  }
+  },
+  HelloWorld: (props) => <h1>HELLO {props.name.toUpperCase()}</h1>
 })

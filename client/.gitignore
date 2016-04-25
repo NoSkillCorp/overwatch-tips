@@ -1,5 +1,2 @@
 node_modules
 *.log
-
-# Javascript client (generated see README.md)
-../app/assets/react/react-bundle.js
