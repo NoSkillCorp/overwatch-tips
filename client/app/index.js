@@ -2,6 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import ReactOnRails from 'react-on-rails'
+import HelloWorld from './components/presenters/HelloWorld'
 
 ReactOnRails.registerStore({
   ReduxStore: (props, railsContext) => {
@@ -21,5 +22,5 @@ ReactOnRails.register({
       </Provider>
     )
   },
-  HelloWorld: (props) => <h1>HELLO {props.name.toUpperCase()}</h1>
+  HelloWorld
 })
