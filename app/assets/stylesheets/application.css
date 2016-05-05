@@ -58,5 +58,6 @@ html {
 
 .image-link:hover {
   background-color: transparent;
+  text-decoration: none;
   opacity: 0.5;
 }

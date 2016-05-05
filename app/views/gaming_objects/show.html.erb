@@ -1,5 +1,10 @@
+<div class="row short-selector-container">
+  <% @gaming_objects.each do |gaming_object| %>
+      <%= render partial: "gaming_objects/icon", locals: { gaming_object: gaming_object , active: (gaming_object.id == @gaming_object.id)} %>
+  <% end %>
+</div>
+
 <div class="row">
-  
   <div class="gaming_object_header col-md-12">
     <span><%= image_tag @gaming_object.image_path %></span>
     <h1 style="display: inline-block"><%= @gaming_object.name %></h1>

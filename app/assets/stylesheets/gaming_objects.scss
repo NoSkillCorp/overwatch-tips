@@ -26,6 +26,14 @@
     vertical-align: middle;
 }
 
+.short-selector-container {
+    margin-bottom:20px;
+}
+
+.active {
+    opacity: 0.5;
+}
+
 #hexGrid {
     overflow: hidden;
     width: 90%;
