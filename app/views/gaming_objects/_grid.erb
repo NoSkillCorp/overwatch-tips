@@ -1,0 +1,13 @@
+
+<% @gaming_objects.each do |gaming_object| %>
+    <div class="gaming_object_cel col-md-4">
+        <%= link_to gaming_object do %>
+            <div class="gaming_object_image text-center">
+                <%= image_tag gaming_object.image_path, class: "img-responsive" %>
+                <div class="text_wrapper">
+                    <p class="gaming_object_name"><%= gaming_object.name %></p>    
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>
