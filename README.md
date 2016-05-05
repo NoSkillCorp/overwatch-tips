@@ -3,7 +3,7 @@ This website is made by NoSkillCorp which is no company. We wanted to help share
 There is no login, so content is completely anonymous.
 
 #Please, add this feature !
-Yeah of course we can, we already have a bunch of extra feature that we want to had, but we're open for any ideas
+Yeah of course we can, we already have a bunch of extra features that we want to add, but we're open for any ideas
 
 #OH MY GOD, that's awesome, i need to contribue !
 Yeah man, you should ! Open issue and make pull request as much as you want
