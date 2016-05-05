@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_action :generate_user_cookie
+  before_action :generate_user_cookie, :count_votes_and_tips
   
   private
   
@@ -12,5 +12,9 @@ class ApplicationController < ActionController::Base
       @user_cookie = cookies["user_id"]
     end
     
+    def count_votes_and_tips
+      @tips_count = Tip.all.count
+      @votes_count = Vote.all.count
+    end
     
 end

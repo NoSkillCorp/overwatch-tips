@@ -5,4 +5,12 @@ class Vote < ActiveRecord::Base
   
     scope :positives, -> { where('votes.weight > ?', 0) }
     scope :negatives, -> { where('votes.weight < ?', 0) } 
+    
+    def is_upvoted?
+        weight > 0
+    end
+    
+    def is_downvoted?
+        weight < 0
+    end
 end
