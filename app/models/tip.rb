@@ -4,12 +4,8 @@ class Tip < ActiveRecord::Base
     belongs_to :gaming_object
     has_many :votes, dependent: :destroy
 
-    validates :category, inclusion: { in: CATEGORIES, message: "%{value} is not a valid category" }
+    validates :category, inclusion: { in: Character::CATEGORIES + Map::CATEGORIES, message: "%{value} is not a valid category" }
     validates :description, presence: true, length: { maximum: 1000 }
-    
-    def self.empty_categories_hash
-       CATEGORIES.map{ |category| [category, []] }.to_h
-    end
     
     def score
        votes.sum(:weight)
