@@ -3,7 +3,11 @@
 one:
   description: MyText
   title: MyString
+  gaming_object_id: 1
+  category: "as"
 
 two:
   description: MyText
   title: MyString
+  gaming_object_id: 2
+  category: "as"
