@@ -32,21 +32,25 @@ class Tip < ActiveRecord::Base
     end
     
     #either creates a vote, or change the weight of an existing one
+    #if the tip is already upvoted, delete the vote
     def upvote(user_cookie)
         existing_vote = votes.find_by(user_cookie: user_cookie)
         if existing_vote.blank?
             votes.build(weight: 1, user_cookie: user_cookie).save
         else
+            existing_vote.delete if existing_vote.is_upvoted?
             existing_vote.update(weight: 1) if existing_vote.weight < 0
         end
     end
     
     #either creates a vote, or change the weight of an existing one
+    #if the tip is already downvoted, delete the vote
     def downvote(user_cookie)
         existing_vote = votes.find_by(user_cookie: user_cookie)
         if existing_vote.blank?
             votes.build(weight: -1, user_cookie: user_cookie).save
         else
+            existing_vote.delete if existing_vote.is_downvoted?
             existing_vote.update(weight: -1) if existing_vote.weight > 0
         end
     end
