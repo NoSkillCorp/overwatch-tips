@@ -104,6 +104,8 @@ $(document).ready(function() {
         tip.addClass("is_voted");
         
       } else if(tip.hasClass("is_voted")){
+        
+        //If the vote is different from the current vote
         if(upvote_button.hasClass("btn-success") && bonus < 0 || downvote_button.hasClass('btn-danger') && bonus > 0){
           update_score_value(score, 2 * bonus);
           update_score_value(positive_score, bonus);
@@ -111,6 +113,18 @@ $(document).ready(function() {
           toggle_color(upvote_button);
           toggle_color(downvote_button);
           
+        //If the vote is the same as the current vote
+        } else {
+          tip.addClass("is_not_voted");
+          tip.removeClass("is_voted");
+          update_score_value(score, -1 * bonus);
+          if(bonus > 0){
+            toggle_color(upvote_button);
+            update_score_value(positive_score, -1 * bonus);
+          } else if(bonus < 0){
+            toggle_color(downvote_button);
+            update_score_value(negative_score, bonus);
+          }
         }
       }
     }
