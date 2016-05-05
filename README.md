@@ -1,24 +1,13 @@
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+#Welcome
 
+Hi there, this is NoSkillCorps' first real project. This website has no commercial purpose and is therefore completely opensource. Feel free to open issues / make pull request
 
-Welcome to your Rails project on Cloud9 IDE!
+#Tech
+The website is built using rails & jquery and there are react component that will be added soon.
 
-To get started, just do the following:
+To run the website simply fork the github and run `bundle install`, `rake db:migrate` and `rails -S` and you should be ready to go.
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://overwatch-tips-caillou1.c9users.io/).
+#Idea ? 
 
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+If you have any idea, feel free to contact us
