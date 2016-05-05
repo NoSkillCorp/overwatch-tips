@@ -1,0 +1,5 @@
+<% gaming_object ||= nil %>
+
+<%= link_to gaming_object, class: "image-link" do %>
+    <%= image_tag gaming_object.image_path, class: "gaming_object_icon" %>
+<% end %>

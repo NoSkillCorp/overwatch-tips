@@ -33,9 +33,7 @@
                   
           <% if with_gaming_object_description %>
             <div class="tip_gaming_object_description pull-left text-center">
-              <%= link_to tip.gaming_object, class: "image-link" do %>
-                <%= image_tag tip.gaming_object.image_path, class: "gaming_object_icon" %>
-              <% end %>
+              <%= render partial: "gaming_objects/icon", locals: { gaming_object: tip.gaming_object } %>
             </div>
           <% end %>
         </div>
