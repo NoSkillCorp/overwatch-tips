@@ -148,7 +148,7 @@ $(document).ready(function() {
       $('.hex').hover(
         function(){
           var img = $(this).children().children().first();
-          img.css('opacity', '0.5');
+          img.css('opacity', '0.75');
         }, 
         function() {
           var img = $(this).children().children().first();

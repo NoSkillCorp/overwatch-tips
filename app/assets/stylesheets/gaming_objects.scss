@@ -31,7 +31,7 @@
 }
 
 .active {
-    opacity: 0.5;
+    opacity: 0.95;
 }
 
 #hexGrid {
@@ -86,6 +86,8 @@
 
 .hex h1, .hex p {
     width: 102%;
+    color: white;
+    text-shadow: 1px 2px 1px #262626;
     left:-1%; /* prevent line on the right where background doesn't cover image */
     padding: 5%;
     box-sizing:border-box;
@@ -113,6 +115,7 @@
 }
 .hex p {
     top: 50%;
+    font-size: 2rem;
     padding-bottom:50%;
     -webkit-transform:translateY(100%) translatez(-1px);
         -ms-transform:translateY(100%) translatez(-1px);
