@@ -1,12 +1,28 @@
-<div class="gaming_object_header">
-  <span><%= image_tag @gaming_object.image_path %></span>
-  <h1 style="display: inline-block"><%= @gaming_object.name %></h1>
+<div class="row">
+  
+  <div class="gaming_object_header col-md-12">
+    <span><%= image_tag @gaming_object.image_path %></span>
+    <h1 style="display: inline-block"><%= @gaming_object.name %></h1>
+  </div>
+  
+  <div class="col-md-8" style="margin-top: 1rem;">
+    <span class="best-tip-sentence">Best tips of the </span>
+    <div class="btn-group">
+      <% ["life", "year", "month", "week"].each do |duration_string| %>
+        <% active_class = @duration_string == duration_string ? "active" : "" %>
+        <%= link_to duration_string, url_for([@gaming_object, duration: duration_string]), class: "btn btn-default #{active_class}" %>
+      <% end %>  
+    </div>
+    
+  </div>
+  
 </div>
 
 
 <div class="row">
   <% @tips_hash.each do |category, category_tips| %>
     <div class="col-md-4">
+      
       <h2><%= playing_sentence(category, @gaming_object) %></h2>
       <%= render partial: 'tips/form', locals: {category: category, gaming_object: @gaming_object, klass: "top-tip-form"} %>
 
@@ -15,7 +31,9 @@
           <%= render partial: "tips/show", locals: { tip: tip } %>
         <% end %>
       </div>
+      
       <%= render partial: 'tips/form', locals: {category: category, gaming_object: @gaming_object, klass: "bottom-tip-form"} if category_tips.count > 5 %>
+      
     </div>
   <% end %>
 </div>

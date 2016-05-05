@@ -37,6 +37,8 @@ group :development, :test do
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  # For colorful and pretty console prints
+  gem 'awesome_print'
 end
 
 group :development do

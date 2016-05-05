@@ -9,7 +9,9 @@ class GamingObjectsController < ApplicationController
 
   # GET /gaming_objects/1
    def show
-     @tips_hash = @gaming_object.tips_hash
+     @duration_string = params[:duration] || "life"
+     numeric_duration = duration_string_to_numeric(@duration_string)
+     @tips_hash = @gaming_object.tips_hash(numeric_duration)
      @tip = @gaming_object.tips.build
    end
 
