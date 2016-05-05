@@ -25,9 +25,18 @@
  
 body {
     font-family: 'Nirmala' !important;
+    background-image: url('./wallpaper.png');
+    background-repeat: repeat;
+    background-size:100% auto;
+    background-color: #FBFBFB;
+    background-attachment: fixed;
 }
 
-    
+.navbar {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
 .footer {
   padding-top: 1rem;
 }
@@ -60,4 +69,8 @@ html {
   background-color: transparent;
   text-decoration: none;
   opacity: 0.5;
+}
+
+.tips-and-votes-count {
+  font-size: 1.5rem;
 }

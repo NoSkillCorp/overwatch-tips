@@ -89,14 +89,14 @@
     left:-1%; /* prevent line on the right where background doesn't cover image */
     padding: 5%;
     box-sizing:border-box;
-    font-weight: 300;
+    font-weight: 600;
     -webkit-transition:  -webkit-transform .2s ease-out;
             transition:          transform .2s ease-out;
 }
 .hex h1 {
     bottom: 50%;
     padding-top:50%;
-    font-size: 1.5em;
+    font-size: 2em;
     z-index: 1;
     -webkit-transform:translateY(-100%) translatez(-1px);
         -ms-transform:translateY(-100%) translatez(-1px);
