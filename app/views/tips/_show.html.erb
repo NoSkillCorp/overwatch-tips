@@ -33,13 +33,17 @@
                   
           <% if with_gaming_object_description %>
             <div class="tip_gaming_object_description pull-left text-center">
-              <%= image_tag tip.gaming_object.image_path, class: "gaming_object_icon" %>
+              <%= link_to tip.gaming_object, class: "image-link" do %>
+                <%= image_tag tip.gaming_object.image_path, class: "gaming_object_icon" %>
+              <% end %>
             </div>
           <% end %>
         </div>
         
         <% if with_gaming_object_description %>
-          <span class="playing_sentence"><%= playing_sentence(tip.category, tip.gaming_object) %></span><br />
+          <%= link_to tip.gaming_object, class: "btn-link" do %>
+            <span class="playing_sentence"><%= playing_sentence(tip.category, tip.gaming_object) %></span><br />
+          <% end %>
         <% end %>
         <span class="tip_description"><%= tip.description %></span><br />
         <span class="time_ago pull-right"><%= time_ago_in_words(tip.created_at)%> ago</span>

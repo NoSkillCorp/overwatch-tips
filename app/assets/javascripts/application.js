@@ -54,14 +54,13 @@ $(document).ready(function() {
       }
     }
     
-    
     $('.tip_form').on('ajax:success', function(e, data, status, xhr){
       var category = $(this).attr('id').replace('form-', '');
       var form_element = $(this).closest('.tip_form');
       if(form_element.hasClass('top-tip-form')){
         appendTip(data, category, "top");
       }else if (form_element.hasClass('bottom-tip-form')){
-        appendTip(data, category, "bottom");  
+        appendTip(data, category, "bottom");
       }
       
     }).on('ajax:error',function(e, xhr, status, error){
