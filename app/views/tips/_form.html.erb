@@ -1,4 +1,6 @@
-<%= form_for(@tip, remote: true, html: {role: :form, 'data-model' => 'tip', id: 'form-'+category.to_s, class: "tip_form"}) do |f| %>
+<% klass ||= "" %>
+
+<%= form_for(@tip, remote: true, html: {role: :form, 'data-model' => 'tip', id: 'form-'+category.to_s, class: "tip_form #{klass}"}) do |f| %>
   <%# Added Bootstrap classes, and help-block container for error messages %>
   <div class="panel panel-default">
   
