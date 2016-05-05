@@ -11,7 +11,7 @@ Yeah man, you should ! Open issue and make pull request as much as you want
 #Tech
 The website is built using rails & jquery and there are react components that will be added soon.
 
-To run the website simply fork the github and run `bundle install`, `rake db:migrate` and `rails -S` and you should be ready to go.
+To run the website simply fork the github and run `bundle install`, `rake db:migrate` and `rails -s` and you should be ready to go.
 
 #Idea ? 
 
