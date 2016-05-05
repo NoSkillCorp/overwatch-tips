@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyText
-  type: 
+  id: 1
+  name: Zenyatta
+  description: ""
+  type: "Character"
+  image_path: "characters/Zenyatta.png"
 
 two:
-  name: MyString
-  description: MyText
-  type: 
+  id: 2
+  name: Bastion
+  description: ""
+  type: "Character"
+  image_path: "characters/Bastion.png"
