@@ -5,11 +5,6 @@ body {
   line-height: 18px;
 }
 
-p, ol, ul, td {
-  font-size: 13px;
-  line-height: 18px;
-}
-
 pre {
   background-color: #eee;
   padding: 10px;
@@ -62,10 +57,5 @@ div {
     margin-bottom: 0px;
     background-color: #c00;
     color: #fff;
-  }
-
-  ul li {
-    font-size: 12px;
-    list-style: square;
   }
 }

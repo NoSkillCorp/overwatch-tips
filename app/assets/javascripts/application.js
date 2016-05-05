@@ -131,4 +131,16 @@ $(document).ready(function() {
     
     bind_score_events($('.tip_panel'));
     
+    
+      $('.hex').hover(
+        function(){
+          var img = $(this).children().children().first();
+          img.css('opacity', '0.5');
+        }, 
+        function() {
+          var img = $(this).children().children().first();
+          img.css('opacity', '1');
+        }
+      );
+    
 });
