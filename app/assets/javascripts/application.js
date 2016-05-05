@@ -28,14 +28,18 @@ $(document).ready(function() {
       }
     }
     
-    function appendTip(data, category) {
+    function appendTip(data, category, position) {
       clearError(category);
-      $('.'+category).append(data);
-      var new_tip_panel = $(".tip_panel", $('.'+category)).last();
+      if(position == "bottom"){
+        $('.'+category).append(data);
+        var new_tip_panel = $(".tip_panel", $('.'+category)).last();
+      } else if(position == "top") {
+        $('.'+category).prepend(data);
+        var new_tip_panel = $(".tip_panel", $('.'+category)).first();
+      }
       bind_score_events(new_tip_panel);
       $('.form-'+category+'-description').val("");
     }
-    
     
     function markError(errors, category) {
       clearError(category);
@@ -51,13 +55,19 @@ $(document).ready(function() {
     }
     
     
-      $('.tip_form').on('ajax:success', function(e, data, status, xhr){
-        var category = $(this).attr('id').replace('form-', '');
-        appendTip(data, category);
-      }).on('ajax:error',function(e, xhr, status, error){
-        var category = $(this).attr('id').replace('form-', '');
-        markError(xhr.responseJSON, category);
-      });
+    $('.tip_form').on('ajax:success', function(e, data, status, xhr){
+      var category = $(this).attr('id').replace('form-', '');
+      var form_element = $(this).closest('.tip_form');
+      if(form_element.hasClass('top-tip-form')){
+        appendTip(data, category, "top");
+      }else if (form_element.hasClass('bottom-tip-form')){
+        appendTip(data, category, "bottom");  
+      }
+      
+    }).on('ajax:error',function(e, xhr, status, error){
+      var category = $(this).attr('id').replace('form-', '');
+      markError(xhr.responseJSON, category);
+    });
     
     
     function toggle_color(vote_button){
