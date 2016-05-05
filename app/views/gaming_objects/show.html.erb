@@ -8,12 +8,14 @@
   <% @tips_hash.each do |category, category_tips| %>
     <div class="col-md-4">
       <h2><%= playing_sentence(category, @gaming_object) %></h2>
+      <%= render partial: 'tips/form', locals: {category: category, gaming_object: @gaming_object} %>
+
       <div class="row <%= category %>">
         <% category_tips.each do |tip| %>
           <%= render partial: "tips/show", locals: { tip: tip } %>
         <% end %>
       </div>
-      <%= render partial: 'tips/form', locals: {category: category, gaming_object: @gaming_object} %>
+      <%= render partial: 'tips/form', locals: {category: category, gaming_object: @gaming_object} if category_tips.count > 5 %>
     </div>
   <% end %>
 </div>
