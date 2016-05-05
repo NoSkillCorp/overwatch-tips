@@ -1,4 +1,8 @@
 Rails.application.configure do
+  #For Heroku to be able to use background images in css
+  config.serve_static_assets = true
+  config.assets.compile = true
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
