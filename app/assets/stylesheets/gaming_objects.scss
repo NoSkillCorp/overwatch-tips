@@ -30,8 +30,10 @@
     margin-bottom:20px;
 }
 
-.active {
-    opacity: 0.5;
+.active_icon {
+    -webkit-filter: brightness(50%);
+    -moz-filter: brightness(50%);
+    filter: brightness(50%);
 }
 
 #hexGrid {
@@ -87,7 +89,6 @@
 .hex h1, .hex p {
     width: 102%;
     color: white;
-    text-shadow: 1px 2px 1px #262626;
     left:-1%; /* prevent line on the right where background doesn't cover image */
     padding: 5%;
     box-sizing:border-box;

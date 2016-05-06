@@ -148,11 +148,15 @@ $(document).ready(function() {
       $('.hex').hover(
         function(){
           var img = $(this).children().children().first();
-          img.css('opacity', '0.75');
+          img.css('filter', 'brigthness(50%)');
+          img.css('-moz-filter', 'brigthness(50%)');
+          img.css('-webkit-filter', 'brightness(50%)');
         }, 
         function() {
           var img = $(this).children().children().first();
-          img.css('opacity', '1');
+          img.css('filter', 'brigthness(100%)');
+          img.css('-moz-filter', 'brigthness(100%)');
+          img.css('-webkit-filter', 'brightness(100%)');
         }
       );
     
