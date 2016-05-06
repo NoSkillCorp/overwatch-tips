@@ -1,0 +1,6 @@
+<% path ||= root_path  %>
+<% name ||= "-" %>
+
+<li class="<%='active' if request.env['PATH_INFO'] == path %>">
+    <%= link_to name, path %>
+</li>

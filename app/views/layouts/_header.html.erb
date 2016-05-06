@@ -6,12 +6,9 @@
         </div>
         <div class="collapse navbar-collapse navbar-menubuilder">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="/">News</a>
-                </li>
-                <li><a href="/characters">Characters</a>
-                </li>
-                <li><a href="/maps">Maps</a>
-                </li>
+                <%= render partial: "layouts/header_link", locals: {path: root_path, name: "News"} %>
+                <%= render partial: "layouts/header_link", locals: {path: characters_path, name: "Characters"} %>
+                <%= render partial: "layouts/header_link", locals: {path: maps_path, name: "Maps"} %>
             </ul>
             <ul class="nav navbar-nav navbar-right tips-and-votes-count">
                 <li><p class="navbar-text">Tips : <%= @tips_count %></p>

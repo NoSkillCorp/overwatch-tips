@@ -17,4 +17,6 @@ class ApplicationController < ActionController::Base
       @votes_count = Vote.all.count
     end
     
+    
+    
 end
