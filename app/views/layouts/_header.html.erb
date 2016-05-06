@@ -6,9 +6,16 @@
         </div>
         <div class="collapse navbar-collapse navbar-menubuilder">
             <ul class="nav navbar-nav navbar-left">
-                <%= render partial: "layouts/header_link", locals: {path: root_path, name: "News"} %>
-                <%= render partial: "layouts/header_link", locals: {path: characters_path, name: "Characters"} %>
-                <%= render partial: "layouts/header_link", locals: {path: maps_path, name: "Maps"} %>
+                <% action = "#{controller_name}##{action_name}" %>
+                <li class="<%='active' if action == "home#index" %>">
+                    <%= link_to "News", home_index_path %>
+                </li>
+                <li class="<%='active' if action.include?("gaming_objects") && params[:type] == "Character" %>">
+                    <%= link_to "Characters", characters_path %>
+                </li>
+                <li class="<%='active' if action.include?("gaming_objects") && params[:type] == "Map" %>">
+                    <%= link_to "Maps", maps_path %>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right tips-and-votes-count">
                 <li><p class="navbar-text">Tips : <%= @tips_count %></p>
