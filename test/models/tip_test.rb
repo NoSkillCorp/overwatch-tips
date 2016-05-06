@@ -45,10 +45,10 @@ class TipTest < ActiveSupport::TestCase
     @tip.upvote("user_cookie")
     assert_equal 1, @tip.score
     @tip.upvote("user_cookie")
-    assert_equal 1, @tip.score
+    assert_equal 0, @tip.score
     #then downvote changes weight of existing upvote
     @tip.downvote("user_cookie")
-    assert_equal -1, @tip.score
+    assert_equal (-1), @tip.score
   end
   
   test "downvote" do
@@ -56,7 +56,7 @@ class TipTest < ActiveSupport::TestCase
     @tip.downvote("user_cookie")
     assert_equal(-1, @tip.score)
     @tip.downvote("user_cookie")
-    assert_equal(-1, @tip.score)
+    assert_equal(0, @tip.score)
     #then downvote changes weight of existing upvote
     @tip.upvote("user_cookie")
     assert_equal 1, @tip.score
