@@ -4,10 +4,6 @@
 
 
 <div class="row">
-  <% if @type =="Character"%>
-      <%= render partial: 'gaming_objects/hexagonal', locals: { gaming_objects: @gaming_objects} %>
-  <% elsif @type == "Map" %>
-      <%= render partial: 'gaming_objects/grid', locals: { gaming_objects: @gaming_objects} %>
-  <% end %>
+  <%= render partial: 'gaming_objects/hexagonal', locals: { gaming_objects: @gaming_objects} %>
 </div>
 
