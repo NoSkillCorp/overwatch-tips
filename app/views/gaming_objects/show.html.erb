@@ -28,13 +28,8 @@
 <div class="row">
   <% @tips_hash.each do |category, category_tips| %>
     <div class="col-md-4">
+      
       <h2><%= playing_sentence(category, @gaming_object) %></h2>
-    </div>
-  <% end %>
-</div>
-<div class="row">  
-  <% @tips_hash.each do |category, category_tips| %>
-    <div class="col-md-4">
       <%= render partial: 'tips/form', locals: {category: category, gaming_object: @gaming_object, klass: "top-tip-form"} %>
 
       <div class="row <%= category %>">
