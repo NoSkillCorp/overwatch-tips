@@ -1,10 +1,11 @@
-
-<h1>Welcome To Overwatch - tips</h1>
-
-<p>No ads, no fucks given.</p>
-
 <div class="row">
+    <div class="col-md-9 pull-right home-welcome">
+        <h1 class="h1-home">WELCOME TO OVERWATCH - TIPS</h1>
+    </div>
+</div>
+
+<div class="row standard-margin">
     <% @tips.each do |tip| %>
-        <%= render partial: "tips/show", locals: { tip: tip, with_gaming_object_description: true, klass: "col-md-12" } %>
+        <%= render partial: "tips/show", locals: { tip: tip, with_gaming_object_description: true, klass: "col-md-6" } %>
     <% end %>
 </div>

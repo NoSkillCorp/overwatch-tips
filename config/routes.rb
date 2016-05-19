@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   
+  
+  root 'home#index'
+  
+  resources :home, only: [:index]
+  get 'about', to: 'home#about'
+  get 'home', to: 'home#index'
+  get 'news', to: 'home#news'
+  
   resources :characters, controller: :gaming_objects, type: "Character", only: [:index, :show]
   resources :maps, controller: :gaming_objects, type: "Map", only: [:index, :show]
   
@@ -9,10 +17,6 @@ Rails.application.routes.draw do
       post :downvote
     end
   end
-  root 'home#index'
-  
-  resources :home, only: [:index]
-  get 'about', to: 'home#about'
   
   
   # The priority is based upon order of creation: first created -> highest priority.

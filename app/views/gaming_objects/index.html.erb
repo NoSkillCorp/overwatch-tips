@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
 
-<h1><%= @type.pluralize %></h1>
-
+<h1 class="page-title text-center">
+    <%= @type.pluralize %>
+</h1>
 
 <div class="row">
   <%= render partial: 'gaming_objects/hexagonal', locals: { gaming_objects: @gaming_objects} %>
