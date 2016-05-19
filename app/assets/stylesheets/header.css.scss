@@ -3,7 +3,18 @@ $overwatch-yellow: #FFcc00;
 $overwatch-dark-blue: #283361;
 
 .navbar-text {
-    margin-bottom: 0;
+    font-size:24px;
+    font-family: 'Big-Noodle';
+    color: $overwatch-dark-blue !important;
+}
+
+.score {
+    margin-top: 0.6rem !important;
+    margin-bottom: 0.6rem !important;
+}
+
+.dark-blue {
+    color: $overwatch-dark-blue;
 }
 
 #menu.navbar-default .navbar-brand {
@@ -19,9 +30,11 @@ $overwatch-dark-blue: #283361;
     font-size: 30px;
     background-color: $overwatch-yellow;
     border-width: 0px;
+    color: $overwatch-dark-blue;
 }
 #menu.navbar-default .navbar-nav>li>a {
     background-color: $overwatch-yellow;
+    color: $overwatch-dark-blue;
 }
 
 #menu.navbar-default .navbar-nav>li>a:hover,
