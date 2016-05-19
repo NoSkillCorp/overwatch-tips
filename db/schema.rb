@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20160506153955) do
 
+  create_table "characters", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_path"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "gaming_objects", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -20,6 +28,14 @@ ActiveRecord::Schema.define(version: 20160506153955) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "image_path"
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_path"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "tips", force: :cascade do |t|

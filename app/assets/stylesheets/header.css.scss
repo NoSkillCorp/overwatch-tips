@@ -1,10 +1,14 @@
-$overwatch-yellow: #ffc14c;
-$overwatch-dark-yellow: #a17b00;
-$overwatch-light-yellow: #ffdc6a;
+//$overwatch-yellow: #ffc14c;
+$overwatch-yellow: #f4bd00;
+$overwatch-dark-blue: #283361;
+
+.navbar-text {
+    margin-bottom: 0;
+}
 
 #menu.navbar-default .navbar-brand {
     font-size: 24px;
-    color: $overwatch-dark-yellow;
+    color: white;
 }
 #menu.navbar-default {
     font-size: 22px;
@@ -18,13 +22,14 @@ $overwatch-light-yellow: #ffdc6a;
 #menu.navbar-default .navbar-nav>li>a:hover,
 #menu.navbar-default .navbar-nav>li>a:focus {
     color: white;
-    background-color: $overwatch-light-yellow;
+    background-color: $overwatch-dark-blue;
     
 }
 #menu.navbar-default .navbar-nav>.active>a,
 #menu.navbar-default .navbar-nav>.active>a:hover,
 #menu.navbar-default .navbar-nav>.active>a:focus {
-    background-color: #ffdc6a;
+    background-color: $overwatch-dark-blue;
+    color: white;
 }
 #menu.navbar-default .navbar-toggle {
     border-color: #ffedad;
