@@ -14,9 +14,9 @@ class Vote < ActiveRecord::Base
         weight < 0
     end
     
-    def self.generate_user_cookie
+    def self.generate_new_user_cookie
         user_cookie = SecureRandom.hex
-        user_cookie = Vote.generate_user_cookie if user_cookie.in?(Vote.uniq.pluck(:user_cookie))
+        user_cookie = Vote.generate_user_cookie if Vote.find_by(user_cookie: user_cookie).present?
         return user_cookie
     end
 end
