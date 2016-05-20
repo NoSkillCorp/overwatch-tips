@@ -13,4 +13,10 @@ class Vote < ActiveRecord::Base
     def is_downvoted?
         weight < 0
     end
+    
+    def self.generate_user_cookie
+        user_cookie = SecureRandom.hex
+        user_cookie = Vote.generate_user_cookie if user_cookie.in?(Vote.uniq.pluck(:user_cookie))
+        return user_cookie
+    end
 end
