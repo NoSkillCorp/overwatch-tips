@@ -1,7 +1,8 @@
 <% gaming_object ||= nil %>
 <% active ||= false %>
+<% klass ||= ""%>
 <% active_string = active ? 'active_icon' : 'inactive_icon' %>
 
-<%= link_to gaming_object, class: "image-link" do %>
+<%= link_to gaming_object, class: "image-link #{klass}" do %>
     <%= image_tag gaming_object.image_path, class: "gaming_object_icon "+active_string %>
 <% end %>

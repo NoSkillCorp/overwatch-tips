@@ -1,18 +1,21 @@
 <div class="row">
-  <div class="gaming_object_header col-md-6">
-    <div style="display: inline-block">
-      <%= image_tag @gaming_object.image_path %>
-    </div>
-    <div style="display: inline-block">
-      <h1 class="page-title"><%= @gaming_object.name %></h1>
-      <p><%= @gaming_object.description %></p>
+  
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag @gaming_object.image_path %>
+      </div>
+      <div class="col-md-8" style="padding-top: 5rem;">
+        <h1 class="page-title"><%= @gaming_object.name %></h1>
+        <p><%= @gaming_object.description %></p>
+      </div>
     </div>
   </div>
   
   <div class="col-md-6">
     <div class="row short-selector-container">
       <% @gaming_objects.each do |gaming_object| %>
-        <%= render partial: "gaming_objects/icon", locals: { gaming_object: gaming_object , active: (gaming_object.id == @gaming_object.id)} %>
+        <%= render partial: "gaming_objects/icon", locals: { gaming_object: gaming_object , active: (gaming_object.id == @gaming_object.id), klass: "col-md-1"} %>
       <% end %>
     </div>
   </div>

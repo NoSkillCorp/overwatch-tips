@@ -13,4 +13,10 @@ class Vote < ActiveRecord::Base
     def is_downvoted?
         weight < 0
     end
+    
+    def self.generate_new_user_cookie
+        user_cookie = SecureRandom.hex
+        user_cookie = Vote.generate_user_cookie if Vote.find_by(user_cookie: user_cookie).present?
+        return user_cookie
+    end
 end
