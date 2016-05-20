@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
+#Icons
 gem "font-awesome-rails"
+#Pagination
+gem 'kaminari'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
