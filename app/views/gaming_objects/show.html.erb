@@ -15,7 +15,7 @@
   <div class="col-md-6">
     <div class="row short-selector-container">
       <% @gaming_objects.each do |gaming_object| %>
-        <%= render partial: "gaming_objects/icon", locals: { gaming_object: gaming_object , active: (gaming_object.id == @gaming_object.id)} %>
+        <%= render partial: "gaming_objects/icon", locals: { gaming_object: gaming_object , active: (gaming_object.id == @gaming_object.id), klass: "col-md-1"} %>
       <% end %>
     </div>
   </div>
