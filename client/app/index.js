@@ -2,7 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import ReactOnRails from 'react-on-rails'
-import HelloWorld from './components/presenters/HelloWorld'
+import VoteButtonsPair from './components/presenters/VoteButtonsPair'
 
 ReactOnRails.registerStore({
   ReduxStore: (props, railsContext) => {
@@ -22,5 +22,5 @@ ReactOnRails.register({
       </Provider>
     )
   },
-  HelloWorld
+  VoteButtonsPair
 })
