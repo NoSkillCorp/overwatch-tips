@@ -18,20 +18,14 @@
               /
               -<span class="tip_negative_score"><%= tip.negative_score %></span>
             </div>
-            
-            <div class="vote_links">
-              <% upvote_class = tip.is_upvoted?(@user) ? "btn-success" : "btn-default" %>
-              <%= link_to upvote_tip_path(tip), remote: true, method: :post, class: "upvote_tip btn #{upvote_class} btn-sm" do %>
-                <i class="fa fa-plus" aria-hidden="true"></i>
-              <% end %>
               
-              <% downvote_class = tip.is_downvoted?(@user) ? "btn-danger" : "btn-default" %>
-              <%= link_to downvote_tip_path(tip), remote: true, method: :post, class: "downvote_tip btn #{downvote_class} btn-sm" do %>
-                <i class="fa fa-minus" aria-hidden="true"></i>
-              <% end %>
-            </div>
+            <%= react_component("VoteButtonsState", props: {
+              plusActive: tip.is_upvoted?(@user_cookie),
+              minusActive: tip.is_downvoted?(@user_cookie)
+            }) %>
+
           </div>
-                  
+          
           <% if with_gaming_object_description %>
             <div class="tip_gaming_object_description pull-left text-center">
               <%= render partial: "gaming_objects/icon", locals: { gaming_object: tip.gaming_object } %>
