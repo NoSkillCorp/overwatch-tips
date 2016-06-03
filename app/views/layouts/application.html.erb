@@ -6,8 +6,13 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
+  
+  <!-- Bootstrap CDN -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  
+  <!-- SEO description for Google -->
+  <meta name="description" content="Overwatch-tips is the best plateform to share advices about Overwatch - The creators of overwatch-tips">
   
   <!-- Script google analytics -->
   <script>
@@ -26,7 +31,7 @@
   
   <%= render "layouts/header" %>
   
-  <div class="main-container container">
+  <div class="main-container <%= controller_name == "home" && action_name == "index" ? "" : "container" %>">
       <%= yield %>
   </div>
   

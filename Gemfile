@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem "font-awesome-rails"
 #Pagination
 gem 'kaminari'
+#Better SEO urls
+gem 'friendly_id', '~> 5.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

@@ -1,14 +1,27 @@
 
-<h1 class="page-title text-center">Last Tips</h1>
+<h1 class="page-title text-center"><%= @order.humanize %> Tips</h1>
 
 <p class="text-center">No ads, no fucks given. Let's vote !</p>
 
-<%= paginate @tips %>
+
 
 <div class="row">
+    <div class="col-md-12">
+        <div class="pull-left">
+            <%= paginate @tips %>
+        </div>
+        <div class="btn-group pull-right pagination" role="group" aria-label="order">
+            <% ["trending", "latest", "greatest"].each do |order| %>
+                <%= link_to order.humanize, news_path(order: order), class: "btn btn-default #{'active' if order == @order}" %>
+            <% end %>
+        </div>    
+    </div>
+    
+
     <% @tips.each do |tip| %>
         <%= render partial: "tips/show", locals: { tip: tip, with_gaming_object_description: true, klass: "col-md-12" } %>
     <% end %>
+    <div class="col-md-12">
+        <%= paginate @tips %>
+    </div>
 </div>
-
-<%= paginate @tips %>

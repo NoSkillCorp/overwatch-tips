@@ -7,6 +7,10 @@ class Tip < ActiveRecord::Base
     validates :category, inclusion: { in: Character::CATEGORIES + Map::CATEGORIES, message: "%{value} is not a valid category" }
     validates :description, presence: true, length: { maximum: 1000 }
     
+    scope :ordered_by_score, -> { joins(:votes).select("SUM(votes.weight) as score, tips.*").group('tips.id').order("score DESC") }
+    scope :ordered_by_vote_count, -> { joins(:votes).where("votes.weight > 0").where("votes.created_at" => (DateTime.now - 48.hours)..DateTime.now).select("COUNT(votes.id) as vote_count, tips.*").group('tips.id').order("vote_count DESC") }
+    scope :joins_last_vote, -> { joins(:votes).joins("LEFT OUTER JOIN votes other_votes ON votes.tip_id = other_votes.tip_id AND (votes.created_at < other_votes.created_at OR (votes.created_at = other_votes.created_at AND votes.id < other_votes.id))").where("other_votes.id IS NULL") }
+    
     def score
        votes.sum(:weight)
     end
@@ -54,4 +58,17 @@ class Tip < ActiveRecord::Base
             existing_vote.update(weight: -1) if existing_vote.weight > 0
         end
     end
+    
+    def self.greatest_tips(number_of_tips, page_num=1)
+        self.ordered_by_score.page(page_num).per(number_of_tips)
+    end
+    
+    def self.latest_tips(number_of_tips, page_num=1)
+        self.order(created_at: :desc).page(page_num).per(number_of_tips)
+    end
+    
+    def self.trending_tips(number_of_tips, page_num=1)
+        self.ordered_by_vote_count.page(page_num).per(number_of_tips)
+    end
+    
 end

@@ -1,6 +1,9 @@
 include GamingObjectsHelper
 
 class GamingObject < ActiveRecord::Base
+    extend FriendlyId
+    friendly_id :name, use: :slugged
+    
     has_many :tips
     
     #Fill this with the categories in your class inheriting from GamingObject
