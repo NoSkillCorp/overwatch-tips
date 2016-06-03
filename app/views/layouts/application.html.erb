@@ -27,7 +27,7 @@
   </script>
 
 </head>
-<body class="<%= !@is_mobile && controller_name == "home" && action_name == "index" ? "body-home" : "body-else" %>">
+<body class="<%= controller_name == "home" && action_name == "index" ? @is_mobile ? "body-mobile-home" : "body-home" : "body-else" %>">
   
   <%= render "layouts/header" %>
   

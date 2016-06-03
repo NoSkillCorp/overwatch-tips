@@ -1,15 +1,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 pull-right home-welcome">
-            <h1 class="h1-home">WELCOME TO OVERWATCH - TIPS</h1>
+            <h1 class="<%= @is_mobile ? "h1-home-mobile" : "h1-home" %>">WELCOME TO OVERWATCH - TIPS</h1>
         </div>
-        <div class="col-md-8 pull-right">
-            <p class="h2-home">A platform to share advices about Overwatch</p>
+        <div class="col-md-8 col-xs-12 pull-right">
+            <p class="<%= @is_mobile ? "h2-home-mobile" : "h2-home" %>">A platform to share advices about Overwatch</p>
         </div>
     </div>
 </div>
 
-<div class="standard-margin jumbotron custom-jumbotron">
+<div class="standard-margin <%="jumbotron custom-jumbotron" if !@is_mobile %> ">
     <div class="container">
         <p class="text-center">
             <%= link_to "> Show me more tips ! <", characters_path, class: "btn btn-lg btn-success home-primary-button" %>
