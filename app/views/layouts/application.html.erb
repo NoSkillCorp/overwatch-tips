@@ -31,7 +31,7 @@
   
   <%= render "layouts/header" %>
   
-  <div class="main-container container">
+  <div class="main-container <%= controller_name == "home" && action_name == "index" ? "" : "container" %>">
       <%= yield %>
   </div>
   

@@ -1,29 +1,34 @@
-<div class="row">
-    <div class="col-md-8 pull-right home-welcome">
-        <h1 class="h1-home">WELCOME TO OVERWATCH - TIPS</h1>
-    </div>
-    <div class="col-md-8 pull-right">
-        <p class="h2-home">A platform to share advices about Overwatch</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 pull-right home-welcome">
+            <h1 class="h1-home">WELCOME TO OVERWATCH - TIPS</h1>
+        </div>
+        <div class="col-md-8 pull-right">
+            <p class="h2-home">A platform to share advices about Overwatch</p>
+        </div>
     </div>
 </div>
 
 <div class="standard-margin jumbotron custom-jumbotron">
-    <p class="text-center">
-        <%= link_to "> Show me more tips ! <", characters_path, class: "btn btn-lg btn-success home-primary-button" %>
-    </p>
-
-    <p class="greatest-tips-title">
-        Greatest tips :
-    </p>
+    <div class="container">
+        <p class="text-center">
+            <%= link_to "> Show me more tips ! <", characters_path, class: "btn btn-lg btn-success home-primary-button" %>
+        </p>
     
-    <% @tips.in_groups_of(2).each do |two_tips| %>
-        <div class="row">
-            <% two_tips.each do |tip| %>
-                <div class="col-md-6">
-                    <%= render partial: "tips/show", locals: { tip: tip, with_gaming_object_description: true, klass: "" } %>
-                    <%= link_to "> Add a tip to play #{tip.category} #{tip.gaming_object.name}", character_path(tip.gaming_object), class: "btn btn-link" %>    
-                </div>
-            <% end %>
-        </div>
-    <% end %>
+
+        <p class="greatest-tips-title">
+            Greatest tips :
+        </p>
+        
+        <% @tips.in_groups_of(2).each do |two_tips| %>
+            <div class="row">
+                <% two_tips.each do |tip| %>
+                    <div class="col-md-6">
+                        <%= render partial: "tips/show", locals: { tip: tip, with_gaming_object_description: true, klass: "" } %>
+                        <%= link_to "> Add a tip to play #{tip.category} #{tip.gaming_object.name}", character_path(tip.gaming_object), class: "btn btn-link" %>    
+                    </div>
+                <% end %>
+            </div>
+        <% end %>    
+    </div>
 </div>
