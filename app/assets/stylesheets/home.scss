@@ -1,3 +1,42 @@
 // Place all the styles related to the HomeController controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$overwatch-yellow: #FFcc00;
+
+.standard-margin {
+  margin-top: 2em;
+}
+
+.h1-home {
+  font-family: 'Big-Noodle-Italique' !important;
+  font-size: 4em !important;
+  text-align:center;
+  text-shadow: 2px 2px black;
+}
+
+.h2-home {
+  color: white;
+  text-shadow: 1px 1px black;
+  font-size: 3rem;
+}
+
+.custom-jumbotron {
+    //background-color: rgba(0,0,0,0.5) !important;
+    background-color: rgba(238, 238, 238, 0.95) !important;
+}
+
+.home-primary-button {
+  font-size: 2rem !important;
+  color: #ddd !important;
+  //background-color: $overwatch-yellow !important;
+}
+
+.home-welcome {
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.greatest-tips-title{
+    //color: white;
+}
