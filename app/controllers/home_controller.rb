@@ -2,9 +2,10 @@ class HomeController < ApplicationController
   def index
       greatest_tips = Tip.ordered_by_score.limit(5)
       latest_tips = Tip.order(created_at: :desc).limit(5)
-      trending_tips = Tip.joins_last_vote.order("votes.created_at DESC").limit(5)
+      #trending_tips = Tip.joins_last_vote.order("votes.created_at DESC").limit(5)
+      trending_tips = Tip.ordered_by_vote_count.where("votes.created_at": (DateTime.now - 24.hours)..DateTime.now).limit(5)
       
-      @tips_hash = { greatest: greatest_tips, latest: latest_tips, trending: trending_tips }
+      @tips_hash = { greatest: greatest_tips, trending: trending_tips, latest: latest_tips }
       
       @is_mobile = (request.user_agent =~ /Mobile|webOS/)
   end
