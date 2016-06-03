@@ -13,8 +13,6 @@
     overflow: hidden;
 }
 
-
-
 .tip_score_panel {
     font-size: 2.5rem;
     font-weight: bold;
@@ -50,4 +48,11 @@
 
 .time_ago {
     color: grey;
+}
+
+.in-text-link, .in-text-link:visited{
+    color: blue;
+}
+.in-text-link:hover{
+    background-color: transparent;
 }
