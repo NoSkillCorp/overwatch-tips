@@ -1,6 +1,11 @@
 class HomeController < ApplicationController
   def index
-      @tips = Tip.joins(:votes).select("SUM(votes.weight) as score, tips.*").group('tips.id').order("score DESC").limit(4)
+      greatest_tips = Tip.ordered_by_score.limit(5)
+      latest_tips = Tip.order(created_at: :desc).limit(5)
+      trending_tips = Tip.joins_last_vote.order("votes.created_at DESC").limit(5)
+      
+      @tips_hash = { greatest: greatest_tips, latest: latest_tips, trending: trending_tips }
+      
       @is_mobile = (request.user_agent =~ /Mobile|webOS/)
   end
   
