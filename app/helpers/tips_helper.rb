@@ -20,6 +20,5 @@ module TipsHelper
                 word
             end
         }.join(" ")
-        
     end
 end
