@@ -3,7 +3,7 @@ class TipsController < ApplicationController
 
   # POST /tips
   def create
-    @tip = Tip.new(tip_params)
+    @tip = Tip.new(tip_params.merge(user: @user))
     
     if @tip.save
       render partial: 'tips/show', locals: { tip: @tip }
@@ -13,12 +13,12 @@ class TipsController < ApplicationController
   end
   
   def upvote
-    @tip.upvote(@user_cookie)
+    @tip.upvote(@user)
     render json: @tip
   end
   
   def downvote
-    @tip.downvote(@user_cookie)
+    @tip.downvote(@user)
     render json: @tip
   end
 

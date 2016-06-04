@@ -31,20 +31,22 @@ class TipsControllerTest < ActionController::TestCase
     post :upvote, id: tip.id
     assert_equal 1, tip.score
     post :downvote, id: tip.id
-    assert_equal -1, tip.score
+    assert_equal (-1), tip.score
   end
   
   test "several people should be able to vote" do
     tip = Tip.create(description: "bla", category: "as", gaming_object: @character)
     assert_equal 0, tip.score
     post :downvote, id: tip.id
-    assert_equal -1, tip.score
-    cookies["user_id"] = "user_cookie1"
+    assert_equal (-1), tip.score
+    user2 = User.create
+    cookies["user_id"] = user2.user_cookie
     post :downvote, id: tip.id
-    assert_equal -2, tip.score
-    cookies["user_id"] = "user_cookie2"
+    assert_equal (-2), tip.score
+    user3 = User.create
+    cookies["user_id"] = user3.user_cookie
     post :upvote, id: tip.id
-    assert_equal -1, tip.score
+    assert_equal (-1), tip.score
   end
   
 end

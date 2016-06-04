@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603133743) do
+ActiveRecord::Schema.define(version: 20160604202525) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -45,9 +45,21 @@ ActiveRecord::Schema.define(version: 20160603133743) do
     t.datetime "updated_at",       null: false
     t.integer  "gaming_object_id"
     t.string   "category"
+    t.string   "user_cookie"
   end
 
   add_index "tips", ["gaming_object_id"], name: "index_tips_on_gaming_object_id"
+  add_index "tips", ["user_cookie"], name: "index_tips_on_user_cookie"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "user_cookie"
+    t.string   "ip_adress"
+    t.string   "user_agent"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "users", ["user_cookie"], name: "index_users_on_user_cookie"
 
   create_table "votes", force: :cascade do |t|
     t.integer  "weight"
@@ -59,5 +71,6 @@ ActiveRecord::Schema.define(version: 20160603133743) do
 
   add_index "votes", ["tip_id", "user_cookie"], name: "index_votes_on_tip_id_and_user_cookie"
   add_index "votes", ["tip_id"], name: "index_votes_on_tip_id"
+  add_index "votes", ["user_cookie"], name: "index_votes_on_user_cookie"
 
 end

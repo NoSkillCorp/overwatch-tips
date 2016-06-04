@@ -1,5 +1,6 @@
 class Vote < ActiveRecord::Base
     belongs_to :tip
+    belongs_to :user, foreign_key: :user_cookie, primary_key: :user_cookie
     
     validates :user_cookie, presence: true, uniqueness: { scope: :tip_id, message: "Can't vote twice" }
   
@@ -13,10 +14,5 @@ class Vote < ActiveRecord::Base
     def is_downvoted?
         weight < 0
     end
-    
-    def self.generate_new_user_cookie
-        user_cookie = SecureRandom.hex
-        user_cookie = Vote.generate_user_cookie if Vote.find_by(user_cookie: user_cookie).present?
-        return user_cookie
-    end
+
 end
