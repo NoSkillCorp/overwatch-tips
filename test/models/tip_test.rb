@@ -4,7 +4,13 @@ class TipTest < ActiveSupport::TestCase
   
   def setup
     @character = Character.create(name: "mymap", description: "test")
-    @tip = Tip.create(description: "test", gaming_object: @character, category: "as")
+    @user_a= User.create
+    @user_b = User.create
+    @tip = Tip.create(description: "test", gaming_object: @character, category: "as", user_cookie: @user_a.user_cookie)
+  end
+  
+  test "belongs_to user" do
+    assert_equal @user_a, @tip.user
   end
   
   test "Tip attributes" do
@@ -12,6 +18,7 @@ class TipTest < ActiveSupport::TestCase
     assert_respond_to tip, :description
     assert_respond_to tip, :gaming_object_id
     assert_respond_to tip, :category
+    assert_respond_to tip, :user_cookie
   end
   
   test "belongs_to gaming_object" do
@@ -42,41 +49,41 @@ class TipTest < ActiveSupport::TestCase
   
   test "upvote" do
     assert_equal 0, @tip.score
-    @tip.upvote("user_cookie")
+    @tip.upvote(@user_a)
     assert_equal 1, @tip.score
-    @tip.upvote("user_cookie")
+    @tip.upvote(@user_a)
     assert_equal 0, @tip.score
     #then downvote changes weight of existing upvote
-    @tip.downvote("user_cookie")
+    @tip.downvote(@user_a)
     assert_equal (-1), @tip.score
   end
   
   test "downvote" do
     assert_equal 0, @tip.score
-    @tip.downvote("user_cookie")
+    @tip.downvote(@user_a)
     assert_equal(-1, @tip.score)
-    @tip.downvote("user_cookie")
+    @tip.downvote(@user_a)
     assert_equal(0, @tip.score)
     #then downvote changes weight of existing upvote
-    @tip.upvote("user_cookie")
+    @tip.upvote(@user_a)
     assert_equal 1, @tip.score
   end
     
   test "is_voted?" do
-    @tip.downvote("user_cookie")
-    assert @tip.is_voted?("user_cookie")
-    assert_not @tip.is_voted?("user_cookie2")
+    @tip.downvote(@user_a)
+    assert @tip.is_voted?(@user_a)
+    assert_not @tip.is_voted?(@user_b)
   end
   
   test "is_upvoted?" do
-    @tip.upvote("user_cookie")
-    assert @tip.is_upvoted?("user_cookie")
-    assert_not @tip.is_upvoted?("user_cookie2")
+    @tip.upvote(@user_a)
+    assert @tip.is_upvoted?(@user_a)
+    assert_not @tip.is_upvoted?(@user_b)
   end
   
   test "is_downvoted?" do
-    @tip.downvote("user_cookie")
-    assert @tip.is_downvoted?("user_cookie")
-    assert_not @tip.is_downvoted?("user_cookie2")
+    @tip.downvote(@user_a)
+    assert @tip.is_downvoted?(@user_a)
+    assert_not @tip.is_downvoted?(@user_b)
   end
 end

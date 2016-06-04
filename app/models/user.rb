@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
-    has_many :votes, primary_key: :user_cookie, foreign_key: :user_cookie
+    has_many :votes, foreign_key: :user_cookie, primary_key: :user_cookie
+    has_many :tips, foreign_key: :user_cookie, primary_key: :user_cookie
     
-    validates :user_cookie, presence: true, uniqueness: true
+    
     before_save :assign_user_cookie
+    validates :user_cookie, uniqueness: true
     
     def assign_user_cookie
        self.user_cookie = User.generate_new_user_cookie if self.user_cookie.blank?

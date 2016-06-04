@@ -3,6 +3,7 @@ class Tip < ActiveRecord::Base
     
     belongs_to :gaming_object
     has_many :votes, dependent: :destroy
+    belongs_to :user, foreign_key: :user_cookie, primary_key: :user_cookie
 
     validates :category, inclusion: { in: Character::CATEGORIES + Map::CATEGORIES, message: "%{value} is not a valid category" }
     validates :description, presence: true, length: { maximum: 1000 }
@@ -38,10 +39,10 @@ class Tip < ActiveRecord::Base
     #either creates a vote, or change the weight of an existing one
     #if the tip is already upvoted, delete the vote
     def upvote(user)
-        user_cookie = user.user_cookie
-        existing_vote = votes.find_by(user_cookie: user_cookie)
+        return nil if user.blank? || user.user_cookie.blank?
+        existing_vote = votes.find_by(user_cookie: user.user_cookie)
         if existing_vote.blank?
-            votes.build(weight: 1, user_cookie: user_cookie).save
+            votes.build(weight: 1, user_cookie: user.user_cookie).save
         else
             existing_vote.delete if existing_vote.is_upvoted?
             existing_vote.update(weight: 1) if existing_vote.weight < 0
@@ -51,10 +52,10 @@ class Tip < ActiveRecord::Base
     #either creates a vote, or change the weight of an existing one
     #if the tip is already downvoted, delete the vote
     def downvote(user)
-        user_cookie = user.user_cookie
-        existing_vote = votes.find_by(user_cookie: user_cookie)
+        return nil if user.blank? || user.user_cookie.blank?
+        existing_vote = votes.find_by(user_cookie: user.user_cookie)
         if existing_vote.blank?
-            votes.build(weight: -1, user_cookie: user_cookie).save
+            votes.build(weight: -1, user_cookie: user.user_cookie).save
         else
             existing_vote.delete if existing_vote.is_downvoted?
             existing_vote.update(weight: -1) if existing_vote.weight > 0

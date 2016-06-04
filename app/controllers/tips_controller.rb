@@ -3,7 +3,7 @@ class TipsController < ApplicationController
 
   # POST /tips
   def create
-    @tip = Tip.new(tip_params)
+    @tip = Tip.new(tip_params.merge(user: @user))
     
     if @tip.save
       render partial: 'tips/show', locals: { tip: @tip }
