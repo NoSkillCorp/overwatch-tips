@@ -8,9 +8,14 @@ class ApplicationController < ActionController::Base
   private
   
     def assign_user
+      user_ip_adress = request.remote_ip
+      user_agent = request.user_agent
       user_cookie = cookies["user_id"]
       if user_cookie.blank?
-        @user = User.create #generates a new user_cookie
+        @user = User.find_by(ip_adress: user_ip_adress, user_agent: user_agent)
+        if @user.blank?
+          @user = User.create(ip_adress: user_ip_adress, user_agent: user_agent) #generates a new user_cookie
+        end
         cookies.permanent["user_id"] = { value: @user.user_cookie } #stores the user_cookie in the cookies of the client
       else
         @user = User.find_by(user_cookie: user_cookie)
