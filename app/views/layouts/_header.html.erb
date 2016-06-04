@@ -15,6 +15,11 @@
                 <li class="<%='active' if controller_name == "gaming_objects" && params[:type] == "Map" %>">
                     <%= link_to "MAPS", maps_path %>
                 </li>
+                <li>
+                    <%= link_to "https://twitter.com/0verwatchTips", target: :blank, class: "twitter-link" do %>
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    <% end %>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right tips-and-votes-count">
                 <li>
