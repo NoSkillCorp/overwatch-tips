@@ -11,7 +11,7 @@
             <%= paginate @tips %>
         </div>
         <div class="btn-group pull-right pagination" role="group" aria-label="order">
-            <% ["trending", "latest", "greatest"].each do |order| %>
+            <% ["latest", "trending", "greatest"].each do |order| %>
                 <%= link_to order.humanize, news_path(order: order), class: "btn btn-default #{'active' if order == @order}" %>
             <% end %>
         </div>    
