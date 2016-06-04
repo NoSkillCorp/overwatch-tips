@@ -8,13 +8,12 @@ class ApplicationController < ActionController::Base
   private
   
     def assign_user
-      @user_cookie = cookies["user_id"]
-      if @user_cookie.blank?
+      user_cookie = cookies["user_id"]
+      if user_cookie.blank?
         @user = User.create #generates a new user_cookie
-        @user_cookie = @user.user_cookie
-        cookies.permanent["user_id"] = { value: @user_cookie }
+        cookies.permanent["user_id"] = { value: @user.user_cookie } #stores the user_cookie in the cookies of the client
       else
-        @user = User.find_by(user_cookie: @user_cookie)
+        @user = User.find_by(user_cookie: user_cookie)
       end
     end
     

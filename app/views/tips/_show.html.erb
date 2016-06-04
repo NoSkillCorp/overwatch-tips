@@ -3,7 +3,7 @@
 <% klass ||= "col-md-12" %>
 
 <div class="<%= klass %>">
-    <div class="panel panel-default tip_panel <%= tip.is_voted?(@user_cookie) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>">
+    <div class="panel panel-default tip_panel <%= tip.is_voted?(@user) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>">
       
       <div class="panel-body text-justify">
         <div class="">
@@ -19,12 +19,12 @@
             </div>
             
             <div class="vote_links">
-              <% upvote_class = tip.is_upvoted?(@user_cookie) ? "btn-success" : "btn-default" %>
+              <% upvote_class = tip.is_upvoted?(@user) ? "btn-success" : "btn-default" %>
               <%= link_to upvote_tip_path(tip), remote: true, method: :post, class: "upvote_tip btn #{upvote_class} btn-sm" do %>
                 <i class="fa fa-plus" aria-hidden="true"></i>
               <% end %>
               
-              <% downvote_class = tip.is_downvoted?(@user_cookie) ? "btn-danger" : "btn-default" %>
+              <% downvote_class = tip.is_downvoted?(@user) ? "btn-danger" : "btn-default" %>
               <%= link_to downvote_tip_path(tip), remote: true, method: :post, class: "downvote_tip btn #{downvote_class} btn-sm" do %>
                 <i class="fa fa-minus" aria-hidden="true"></i>
               <% end %>

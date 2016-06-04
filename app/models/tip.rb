@@ -23,21 +23,22 @@ class Tip < ActiveRecord::Base
         votes.negatives.count
     end
     
-    def is_voted?(user_cookie)
-        votes.where(user_cookie: user_cookie).count > 0
+    def is_voted?(user)
+        votes.where(user_cookie: user.user_cookie).count > 0
     end
     
-    def is_upvoted?(user_cookie)
-        votes.positives.where(user_cookie: user_cookie).count > 0
+    def is_upvoted?(user)
+        votes.positives.where(user_cookie: user.user_cookie).count > 0
     end
     
-    def is_downvoted?(user_cookie)
-        votes.negatives.where(user_cookie: user_cookie).count > 0
+    def is_downvoted?(user)
+        votes.negatives.where(user_cookie: user.user_cookie).count > 0
     end
     
     #either creates a vote, or change the weight of an existing one
     #if the tip is already upvoted, delete the vote
-    def upvote(user_cookie)
+    def upvote(user)
+        user_cookie = user.user_cookie
         existing_vote = votes.find_by(user_cookie: user_cookie)
         if existing_vote.blank?
             votes.build(weight: 1, user_cookie: user_cookie).save
@@ -49,7 +50,8 @@ class Tip < ActiveRecord::Base
     
     #either creates a vote, or change the weight of an existing one
     #if the tip is already downvoted, delete the vote
-    def downvote(user_cookie)
+    def downvote(user)
+        user_cookie = user.user_cookie
         existing_vote = votes.find_by(user_cookie: user_cookie)
         if existing_vote.blank?
             votes.build(weight: -1, user_cookie: user_cookie).save
