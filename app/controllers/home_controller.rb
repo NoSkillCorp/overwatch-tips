@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  
   def index
       greatest_tips = Tip.greatest_tips(5)
       latest_tips = Tip.latest_tips(5)
@@ -7,6 +8,9 @@ class HomeController < ApplicationController
       @tips_hash = { greatest: greatest_tips, trending: trending_tips, latest: latest_tips }
       
       @is_mobile = (request.user_agent =~ /Mobile|webOS/)
+      
+      characters = Character.all.to_a
+      @random_character = characters[rand(characters.length)]
   end
   
   def news
