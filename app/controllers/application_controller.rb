@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
         cookies.permanent["user_id"] = { value: @user.user_cookie } #stores the user_cookie in the cookies of the client
       else
         @user = User.find_by(user_cookie: user_cookie)
+        @user.update(user_agent: user_agent) if user_agent != @user.user_agent
+        @user.update(ip_adress: user_ip_adress) if user_ip_adress != @user.ip_adress
       end
     end
     
