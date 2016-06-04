@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603133743) do
+ActiveRecord::Schema.define(version: 20160604195349) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(version: 20160603133743) do
   end
 
   add_index "tips", ["gaming_object_id"], name: "index_tips_on_gaming_object_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "user_cookie"
+    t.string   "ip_adress"
+    t.string   "user_agent"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "votes", force: :cascade do |t|
     t.integer  "weight"

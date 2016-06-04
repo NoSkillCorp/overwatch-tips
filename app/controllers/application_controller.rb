@@ -3,13 +3,19 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_action :generate_user_cookie, :count_votes_and_tips
+  before_action :assign_user, :count_votes_and_tips
   
   private
   
-    def generate_user_cookie
-      cookies.permanent["user_id"] = { value: Vote.generate_new_user_cookie } unless cookies.has_key?("user_id")
+    def assign_user
       @user_cookie = cookies["user_id"]
+      if @user_cookie.blank?
+        @user = User.create #generates a new user_cookie
+        @user_cookie = @user.user_cookie
+        cookies.permanent["user_id"] = { value: @user_cookie }
+      else
+        @user = User.find_by(user_cookie: @user_cookie)
+      end
     end
     
     def count_votes_and_tips
