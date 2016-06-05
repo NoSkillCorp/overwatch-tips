@@ -18,14 +18,13 @@
               /
               -<span class="tip_negative_score"><%= tip.negative_score %></span>
             </div>
-              
-            <%= react_component("VoteButtonsState", props: {
-              plusActive: tip.is_upvoted?(@user_cookie),
-              minusActive: tip.is_downvoted?(@user_cookie)
+            
+             <%= react_component("VoteButtonsState", props: {
+              plusActive: tip.is_upvoted?(@user),
+              minusActive: tip.is_downvoted?(@user)
             }) %>
-
           </div>
-          
+                  
           <% if with_gaming_object_description %>
             <div class="tip_gaming_object_description pull-left text-center">
               <%= render partial: "gaming_objects/icon", locals: { gaming_object: tip.gaming_object } %>
