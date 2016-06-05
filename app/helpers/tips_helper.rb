@@ -10,7 +10,7 @@ module TipsHelper
     
     def description_with_links(description)
         gaming_objects = GamingObject.all.to_a
-        words = description.split(/([ ,!\.\;\?\(\)])/)
+        words = description.split(/( |,|!|\(|\)|\.|\;|\?|'s)/)
         words.map{ |word|
             go = gaming_objects.find{|g| g.name.downcase == word.downcase}
             if go.present?
