@@ -2,8 +2,8 @@ import { connect } from 'react-redux'
 import VoteButtonsPair from '../presenters/VoteButtonsPair'
 
 const mapStateToProps = (state) => {
-  let plusActive = state.config.plusActive,
-    minusActive = state.config.minusActive
+  let plusActive = state.config.tip.plusActive,
+    minusActive = state.config.tip.minusActive
   return {
     plusActive,
     minusActive

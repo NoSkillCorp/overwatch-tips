@@ -3,9 +3,8 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import ReactOnRails from 'react-on-rails'
 import Reducers from './reducers'
-import VoteButtonsPair from './components/presenters/VoteButtonsPair'
 import VoteButtonsState from './components/containers/VoteButtonsState'
-
+import TipPanelState from './components/containers/TipPanelState'
 
 const createStoreWithProps = (props) => {
     console.debug("Setting up store with ", props)
@@ -28,18 +27,9 @@ const createStoreWithProps = (props) => {
  * Register Redux store with initial state
  */
 ReactOnRails.registerStore({
-  ReduxStore: createStoreWithProps({})
+  ReduxStore: createStoreWithProps
 })
 
 ReactOnRails.register({
-  App: () => {
-    console.debug("Setting up React app")
-    return (
-      <Provider store={ReactOnRails.getStore("ReduxStore")}>
-        {/* <-- INSERT APP HERE -!> */}
-      </Provider>
-    )
-  },
-  VoteButtonsPair,
-  VoteButtonsState: (props) => registerWithStore(VoteButtonsState, createStoreWithProps(props))()
+  TipPanel: (props) => registerWithStore(TipPanelState, ReactOnRails.getStore("ReduxStore"))(props)
 })

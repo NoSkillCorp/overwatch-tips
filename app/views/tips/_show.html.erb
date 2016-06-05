@@ -3,64 +3,26 @@
 <% klass ||= "col-md-12" %>
 <% big_show = big_show.nil? ? false : big_show %>
 
+<%= redux_store("ReduxStore", props: {
+    gamingObject: {
+      withGamingObjectDescription: with_gaming_object_description,
+      # path: gaming_object ||= "",
+      # iconPath: gaming_object.image_path ||= ""
+    },
+    tip: {
+      isVoted: tip.is_voted?(@user),
+      plusActive: tip.is_upvoted?(@user),
+      minusActive: tip.is_downvoted?(@user),
+      score: tip.score,
+      positiveScore: tip.positive_score,
+      negativeScore: tip.negative_score,
+      description: tip.description,
+      createdAt:  time_ago_in_words(tip.created_at),
+      category: playing_sentence(tip.category, tip.gaming_object)
+    }
+  }) 
+%>
+  
 <div class="<%= klass %>">
-    <div class="panel panel-default tip_panel <%= tip.is_voted?(@user) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>">
-      
-      <div class="panel-body text-justify tip_body">
-        <div class="">
-          <div class="pull-left tip_score_panel text-center">
-            <div class="tip_score">
-              <%= tip.score %>
-            </div>
-            
-            <div class="tip_posneg_scores">
-              +<span class="tip_positive_score"><%= tip.positive_score %></span>
-              /
-              -<span class="tip_negative_score"><%= tip.negative_score %></span>
-            </div>
-            
-             <%= react_component("VoteButtonsState", props: {
-              plusActive: tip.is_upvoted?(@user),
-              minusActive: tip.is_downvoted?(@user)
-            }) %>
-          </div>
-                  
-          <% if with_gaming_object_description %>
-            <div class="tip_gaming_object_description pull-left text-center">
-              <%= render partial: "gaming_objects/icon", locals: { gaming_object: tip.gaming_object } %>
-            </div>
-          <% end %>
-        </div>
-        
-        <% if with_gaming_object_description %>
-          <%= link_to tip.gaming_object, class: "btn-link" do %>
-            <span class="playing_sentence"><%= playing_sentence(tip.category, tip.gaming_object) %></span><br />
-          <% end %>
-        <% end %>
-        
-        <span class="<%= 'smaller-description' if tip.score < 0 %> <%= 'big-show' if big_show %> tip_description">
-          <%= raw description_with_links(tip.description) %><!--br /><br /-->
-        </span>
-        
-        <div class="tip_footer row">
-          <div class="col-md-12">
-            <% if !big_show %>
-              <%= link_to character_tip_path(tip.gaming_object, tip), target: :blank, class: "btn btn-sm btn-default pull-right" do %><i class="fa fa-share" aria-hidden="true"></i><% end %>
-            <% end %>
-            <% if tip.user == @user %>
-              <span class="btn btn-sm btn-default pull-right tip_edit"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-            <% end %>
-            <span class="time_ago pull-right"><%= time_ago_in_words(tip.created_at)%> ago</span>
-          </div>
-        </div>
-        
-      </div>      
-      
-      <% if tip.user == @user %>
-        <div class="panel-body hidden edit_form">
-          <%= render partial: "tips/edit_form", locals: {tip: tip} %>
-        </div>
-      <% end %>
-      
-    </div>
+    <%= react_component("TipPanel") %>
 </div>
