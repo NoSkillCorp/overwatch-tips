@@ -9,30 +9,15 @@
     </div>
 </div>
 
-<div class="standard-margin <%="jumbotron custom-jumbotron" if !@is_mobile %> ">
+<div class="standard-margin <%="home-container custom-jumbotron" if !@is_mobile %> ">
     <div class="container">
+
         <div class="text-center">
             <%= link_to "Show me more tips !", character_path(@random_character), class: "btn btn-lg btn-success home-primary-button" %>
         </div>
         
-        <div class="row standard-margin">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading text-center dropdown-link">What is it ?</div>
-                    <div class="panel-body dropdown-content">
-                        Overwatch-Tips is a platform for anyone who whants to write & read tips about that amazing game ... I bet you can see it coming ... Overwatch ! Oh you don't know Overwatch ? Well, <%= link_to "Check it out !", "https://playoverwatch.com", class: "" %>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading text-center dropdown-link">Panel heading without title</div>
-                    <div class="panel-body dropdown-content">
-                        Basic panel example
-                    </div>
-                </div>
-            </div>
-        </div>
         
-        <div class="row standard-margin">
+        <div class="row">
             <% @tips_hash.each do |category, tips| %>
                 <div class="col-md-4">
                     <h2><%= category.to_s.humanize %> tips</h2>
@@ -44,6 +29,22 @@
                 </div>
             <% end %>
         </div>
-
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center dropdown-link"><h3 style="margin-top: 1rem;">This website, what is it ?</h3></div>
+                    <div class="panel-body dropdown-content">
+                        <p>
+                            Overwatch-Tips is a platform for anyone who whants to write & read tips about that amazing game ... I bet you can see it coming ... Overwatch ! Oh you don't know Overwatch ? Well, <%= link_to "Check it out !", "https://playoverwatch.com", class: "" %>
+                        </p>
+                        <p>
+                            Here you can read specific short useful tips, vote for them, write some, and watch them grow all the way up to the best tips ever !
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
