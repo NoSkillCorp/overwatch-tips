@@ -169,4 +169,19 @@ $(document).ready(function() {
     }
   );
   
+  //TODO comment
+  function bind_dropdown_link(){
+    console.log("dropdowned!");
+  };
+  
+  //bind events on dropdown-links
+  $('.dropdown-link').on('click', function bind_dropdown_link(){
+    var dropdown_title = $(this);
+    var dropdown_content = dropdown_title.next(".dropdown-content");
+    dropdown_content.toggleClass("hidden");
+  });
+  
+  //Initialize the dropdown-contents hidden
+  $('.dropdown-content').addClass("hidden");
+  
 });
