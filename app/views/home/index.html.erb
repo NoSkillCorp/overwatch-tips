@@ -9,16 +9,17 @@
     </div>
 </div>
 
-<div class="standard-margin <%="jumbotron custom-jumbotron" if !@is_mobile %> ">
+<div class="standard-margin <%="home-container custom-jumbotron" if !@is_mobile %> ">
     <div class="container">
-        <p class="text-center">
-            <%= link_to "> Show me more tips ! <", character_path(@random_character), class: "btn btn-lg btn-success home-primary-button" %>
-        </p>
+
+        <div class="text-center">
+            <%= link_to "Show me more tips !", character_path(@random_character), class: "btn btn-lg btn-success home-primary-button" %>
+        </div>
         
         <div class="row">
             <% @tips_hash.each do |category, tips| %>
                 <div class="col-md-4">
-                    <h2><%= category.to_s.humanize %> tips</h2>
+                    <h2><%= link_to "#{category.to_s.humanize} tips", news_path(order: category) %></h2>
                     <% tips.each do |tip| %>
                         <div class="">
                             <%= render partial: "tips/show", locals: { tip: tip, with_gaming_object_description: true, klass: "" } %>
@@ -27,6 +28,29 @@
                 </div>
             <% end %>
         </div>
-
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center dropdown-link"><h3 style="margin-top: 1rem;">This website, what is it ?</h3></div>
+                    <div class="panel-body dropdown-content">
+                        <p>
+                            Overwatch-Tips is a platform for anyone who whants to write & read tips about that amazing game ... I bet you can see it coming ... Overwatch ! Oh you don't know Overwatch ? Well, <%= link_to "Check it out !", "https://playoverwatch.com", class: "" %>
+                        </p>
+                        <p>
+                            Anyway, look at what you can do here :
+                            <ul>
+                                <li>Read tips</li>
+                                <li>Vote for tips</li>
+                                <li>Write tips</li>
+                                <li>Watch your tips go all the way to the top!</li>
+                            </ul>
+                            Isn't that great ?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
