@@ -37,13 +37,22 @@
 }
 
 .tip_panel .panel-body {
+    position: relative;
     word-wrap: break-word;
     .playing_sentence {
         color: grey;
     }
 }
-
+    
 .tip_description {
+}
+
+.tip_footer {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 50%;
+    text-align: right;
 }
 
 .time_ago {
