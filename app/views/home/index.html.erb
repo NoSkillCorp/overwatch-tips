@@ -11,11 +11,22 @@
 
 <div class="standard-margin <%="jumbotron custom-jumbotron" if !@is_mobile %> ">
     <div class="container">
-        <p class="text-center">
-            <%= link_to "> Show me more tips ! <", character_path(@random_character), class: "btn btn-lg btn-success home-primary-button" %>
-        </p>
+        <div class="text-center">
+            <%= link_to "Show me more tips !", character_path(@random_character), class: "btn btn-lg btn-success home-primary-button" %>
+        </div>
         
-        <div class="row">
+        <div class="row standard-margin">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center dropdown-link" id="first-panel">Panel heading without title</div>
+                    <div class="panel-body dropdown-content" id="first-panel">
+                        Basic panel example
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row standard-margin">
             <% @tips_hash.each do |category, tips| %>
                 <div class="col-md-4">
                     <h2><%= category.to_s.humanize %> tips</h2>
