@@ -64,9 +64,6 @@
   <loc>http://www.overwatch-tips.com/about</loc>
 </url>
 <url>
-  <loc>http://www.overwatch-tips.com/news</loc>
-</url>
-<url>
   <loc>http://www.overwatch-tips.com/maps/kings-row</loc>
 </url>
 <url>
@@ -134,9 +131,6 @@
 </url>
 <url>
   <loc>http://www.overwatch-tips.com/characters/mccree</loc>
-</url>
-<url>
-  <loc>http://www.overwatch-tips.com/news</loc>
 </url>
 <url>
   <loc>http://www.overwatch-tips.com/characters/lucio</loc>
@@ -234,8 +228,4 @@
 <url>
   <loc>http://www.overwatch-tips.com/maps/volskaya-industries</loc>
 </url>
-<url>
-  <loc>http://www.overwatch-tips.com/newst&amp;page=9</loc>
-</url>
-/url>
 </urlset>
