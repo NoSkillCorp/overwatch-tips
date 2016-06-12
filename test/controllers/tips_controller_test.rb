@@ -4,11 +4,20 @@ class TipsControllerTest < ActionController::TestCase
   setup do
     @character = Character.create(name: "mycharac", description: "test")
   end
-
+  
   test "should create tip" do
     assert_difference('Tip.count') do
       post :create, tip: { description: "test", gaming_object_id: @character.id, category: "as" }
     end
+  end
+  
+  test "should update tip" do
+    user = User.create
+    tip = Tip.create(description: "bla", category: "as", gaming_object: @character, user: user)
+    assert_equal "bla", tip.description
+    post :update, id: tip.id, description: "ratata"
+    assert_equal "ratata", tip.description
+    
   end
   
   test "should upvote tip" do

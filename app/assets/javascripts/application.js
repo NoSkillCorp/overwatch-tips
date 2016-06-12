@@ -70,7 +70,7 @@ $(document).ready(function() {
       var new_tip_panel = $(".tip_panel", $('.'+category)).first();
     }
     bind_score_events(new_tip_panel);
-    bind_edit_events(new_tip_panel.find('.tip_edit'));
+    bind_edit_events(new_tip_panel);
     $('.form-'+category+'-description').val("");
   }
   
@@ -155,13 +155,18 @@ $(document).ready(function() {
   
   //binds events on tip's edit button
   function bind_edit_events(elements){
-    elements.on('click', function(){
+    elements.find('.tip_edit, .cancel_edit').on('click', function(){
       var edit_button = $(this);
-      console.log(edit_button);
+      var tip = edit_button.closest('.tip_panel');
+      var tip_body = tip.find('.tip_body');
+      var edit_form = tip.find('.edit_form');
+      
+      tip_body.toggleClass("hidden");
+      edit_form.toggleClass("hidden");
     });
   }
   //actual binding of events on all tip's edit buttons
-  bind_edit_events($('.tip_edit'));
+  bind_edit_events($('.tip_panel'));
   
   
   //makes a hexagonal cel darker by hovering it

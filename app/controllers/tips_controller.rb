@@ -1,5 +1,5 @@
 class TipsController < ApplicationController
-  before_action :set_tip, only: [:upvote, :downvote, :show]
+  before_action :set_tip, only: [:upvote, :downvote, :show, :update]
   before_action :assign_user, only: [:create, :upvote, :downvote]
 
   # POST /tips
@@ -14,6 +14,18 @@ class TipsController < ApplicationController
   end
   
   def show
+  end
+  
+  def update
+    if @tip.user == @user
+      if @tip.update(tip_params)
+        render json: { description: description_with_links(@tip.description) }
+      else
+        render json: @tip.errors, status: :unprocessable_entity
+      end
+    else
+      #doesn't update if wrong user
+    end
   end
   
   def upvote

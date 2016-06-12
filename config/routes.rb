@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :tips, only: [:show]
   end
   
-  resources :tips, only: [:create] do
+  resources :tips, only: [:create, :update] do
     member do
       post :upvote
       post :downvote
