@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # URL to the websocket
+  config.action_cable.url = "wss://overwatch-tips-pierregui.c9users.io:8080/cable"
 end
