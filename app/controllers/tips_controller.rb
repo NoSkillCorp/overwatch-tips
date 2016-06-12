@@ -16,6 +16,8 @@ class TipsController < ApplicationController
   end
   
   def show
+    #Gets one of the trending tips as the random next one
+    @random_next_tip = Tip.ordered_by_vote_count.where.not(id: @tip.id).sample
   end
   
   def update
