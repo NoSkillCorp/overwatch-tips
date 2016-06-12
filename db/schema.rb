@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160604230735) do
+ActiveRecord::Schema.define(version: 20160612133700) do
+
+  create_table "characters", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_path"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -37,6 +45,21 @@ ActiveRecord::Schema.define(version: 20160604230735) do
   end
 
   add_index "gaming_objects", ["slug"], name: "index_gaming_objects_on_slug", unique: true
+
+  create_table "maps", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_path"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "meta_characters", force: :cascade do |t|
+    t.integer  "strong_character_id"
+    t.integer  "weak_character_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "tips", force: :cascade do |t|
     t.text     "description"

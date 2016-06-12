@@ -14,6 +14,8 @@ class GamingObjectsController < ApplicationController
      @tips_hash = @gaming_object.tips_hash(numeric_duration)
      @tip = @gaming_object.tips.build
      @gaming_objects = GamingObject.where(type: @tip.gaming_object.type)
+     @stronger_characters = @gaming_object.stronger_characters
+     @weaker_characters = @gaming_object.weaker_characters
    end
 
 

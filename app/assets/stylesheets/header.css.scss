@@ -11,7 +11,7 @@ $overwatch-dark-blue: #283361;
 #menu {
     position: fixed;
     width: 100%;
-    z-index: 2;
+    z-index: 1000;
 }
 
 .score {
@@ -38,6 +38,7 @@ $overwatch-dark-blue: #283361;
     background-color: $overwatch-yellow;
     border-width: 0px;
     color: $overwatch-dark-blue;
+    z-index: 1000;
 }
 #menu.navbar-default .navbar-nav>li>a {
     background-color: $overwatch-yellow;

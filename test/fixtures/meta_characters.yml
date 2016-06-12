@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  strong_character_id: 1
+  weak_character_id: 1
+
+two:
+  strong_character_id: 1
+  weak_character_id: 1
