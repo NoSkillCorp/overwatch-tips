@@ -25,14 +25,17 @@ class Tip < ActiveRecord::Base
     end
     
     def is_voted?(user)
+        return false if user.blank?
         votes.where(user_cookie: user.user_cookie).count > 0
     end
     
     def is_upvoted?(user)
+        return false if user.blank?
         votes.positives.where(user_cookie: user.user_cookie).count > 0
     end
     
     def is_downvoted?(user)
+        return false if user.blank?
         votes.negatives.where(user_cookie: user.user_cookie).count > 0
     end
     

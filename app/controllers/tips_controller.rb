@@ -1,5 +1,6 @@
 class TipsController < ApplicationController
   before_action :set_tip, only: [:upvote, :downvote]
+  before_action :assign_user, only: [:create, :upvote, :downvote]
 
   # POST /tips
   def create
@@ -32,4 +33,5 @@ class TipsController < ApplicationController
     def tip_params
       params.require(:tip).permit(:description, :gaming_object_id, :category)
     end
+    
 end
