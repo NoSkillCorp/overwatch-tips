@@ -9,7 +9,7 @@ class Tip < ActiveRecord::Base
     validates :description, presence: true, length: { maximum: 1000 }
     
     scope :ordered_by_score, -> { joins(:votes).select("SUM(votes.weight) as score, tips.*").group('tips.id').order("score DESC") }
-    scope :ordered_by_trending_score, -> { joins(:votes).where("votes.weight > 0").where("votes.created_at" => (DateTime.now - 48.hours)..DateTime.now).select("COUNT(votes.id) * tips.created_at as trending_score_count, tips.*").group('tips.id').order("trending_score_count DESC") }
+    scope :ordered_by_vote_count, -> { joins(:votes).where("votes.weight > 0").where("votes.created_at" => (DateTime.now - 48.hours)..DateTime.now).select("COUNT(votes.id) as vote_count, tips.*").group('tips.id').order("vote_count DESC") }
     scope :joins_last_vote, -> { joins(:votes).joins("LEFT OUTER JOIN votes other_votes ON votes.tip_id = other_votes.tip_id AND (votes.created_at < other_votes.created_at OR (votes.created_at = other_votes.created_at AND votes.id < other_votes.id))").where("other_votes.id IS NULL") }
     
     def score
@@ -74,7 +74,7 @@ class Tip < ActiveRecord::Base
     end
     
     def self.trending_tips(number_of_tips, page_num=1)
-        self.ordered_by_trending_score.page(page_num).per(number_of_tips)
+        self.ordered_by_vote_count.page(page_num).per(number_of_tips)
     end
     
 end
