@@ -1,6 +1,6 @@
 
 <h1 class="page-title text-center">
-    <%= @type.pluralize %>
+    <%= @type == 'Character' ? 'Heroes' : @type.pluralize %>
 </h1>
 
 <div class="row">
