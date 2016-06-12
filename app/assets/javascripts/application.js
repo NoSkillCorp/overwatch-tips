@@ -169,10 +169,12 @@ $(document).ready(function() {
     elements.find('.edit_tip').on('ajax:success', function(e, data, status, xhr){
       $(".has-error").removeClass("has-error");
       $(".error").remove();
-      var new_description = data["description"];
+      
+      var new_description = $.parseHTML(data["description"]);
       var tip_panel = $(this).closest('.tip_panel');
       var tip_description = tip_panel.find(".tip_description");
-      tip_description.text(new_description);
+      tip_description.text("");
+      tip_description.append(new_description);
       
       var tip_body = tip_panel.find('.tip_body');
       var edit_form = tip_panel.find('.edit_form');

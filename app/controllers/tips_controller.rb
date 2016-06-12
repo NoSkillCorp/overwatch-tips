@@ -23,7 +23,7 @@ class TipsController < ApplicationController
   def update
     if @tip.user == @user
       if @tip.update(tip_params)
-        render json: { description: description_with_links(@tip.description) }
+        render json: { description: raw(description_with_links(@tip.description)) }
       else
         render json: @tip.errors, status: :unprocessable_entity
       end

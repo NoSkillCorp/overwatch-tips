@@ -1,4 +1,5 @@
 module TipsHelper
+    include ActionView::Helpers::UrlHelper
     
     def playing_sentence(category, gaming_object)
         if gaming_object.is_a?(Character)
