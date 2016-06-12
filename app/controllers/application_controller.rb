@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_action :find_user, :count_votes_and_tips
+  before_action :find_user, :count_votes_and_tips, :set_container
   
   private
   
@@ -44,6 +44,8 @@ class ApplicationController < ActionController::Base
       @votes_count = Vote.all.count
     end
     
-    
+    def set_container
+      @container = (controller_name == "home" && action_name == "index") || (controller_name == "gaming_objects" && action_name == "show") ? "" : "container";
+    end
     
 end
