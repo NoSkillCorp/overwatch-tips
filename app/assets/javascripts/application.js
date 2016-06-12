@@ -172,12 +172,8 @@ $(document).ready(function() {
       
       var tip_panel = $(this).closest('.tip_panel');
       var tip_description = tip_panel.find(".tip_description");
-      
-      if(500 == xhr.status){
-        var new_description = tip_panel.find('textarea').val();
-      } else {
-        var new_description = data["description"];
-      }
+      var new_description = data["description"];
+
       tip_description.text(new_description);
       
       var tip_body = tip_panel.find('.tip_body');
@@ -196,6 +192,22 @@ $(document).ready(function() {
           field.append('<p class="error">'+errors[error][elem]+'</p>')
         }
       }
+    }).fail(function(){ //Quick fic for production error 500
+      $(".has-error").removeClass("has-error");
+      $(".error").remove();
+      
+      var tip_panel = $(this).closest('.tip_panel');
+      var tip_description = tip_panel.find(".tip_description");
+      var new_description = tip_panel.find('textarea').val();
+
+      tip_description.text(new_description);
+      
+      var tip_body = tip_panel.find('.tip_body');
+      var edit_form = tip_panel.find('.edit_form');
+      
+      tip_body.toggleClass("hidden");
+      edit_form.toggleClass("hidden");
+
     });
   }
   //actual binding of events on all tip's edit buttons
