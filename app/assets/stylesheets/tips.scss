@@ -56,14 +56,18 @@
 }
 
 .tip_footer {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    width: 50%;
-    text-align: right;
+    // position: absolute;
+    // bottom: 15px;
+    // right: 15px;
+    // width: 50%;
+    // text-align: right;
+    span, a {
+        margin-left: 1rem;
+    }
 }
 
 .time_ago {
+    margin-top: 0.4rem;
     color: grey;
 }
 

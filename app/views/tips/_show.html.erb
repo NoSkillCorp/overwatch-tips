@@ -44,13 +44,18 @@
             <span class="playing_sentence"><%= playing_sentence(tip.category, tip.gaming_object) %></span><br />
           <% end %>
         <% end %>
-        <span class="<%= 'smaller-description' if tip.score < 0 %> <%= 'big-show' if big_show %> tip_description"><%= raw description_with_links(tip.description) %><br /><br /></span>
+        <span class="<%= 'smaller-description' if tip.score < 0 %> <%= 'big-show' if big_show %> tip_description">
+          <%= raw description_with_links(tip.description) %><!--br /><br /-->
+          </span>
         
-        <div class="tip_footer">
-          <% if !big_show %>
-            <%= link_to "show", character_tip_path(tip.gaming_object, tip) %>
-          <% end %>
-          <span class="time_ago"><%= time_ago_in_words(tip.created_at)%> ago</span>
+        <div class="tip_footer row">
+          <div class="col-md-12">
+            <% if !big_show %>
+              <%= link_to character_tip_path(tip.gaming_object, tip), class: "btn btn-sm btn-default pull-right" do %><i class="fa fa-share" aria-hidden="true"></i><% end %>
+            <% end %>
+            <span class="time_ago pull-right"><%= time_ago_in_words(tip.created_at)%> ago</span>
+          </div>
+          
         </div>
       </div>
     </div>
