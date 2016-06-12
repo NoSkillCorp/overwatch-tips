@@ -169,15 +169,9 @@ $(document).ready(function() {
     elements.find('.edit_tip').on('ajax:success', function(e, data, status, xhr){
       $(".has-error").removeClass("has-error");
       $(".error").remove();
-      
+      var new_description = data["description"];
       var tip_panel = $(this).closest('.tip_panel');
       var tip_description = tip_panel.find(".tip_description");
-      
-      if(500 == xhr.status){
-        var new_description = tip_panel.find('textarea').val();
-      } else {
-        var new_description = data["description"];
-      }
       tip_description.text(new_description);
       
       var tip_body = tip_panel.find('.tip_body');
