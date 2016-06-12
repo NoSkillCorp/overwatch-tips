@@ -1,5 +1,5 @@
 class TipsController < ApplicationController
-  before_action :set_tip, only: [:upvote, :downvote]
+  before_action :set_tip, only: [:upvote, :downvote, :show]
   before_action :assign_user, only: [:create, :upvote, :downvote]
 
   # POST /tips
@@ -11,6 +11,9 @@ class TipsController < ApplicationController
     else
       render json: @tip.errors, status: :unprocessable_entity
     end
+  end
+  
+  def show
   end
   
   def upvote
@@ -26,7 +29,7 @@ class TipsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tip
-      @tip = Tip.find(params[:id])
+      @tip = Tip.find(params[:id]) || Tip.find(params[:tip_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
