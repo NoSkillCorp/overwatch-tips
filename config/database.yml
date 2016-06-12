@@ -12,6 +12,7 @@ default: &default
   username: 'ubuntu'
   password: 'cVj7jpmbA2EvY9C8'
   host: 'localhost'
+
 development:
   <<: *default
 

@@ -13,14 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160612133700) do
 
-  create_table "characters", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "image_path"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,14 +40,6 @@ ActiveRecord::Schema.define(version: 20160612133700) do
   end
 
   add_index "gaming_objects", ["slug"], name: "index_gaming_objects_on_slug", unique: true, using: :btree
-
-  create_table "maps", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "image_path"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
 
   create_table "meta_characters", force: :cascade do |t|
     t.integer  "strong_character_id"

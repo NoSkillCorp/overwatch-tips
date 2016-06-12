@@ -1,4 +1,4 @@
-//= require actioncable
+//= require vendor/actioncable
 //= require_self
 //= require_tree ./channels
 
