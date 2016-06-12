@@ -1,1 +1,3 @@
 <%= @tip.id %>
+
+<%= render partial: "tips/show", locals: {tip: @tip, with_gaming_object_description: true} %>
