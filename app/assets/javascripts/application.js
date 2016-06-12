@@ -179,6 +179,11 @@ $(document).ready(function() {
     var dropdown_title = $(this);
     var dropdown_content = dropdown_title.next(".dropdown-content");
     dropdown_content.toggleClass("hidden");
+    
+    var caret = dropdown_title.find("i.fa");
+    caret.toggleClass("fa-caret-right");
+    caret.toggleClass("fa-caret-down");
+    
   });
   
   //Initialize the dropdown-contents hidden
