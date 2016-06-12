@@ -1,3 +1,15 @@
-<%= @tip.id %>
+<% tip = @tip %>
 
-<%= render partial: "tips/show", locals: {tip: @tip, with_gaming_object_description: true} %>
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="playing_sentence">
+            <%= image_tag tip.gaming_object.image_path, class: "gaming_object_icon " %>
+            <%= link_to tip.gaming_object, class: "btn-link" do %>
+                <%= playing_sentence(tip.category, tip.gaming_object) %>
+            <% end %>
+        </h1>
+    </div>
+    
+    <%= render partial: "tips/show", locals: {tip: tip, big_show: true} %>    
+</div>
+
