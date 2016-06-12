@@ -60,13 +60,7 @@ $overwatch-dark-blue: #283361;
   margin-bottom: 20px !important;
 }
 
-.dropdown-link{
-  cursor: pointer;
-}
-.dropdown-link:hover{
+.what-is-it:hover{
   background-color: $overwatch-yellow !important;
   color: $overwatch-dark-blue;
-}
-.dropdown-content{
-  font-size: 1.5rem;
 }

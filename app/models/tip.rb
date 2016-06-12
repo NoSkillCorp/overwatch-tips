@@ -24,6 +24,10 @@ class Tip < ActiveRecord::Base
         votes.negatives.count
     end
     
+    def is_shameful
+        score < -3
+    end
+    
     def is_voted?(user)
         return false if user.blank?
         votes.where(user_cookie: user.user_cookie).count > 0
