@@ -8,10 +8,14 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index'
   get 'news', to: 'home#news'
   
-  resources :characters, controller: :gaming_objects, type: "Character", only: [:index, :show]
-  resources :maps, controller: :gaming_objects, type: "Map", only: [:index, :show]
+  resources :characters, controller: :gaming_objects, type: "Character", only: [:index, :show] do
+    resources :tips, only: [:show]
+  end
+  resources :maps, controller: :gaming_objects, type: "Map", only: [:index, :show] do
+    resources :tips, only: [:show]
+  end
   
-  resources :tips, only: [:create] do
+  resources :tips, only: [:create, :update] do
     member do
       post :upvote
       post :downvote

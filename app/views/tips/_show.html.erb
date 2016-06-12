@@ -1,11 +1,12 @@
 <% tip ||= Tip.new %>
 <% with_gaming_object_description ||= false %>
 <% klass ||= "col-md-12" %>
+<% big_show = big_show.nil? ? false : big_show %>
 
 <div class="<%= klass %>">
     <div class="panel panel-default tip_panel <%= tip.is_voted?(@user) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>">
       
-      <div class="panel-body text-justify">
+      <div class="panel-body text-justify tip_body">
         <div class="">
           <div class="pull-left tip_score_panel text-center">
             <div class="tip_score">
@@ -43,11 +44,30 @@
             <span class="playing_sentence"><%= playing_sentence(tip.category, tip.gaming_object) %></span><br />
           <% end %>
         <% end %>
-        <span class="<%= 'smaller-description' if tip.score < 0 %> tip_description"><%= raw description_with_links(tip.description) %><br /><br /></span>
         
-        <div class="tip_footer">
-          <span class="time_ago"><%= time_ago_in_words(tip.created_at)%> ago</span>
+        <span class="<%= 'smaller-description' if tip.score < 0 %> <%= 'big-show' if big_show %> tip_description">
+          <%= raw description_with_links(tip.description) %><!--br /><br /-->
+        </span>
+        
+        <div class="tip_footer row">
+          <div class="col-md-12">
+            <% if !big_show %>
+              <%= link_to character_tip_path(tip.gaming_object, tip), target: :blank, class: "btn btn-sm btn-default pull-right" do %><i class="fa fa-share" aria-hidden="true"></i><% end %>
+            <% end %>
+            <% if tip.user == @user %>
+              <span class="btn btn-sm btn-default pull-right tip_edit"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+            <% end %>
+            <span class="time_ago pull-right"><%= time_ago_in_words(tip.created_at)%> ago</span>
+          </div>
         </div>
-      </div>
+        
+      </div>      
+      
+      <% if tip.user == @user %>
+        <div class="panel-body hidden edit_form">
+          <%= render partial: "tips/edit_form", locals: {tip: tip} %>
+        </div>
+      <% end %>
+      
     </div>
 </div>

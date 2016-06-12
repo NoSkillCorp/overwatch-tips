@@ -1,0 +1,20 @@
+<% tip ||= nil %>
+
+<% if tip.present? %>
+    <%= form_for(tip, remote: true, html: {role: :form, 'data-model' => 'tip', id: "form-edit-#{tip.id}"}, class: "edit_tip") do |f| %>
+
+          <div class="form-group form-description">
+            <%= f.text_area :description, class: "form-control", rows: 5, placeholder: "Got a tip for people playing #{tip.category} #{tip.gaming_object.name} ?" %>
+            <span class="help-block hidden"></span>
+          </div>
+          
+          <%# Added Bootstrap classes %>
+          <div class="actions" style="margin-bottom: 0px;">
+            <%= f.submit 'Submit', class: 'btn btn-success' %>
+            <span class="btn btn-danger pull-right cancel_edit">Cancel</span>
+          </div>
+
+    <% end %>
+    
+<% end %>
+
