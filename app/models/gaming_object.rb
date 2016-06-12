@@ -5,6 +5,11 @@ class GamingObject < ActiveRecord::Base
     friendly_id :name, use: :slugged
     
     has_many :tips
+    has_many :weaker_meta_characters, foreign_key: "strong_character_id", class_name: "MetaCharacter"
+    has_many :stronger_meta_characters, foreign_key: "weak_character_id", class_name: "MetaCharacter"
+    has_many :weaker_characters, through: :weaker_meta_characters, :source => :weak_character
+    has_many :stronger_characters, through: :stronger_meta_characters, :source => :strong_character
+    
     
     #Fill this with the categories in your class inheriting from GamingObject
     CATEGORIES = []

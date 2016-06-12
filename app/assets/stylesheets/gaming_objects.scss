@@ -1,12 +1,42 @@
 // Place all the styles related to the GamingObjects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$overwatch-yellow: #FFcc00;
+$overwatch-dark-blue: #283361;
 
 
 .text_wrapper {
     width: 100%;
     position: absolute;
     top: 45%;
+}
+
+.header_gaming_objects_link {
+    margin: auto;
+    max-width: 1020px;
+}
+
+.header_gaming_object {
+    background-color: $overwatch-dark-blue;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 100%;
+    margin-bottom:25px;
+    position: fixed;
+    z-index: 1000;
+}
+
+.gaming_object_container {
+    padding-top: 100px;
+}
+
+.gaming_object_background {
+    background-color : white; 
+    padding-bottom: 20px;
+}
+
+.meta_container {
+    padding-top: 5rem;
 }
 
 .gaming_object_name {
@@ -20,6 +50,18 @@
 .gaming_object_image {
     position:relative;
 }
+
+.top-tip-form {
+   padding-top:20px; 
+}
+
+.tips_category {
+  font-family: 'Big-Noodle-Italique';
+  font-size: 2em;
+  padding-bottom: 15px;
+  border-bottom: 3px solid $overwatch-yellow;
+}
+
 
 .best-tip-sentence {
     padding: 6px 12px 6px 0px;
@@ -115,6 +157,12 @@
     text-align: center;
     border-bottom: 1px solid #fff;
 }
+
+.meta_title {
+  font-family: 'Big-Noodle-Italique';
+  font-size: 3em;
+}
+
 .hex p {
     top: 50%;
     font-size: 1.7rem;
