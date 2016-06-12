@@ -8,6 +8,12 @@ $overwatch-dark-blue: #283361;
     color: $overwatch-dark-blue !important;
 }
 
+#menu {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
 .score {
     margin-left: 1.5rem;
     margin-top: 0.7rem !important;
