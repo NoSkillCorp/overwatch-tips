@@ -153,7 +153,8 @@ $(document).ready(function() {
   //actual binding of events on all tip's voting buttons
   bind_score_events($('.tip_panel'));
   
-  //binds events on tip's edit button
+  
+  //binds events on tip's edit button & form
   function bind_edit_events(elements){
     elements.find('.tip_edit, .cancel_edit').on('click', function(){
       var edit_button = $(this);
@@ -164,6 +165,12 @@ $(document).ready(function() {
       tip_body.toggleClass("hidden");
       edit_form.toggleClass("hidden");
     });
+    
+    elements.find('.edit_tip').on('ajax:success', function(e, data, status, xhr){
+        console.log("success");
+      }).on('ajax:error',function(e, xhr, status, error){
+        console.log("error");
+      });
   }
   //actual binding of events on all tip's edit buttons
   bind_edit_events($('.tip_panel'));

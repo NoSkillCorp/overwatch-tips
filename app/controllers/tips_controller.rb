@@ -1,4 +1,6 @@
 class TipsController < ApplicationController
+  include TipsHelper
+  
   before_action :set_tip, only: [:upvote, :downvote, :show, :update]
   before_action :assign_user, only: [:create, :upvote, :downvote]
 
