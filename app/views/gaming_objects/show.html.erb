@@ -48,9 +48,10 @@
       
       <%= render partial: 'tips/form', locals: {category: category, gaming_object: @gaming_object, klass: "bottom-tip-form"} if category_tips[:good_tips].count > 5 %>
       
+      <% if category_tips[:bad_tips].present? %>
       <div class="row">
           <div class="bad-tips-heading dropdown-link col-md-12">
-            <div class="btn btn-danger hall-of-shame-button"><h3 class="hall-of-shame"> <i class="fa fa-caret-right" aria-hidden="true"></i> Hall of shame</h3></div>
+            <div class="btn btn-warning hall-of-shame-button"><h3 class="hall-of-shame"> <i class="fa fa-caret-right" aria-hidden="true"></i> Hall of shame</h3></div>
           </div>
           <div class="bad-tips-body dropdown-content col-md-12">
             <div class="row">
@@ -62,6 +63,7 @@
             <%= render partial: 'tips/form', locals: {category: category, gaming_object: @gaming_object, klass: "bottom-tip-form"} if category_tips[:bad_tips].count > 5 %>
           </div>
       </div>
+      <% end %>
       
     </div>
   <% end %>
