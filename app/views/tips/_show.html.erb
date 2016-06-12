@@ -52,7 +52,7 @@
         <div class="tip_footer row">
           <div class="col-md-12">
             <% if !big_show %>
-              <%= link_to character_tip_path(tip.gaming_object, tip), class: "btn btn-sm btn-default pull-right" do %><i class="fa fa-share" aria-hidden="true"></i><% end %>
+              <%= link_to character_tip_path(tip.gaming_object, tip), target: :blank, class: "btn btn-sm btn-default pull-right" do %><i class="fa fa-share" aria-hidden="true"></i><% end %>
             <% end %>
             <% if tip.user == @user %>
               <span class="btn btn-sm btn-default pull-right tip_edit"><i class="fa fa-pencil" aria-hidden="true"></i></span>
