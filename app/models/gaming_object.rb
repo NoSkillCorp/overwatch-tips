@@ -22,7 +22,7 @@ class GamingObject < ActiveRecord::Base
         # creates a hash with empty arrays for categories with no tips
         empty_categories_hash.merge(tips_list.to_a.group_by(&:category)).map{|category, tips|
             good_tips, bad_tips = [], []
-            tips.each{|tip| tip.score >= 0 ? good_tips << tip : bad_tips << tip}
+            tips.each{|tip| tip.score >= -3 ? good_tips << tip : bad_tips << tip}
             good_tips.sort_by!{|tip| -1*tip.score}
             bad_tips.sort_by!{|tip| -1*tip.score}
             [category, {good_tips: good_tips, bad_tips: bad_tips}]
