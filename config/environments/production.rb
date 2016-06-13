@@ -76,4 +76,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  # URL to the websocket
+  config.action_cable.url = "wss://overwatch-tips-gui.heroku.com/cable"
+  config.action_cable.allowed_request_origins = ['https://overwatch.herokuapp.com', 'http://overwatch.herokuapp.com']
 end
