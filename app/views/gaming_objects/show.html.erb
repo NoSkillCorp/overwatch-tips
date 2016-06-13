@@ -31,7 +31,7 @@
                 <div class="meta_content">
                   <div class="weaker_characters">
                     <% @weaker_characters.each do |weaker_character| %>
-                      <%= render partial: "gaming_objects/icon", locals: { gaming_object: weaker_character , active: false, klass: "col-md-2"} %>
+                      <%= render partial: "gaming_objects/icon", locals: { gaming_object: weaker_character , active: false} %>
                     <% end %>
                   </div>
                 </div>
@@ -43,7 +43,7 @@
                 <div class="meta_content">
                   <div class="stronger_characters">
                     <% @stronger_characters.each do |stronger_character| %>
-                      <%= render partial: "gaming_objects/icon", locals: { gaming_object: stronger_character , active: false, klass: "col-md-2"} %>
+                      <%= render partial: "gaming_objects/icon", locals: { gaming_object: stronger_character , active: false} %>
                     <% end %>
                   </div>
                 </div>
