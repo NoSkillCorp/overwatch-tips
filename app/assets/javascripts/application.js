@@ -70,6 +70,7 @@ $(document).ready(function() {
       var new_tip_panel = $(".tip_panel", $('.'+category)).first();
     }
     bind_score_events(new_tip_panel);
+    bind_edit_events(new_tip_panel);
     $('.form-'+category+'-description').val("");
   }
   
@@ -151,6 +152,50 @@ $(document).ready(function() {
   }
   //actual binding of events on all tip's voting buttons
   bind_score_events($('.tip_panel'));
+  
+  
+  //binds events on tip's edit button & form
+  function bind_edit_events(elements){
+    elements.find('.tip_edit, .cancel_edit').on('click', function(){
+      var edit_button = $(this);
+      var tip = edit_button.closest('.tip_panel');
+      var tip_body = tip.find('.tip_body');
+      var edit_form = tip.find('.edit_form');
+      
+      tip_body.toggleClass("hidden");
+      edit_form.toggleClass("hidden");
+    });
+    
+    elements.find('.edit_tip').on('ajax:success', function(e, data, status, xhr){
+      $(".has-error").removeClass("has-error");
+      $(".error").remove();
+      
+      var new_description = $.parseHTML(data["description"]);
+      var tip_panel = $(this).closest('.tip_panel');
+      var tip_description = tip_panel.find(".tip_description");
+      tip_description.text("");
+      tip_description.append(new_description);
+      
+      var tip_body = tip_panel.find('.tip_body');
+      var edit_form = tip_panel.find('.edit_form');
+      
+      tip_body.toggleClass("hidden");
+      edit_form.toggleClass("hidden");
+      
+    }).on('ajax:error',function(e, xhr, status, error){
+      $(".error").remove();
+      var errors = xhr.responseJSON;
+      for (var error in errors) {
+        var field = $(this).find(".form-"+error)
+        field.addClass("has-error");
+        for (var elem in errors[error]) {
+          field.append('<p class="error">'+errors[error][elem]+'</p>')
+        }
+      }
+    });
+  }
+  //actual binding of events on all tip's edit buttons
+  bind_edit_events($('.tip_panel'));
   
   
   //makes a hexagonal cel darker by hovering it

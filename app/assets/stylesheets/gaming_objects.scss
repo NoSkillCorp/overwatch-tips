@@ -138,6 +138,7 @@ $overwatch-dark-blue: #283361;
     -webkit-transition:  -webkit-transform .2s ease-out;
             transition:          transform .2s ease-out;
 }
+
 .hex .h3 {
     bottom: 50%;
     padding-top:50%;
@@ -148,6 +149,7 @@ $overwatch-dark-blue: #283361;
         -ms-transform:translateY(-100%) translatez(-1px);
             transform:translateY(-100%) translatez(-1px);
 }
+
 .hex .h3:after {
     content: '';
     position: absolute;
