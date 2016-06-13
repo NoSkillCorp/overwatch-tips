@@ -41,4 +41,5 @@ Rails.application.configure do
   
   # URL to the websocket
   config.action_cable.url = "wss://overwatch-tips-pierregui.c9users.io:8080/cable"
+  config.action_cable.disable_request_forgery_protection = true
 end
