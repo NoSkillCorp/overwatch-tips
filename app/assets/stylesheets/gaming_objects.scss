@@ -128,7 +128,7 @@ $overwatch-dark-blue: #283361;
     margin: 0 auto;
 }
 
-.hex h3, .hex p {
+.hex .h3, .hex p {
     width: 102%;
     color: white;
     left:-1%; /* prevent line on the right where background doesn't cover image */
@@ -138,7 +138,8 @@ $overwatch-dark-blue: #283361;
     -webkit-transition:  -webkit-transform .2s ease-out;
             transition:          transform .2s ease-out;
 }
-.hex h3 {
+
+.hex .h3 {
     bottom: 50%;
     padding-top:50%;
     font-family :"Big-Noodle" !important;
@@ -148,7 +149,8 @@ $overwatch-dark-blue: #283361;
         -ms-transform:translateY(-100%) translatez(-1px);
             transform:translateY(-100%) translatez(-1px);
 }
-.hex h3:after {
+
+.hex .h3:after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -174,7 +176,7 @@ $overwatch-dark-blue: #283361;
 
 
 /*** HOVER EFFECT  **********************************************************************/
-.hexIn:hover h3, .hexIn:focus h3,
+.hexIn:hover .h3, .hexIn:focus .h3,
 .hexIn:hover p, .hexIn:focus p{
     -webkit-transform:translateY(0%) translatez(-1px);
         -ms-transform:translateY(0%) translatez(-1px);
