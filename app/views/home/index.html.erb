@@ -13,7 +13,6 @@
     <div class="container">
 
         <div class="text-center">
-            <%= @random_character = nil %>
             <%= link_to "Go to random tip!", character_path(@random_character), class: "btn btn-lg btn-success home-primary-button" if @random_character.present? %>
         </div>
 
