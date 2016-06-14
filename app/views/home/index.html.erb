@@ -13,9 +13,9 @@
     <div class="container">
 
         <div class="text-center">
-            <%= link_to "Go to random tip!", character_path(@random_character), class: "btn btn-lg btn-success home-primary-button" %>
+            <%= link_to "Go to random tip!", character_path(@random_character), class: "btn btn-lg btn-success home-primary-button" if @random_character.present? %>
         </div>
-        
+
         <div class="row">
             <% @tips_hash.each do |category, tips| %>
                 <div class="col-md-4">
@@ -28,7 +28,7 @@
                 </div>
             <% end %>
         </div>
-        
+
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -51,6 +51,6 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
