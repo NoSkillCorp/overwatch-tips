@@ -3,12 +3,13 @@ class TipsController < ApplicationController
   
   before_action :set_tip, only: [:upvote, :downvote, :show, :update]
   before_action :assign_user, only: [:create, :upvote, :downvote]
-
+  
   # POST /tips
   def create
     @tip = Tip.new(tip_params.merge(user: @user))
     
     if @tip.save
+      broadcast
       render partial: 'tips/show', locals: { tip: @tip }
     else
       render json: @tip.errors, status: :unprocessable_entity
@@ -34,11 +35,13 @@ class TipsController < ApplicationController
   
   def upvote
     @tip.upvote(@user)
+    broadcast
     render json: @tip
   end
   
   def downvote
     @tip.downvote(@user)
+    broadcast
     render json: @tip
   end
 
@@ -53,4 +56,9 @@ class TipsController < ApplicationController
       params.require(:tip).permit(:description, :gaming_object_id, :category)
     end
     
+    def broadcast
+      ActionCable.server.broadcast 'counter',
+        tips: Tip.all.count,
+        votes: Vote.all.count
+    end     
 end
