@@ -1,35 +1,23 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 import ReactOnRails from 'react-on-rails'
 import Reducers from './reducers'
-import VoteButtonsState from './components/containers/VoteButtonsState'
-import TipPanelState from './components/containers/TipPanelState'
+import WebSocket from './middleware'
 
-const createStoreWithProps = (props) => {
-    console.debug("Setting up store with ", props)
-    return createStore(Reducers, { config: props },
+import Counter from './components/containers/CounterState'
+
+ReactOnRails.registerStore({
+  ReduxStore: (props, railsContext) => {
+    console.debug("Setting up Redux store")
+    return createStore(Reducers, props,
+      applyMiddleware(WebSocket),
       window.devToolsExtension ? window.devToolsExtension() : undefined
     )
-  },
-  /**
-   * Helper to wrap a components in a provider, given a Redux store.
-   * @method
-   * @param  {Object} component
-   * @param  {Object} store
-   * @return {function} to be registered
-   */
-  registerWithStore = (component, store) => (
-    (p) => <Provider store={store}>{React.createElement(component, p)}</Provider>
-  )
-
-/**
- * Register Redux store with initial state
- */
-ReactOnRails.registerStore({
-  ReduxStore: createStoreWithProps
+  }
 })
 
 ReactOnRails.register({
-  TipPanel: (props) => registerWithStore(TipPanelState, ReactOnRails.getStore("ReduxStore"))(props)
+  Counter: (props) => (<Provider store={ReactOnRails.getStore("ReduxStore")}><Counter /></Provider>)
 })
+  
