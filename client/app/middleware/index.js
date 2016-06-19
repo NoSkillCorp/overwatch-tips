@@ -6,7 +6,6 @@ const middleware = (store) => {
   
   const counter = cable.subscriptions.create('CounterChannel', {  
     received: (data) => {
-      console.log(data)
       store.dispatch(actionBuilder("UPDATE_COUNTER", data))
     }
   })
