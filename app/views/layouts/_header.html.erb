@@ -23,10 +23,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right tips-and-votes-count">
                 <li>
-                    <p class="navbar-text score">
-                        Tips : <span id="tips_count"><%= @tips_count %></span> / 
-                        Votes : <span id="votes_count"><%= @votes_count %></span>
-                    </p>
+                    <%= react_component("Counter") %>
                 </li>
             </ul>
         </div>

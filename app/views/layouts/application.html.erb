@@ -31,6 +31,13 @@
 </head>
 <body class="<%= controller_name == "home" && action_name == "index" ? @is_mobile ? "body-mobile-home" : "body-home" : "body-else" %>">
   
+  <%= redux_store("ReduxStore", props: {
+      counter: {
+        tips: @tips_count,
+        votes: @votes_count
+      }
+  }) %>
+  
   <%= render "layouts/header" %>
   
   <div class="main-container <%=  @container %>">
