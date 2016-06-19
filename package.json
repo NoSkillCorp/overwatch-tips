@@ -6,13 +6,7 @@
   "keywords": ["overwatch"],
   "author": "NoSkillsCorp",
   "license": "ISC",
-  "babel": {
-    "presets": [
-      "es2015",
-      "react"
-    ]
-  },
   "scripts": {
-    "build": "cd client && npm install && npm run build:production"
+    "build": "(cd client && npm install && npm run build:production)"
   }
 }
