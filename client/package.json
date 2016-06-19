@@ -13,6 +13,7 @@
     ]
   },
   "scripts": {
+    "build:production": "webpack -p --config webpack.client.config.js --define process.env.NODE_ENV='\"production\"'",
     "build:client": "webpack --config webpack.client.config.js",
     "watch:client": "npm run build:client -- -w",
     "test": "mocha --compilers js:babel-register --recursive",
