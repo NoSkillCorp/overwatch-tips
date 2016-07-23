@@ -13,7 +13,7 @@ class GamingObjectsController < ApplicationController
      numeric_duration = duration_string_to_numeric(@duration_string)
      @tips_hash = @gaming_object.tips_hash(numeric_duration)
      @tip = @gaming_object.tips.build
-     @gaming_objects = GamingObject.where(type: @tip.gaming_object.type)
+     @gaming_objects = GamingObject.where(type: @tip.gaming_object.type).order(:name)
      @stronger_characters = @gaming_object.stronger_characters
      @weaker_characters = @gaming_object.weaker_characters
    end
