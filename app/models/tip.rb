@@ -83,6 +83,10 @@ class Tip < ActiveRecord::Base
         end
     end
     
+    def gaming_object_type
+       gaming_object.type
+    end
+    
     def self.greatest_tips(number_of_tips, page_num=1)
         self.ordered_by_score.page(page_num).per(number_of_tips)
     end
