@@ -23,7 +23,7 @@ $(document).ready(function() {
       window.location = tip_url;
     }
   }
-  $(".description_and_footer, .tip_score, .tip_posneg_scores").on('click', function(){
+  $(".tip_description, .tip_score, .tip_posneg_scores").on('click', function(){
     clickTip($(this));
   });
   

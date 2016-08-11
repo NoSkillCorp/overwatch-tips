@@ -46,20 +46,19 @@
           <% end %>
         <% end %>
         
-        <div class="description_and_footer">
-          <span class="<%= 'smaller-description' if tip.score < 0 %> <%= 'big-show' if big_show %> tip_description">
-            <%= raw description_with_links(tip.description) %>
-          </span>
-          
-          <div class="tip_footer row">
-            <div class="col-md-12">
-              <% if tip.user == @user %>
-                <span class="btn btn-sm btn-default pull-right tip_edit"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-              <% end %>
-              <span class="time_ago pull-right"><%= time_ago_in_words(tip.created_at)%> ago</span>
-            </div>
+        <span class="<%= 'smaller-description' if tip.score < 0 %> <%= 'big-show' if big_show %> tip_description">
+          <%= raw description_with_links(tip.description) %>
+        </span>
+        
+        <div class="tip_footer row">
+          <div class="col-md-12">
+            <% if tip.user == @user %>
+              <span class="btn btn-sm btn-default pull-right tip_edit"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+            <% end %>
+            <span class="time_ago pull-right"><%= time_ago_in_words(tip.created_at)%> ago</span>
           </div>
         </div>
+      
         
       </div>      
       
