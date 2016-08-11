@@ -21,7 +21,7 @@ $(document).ready(function() {
     tip_url = panel.attr('data-tip-url');
     window.location = tip_url;
   }
-  $(".tip_panel").on('click', function(){
+  $(".description_and_footer").on('click', function(){
     clickTip($(this));
   });
   
