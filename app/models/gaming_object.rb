@@ -57,6 +57,6 @@ class GamingObject < ActiveRecord::Base
     end
     
     def image_src
-        asset_path(image_path)
+        ActionController::Base.helpers.asset_path(image_path)
     end
 end
