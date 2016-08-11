@@ -63,7 +63,7 @@ You can ask for the list of all maps here :
 You can ask for a specific map by its slug or its id here :
 > http://www.overwatch-tips.com/api/v1/maps/dorado
 
-> http://www.overwatch-tips.com/api/v1/characters/22
+> http://www.overwatch-tips.com/api/v1/maps/22
 
 
 
