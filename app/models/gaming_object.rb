@@ -48,7 +48,7 @@ class GamingObject < ActiveRecord::Base
     def best_tip
         tip = self.highest_score_tip
         if tip
-            TipSerializer.new(tip).to_hash
+            SubTipSerializer.new(tip).to_hash
         else
             nil
         end
