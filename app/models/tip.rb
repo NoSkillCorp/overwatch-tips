@@ -75,6 +75,14 @@ class Tip < ActiveRecord::Base
         end
     end
     
+    def playing_sentence
+        if gaming_object.is_a?(Character)
+            "Playing #{category} #{gaming_object.name}"
+        elsif gaming_object.is_a?(Map)
+            "Playing #{category} in #{gaming_object.name}"
+        end
+    end
+    
     def self.greatest_tips(number_of_tips, page_num=1)
         self.ordered_by_score.page(page_num).per(number_of_tips)
     end

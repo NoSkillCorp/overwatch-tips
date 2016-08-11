@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   scope '/api' do
     scope '/v1' do
       get 'tips/random', to: 'api/tips#random'
+      get 'gaming_objects', to: 'api/gaming_objects#index'
     end
   end
   
