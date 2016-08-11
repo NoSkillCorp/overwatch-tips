@@ -40,6 +40,7 @@ You can ask for the list of all characters here :
 
 You can ask for a specific character by its slug or its id here :
 > http://www.overwatch-tips.com/api/v1/characters/bastion
+
 > http://www.overwatch-tips.com/api/v1/characters/1
 
 ## Maps
@@ -61,6 +62,7 @@ You can ask for the list of all characters here :
 
 You can ask for a specific character by its slug or its id here :
 > http://www.overwatch-tips.com/api/v1/maps/dorado
+
 > http://www.overwatch-tips.com/api/v1/characters/22
 
 
