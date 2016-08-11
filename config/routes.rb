@@ -22,6 +22,12 @@ Rails.application.routes.draw do
     end
   end
   
+  scope '/api' do
+    scope '/v1' do
+      get 'tips/random', to: 'api/tips#random'
+    end
+  end
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
