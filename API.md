@@ -1,5 +1,7 @@
 #Overwatch Tips API
 
+Here's a list of the API endpoints to communicate with overwatch-tips.com. All requests are `GET` requests.
+
 ##Tips
 
 Here is an example of json of a tip :
