@@ -15,6 +15,16 @@
 //= require_tree .
 
 $(document).ready(function() {
+  
+  //A Click on any part of a tip redirects to the show of this tip
+  function clickTip(panel){
+    tip_url = panel.attr('data-tip-url');
+    window.location = tip_url;
+  }
+  $(".description_and_footer").on('click', function(){
+    clickTip($(this));
+  });
+  
     
   //Clears errors on tip form
   function clearError(category) {
