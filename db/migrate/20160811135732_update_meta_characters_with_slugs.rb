@@ -1,4 +1,4 @@
-class UpdateMetaCharacters < ActiveRecord::Migration
+class UpdateMetaCharactersWithSlugs < ActiveRecord::Migration
   def change
     reaper      = Character.find_by(name: "Reaper")
     tracer      = Character.find_by(name: "Tracer")
