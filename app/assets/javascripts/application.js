@@ -19,7 +19,9 @@ $(document).ready(function() {
   //A Click on any part of a tip redirects to the show of this tip
   function clickTip(element){
     tip_url = element.closest(".tip_panel").attr('data-tip-url');
-    window.location = tip_url;
+    if(tip_url){
+      window.location = tip_url;
+    }
   }
   $(".description_and_footer, .tip_score, .tip_posneg_scores").on('click', function(){
     clickTip($(this));

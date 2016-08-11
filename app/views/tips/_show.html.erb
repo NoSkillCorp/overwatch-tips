@@ -5,7 +5,7 @@
 
 
 <div class="<%= klass %>">
-    <div class="panel panel-default tip_panel <%= "grow" unless big_show %> <%= tip.is_voted?(@user) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>"  data-tip-url="<%=character_tip_url(tip.gaming_object, tip)%>">
+    <div class="panel panel-default tip_panel <%= "grow" unless big_show %> <%= tip.is_voted?(@user) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>"  data-tip-url="<%= character_tip_url(tip.gaming_object, tip) unless big_show %>">
       
       <div class="panel-body text-justify tip_body">
         <div class="">
