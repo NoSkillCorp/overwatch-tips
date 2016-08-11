@@ -53,4 +53,8 @@ class GamingObject < ActiveRecord::Base
             nil
         end
     end
+    
+    def image_src
+        asset_path(image_path)
+    end
 end

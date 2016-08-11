@@ -18,7 +18,7 @@ $(document).ready(function() {
   
   //A Click on any part of a tip redirects to the show of this tip
   function clickTip(element){
-    tip_url = element.closest(".tip_panel").attr('data-tip-url');
+    var tip_url = element.closest(".tip_panel").attr('data-tip-url');
     if(tip_url){
       window.location = tip_url;
     }
