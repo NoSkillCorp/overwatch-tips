@@ -87,4 +87,11 @@ class Tip < ActiveRecord::Base
         self.ordered_by_vote_count.page(page_num).per(number_of_tips)
     end
     
+    def self.random(**args)
+       current_tip_id = args[:current_tip].try(:id) || args[:current_tip_id]
+       random_tip_id = (current_tip_id ? Tip.where.not(id: current_tip_id) : Tip).pluck(:id).sample
+       random_tip = Tip.find(random_tip_id)
+       return random_tip.score >= 0 ? random_tip : self.random
+    end
+    
 end
