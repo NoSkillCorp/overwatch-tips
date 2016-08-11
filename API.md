@@ -57,10 +57,10 @@ Here is an example of json of a map :
 }
 ```
 
-You can ask for the list of all characters here :
+You can ask for the list of all maps here :
 > http://www.overwatch-tips.com/api/v1/maps
 
-You can ask for a specific character by its slug or its id here :
+You can ask for a specific map by its slug or its id here :
 > http://www.overwatch-tips.com/api/v1/maps/dorado
 
 > http://www.overwatch-tips.com/api/v1/characters/22
