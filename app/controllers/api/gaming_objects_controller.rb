@@ -1,4 +1,5 @@
 class Api::GamingObjectsController < ApplicationController
+    before_action :set_gaming_object, only: [:show]
 
     def characters
         gaming_objects = Character.all
@@ -10,8 +11,25 @@ class Api::GamingObjectsController < ApplicationController
         render json: gaming_objects
     end
     
-    def gaming_objects
-        gaming_objects = GamingObject.all
+    def index
+        gaming_objects = GamingObject.where(type: params[:type])
         render json: gaming_objects
+    end
+
+    def show
+        render json: @gaming_object
+    end
+    
+    private
+    
+    # Use callbacks to share common setup or constraints between actions.
+    def set_gaming_object
+      id = params[:id]
+      @gaming_object = GamingObject.find_by(id: id) || GamingObject.find_by(slug: id)
+    end
+    
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def gaming_objects_params
+      params.permit(:id, :name, :slug, :type)
     end
 end

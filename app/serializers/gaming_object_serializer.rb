@@ -1,3 +1,3 @@
 class GamingObjectSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :type, :slug
+  attributes :id, :type, :name, :slug, :description, :best_tip
 end
