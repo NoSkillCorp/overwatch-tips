@@ -9,6 +9,7 @@ class TipsController < ApplicationController
     @tip = Tip.new(tip_params.merge(user: @user))
     
     if @tip.save
+      @tip.upvote(@user)
       render partial: 'tips/show', locals: { tip: @tip }
     else
       render json: @tip.errors, status: :unprocessable_entity
