@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index'
   get 'news', to: 'home#news'
   
+  get 'profile', to: 'users#show'
+  
   resources :characters, controller: :gaming_objects, type: "Character", only: [:index, :show] do
     resources :tips, only: [:show]
   end
