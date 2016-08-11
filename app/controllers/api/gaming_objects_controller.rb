@@ -24,8 +24,7 @@ class Api::GamingObjectsController < ApplicationController
     
     # Use callbacks to share common setup or constraints between actions.
     def set_gaming_object
-      id = params[:id]
-      @gaming_object = GamingObject.find_by(id: id) || GamingObject.find_by(slug: id)
+      @gaming_object = GamingObject.friendly.find(params[:id])
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.
