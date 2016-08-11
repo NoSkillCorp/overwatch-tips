@@ -9,14 +9,13 @@ Here is an example of json of a tip :
 {
     "id": 12,
     "category": "as",
-    "gaming_object_type": "Character",
-    "gaming_object_id": 1,
     "playing_sentence": "Playing as Bastion",
     "score":11,
     "positive_score":13,
     "negative_score":2,
     "description": "It's really useful to not die in order to kill people",
-    "created_at": "2016-05-06T16:08:04.334Z"
+    "created_at": "2016-05-06T16:08:04.334Z",
+    "gaming_object": {...}
 }
 ```
 
@@ -31,6 +30,7 @@ Here is an example of json of a character :
     "id":127,
     "type":"Character",
     "name":"Bastion",
+    "image_src":"/assets/characters/bastion.png",
     "slug":"bastion",
     "description":"Bip bip bop bowi bip !",
     "best_tip":{...}
@@ -53,6 +53,7 @@ Here is an example of json of a map :
     "id":148,
     "type":"Map",
     "name":"Dorado",
+    "image_src":"/assets/maps/dorado.png",
     "slug":"dorado",
     "description":"Mexico City, Mexico",
     "best_tip":{...}

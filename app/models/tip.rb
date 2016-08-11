@@ -105,5 +105,5 @@ class Tip < ActiveRecord::Base
        random_tip = Tip.find(random_tip_id)
        return random_tip.score >= 0 ? random_tip : self.random
     end
-    
+
 end

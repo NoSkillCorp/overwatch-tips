@@ -1,6 +1,4 @@
 include GamingObjectsHelper
-include ActionView::Helpers::AssetUrlHelper
-
 
 class GamingObject < ActiveRecord::Base
     extend FriendlyId
