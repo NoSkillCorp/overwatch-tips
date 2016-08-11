@@ -1,4 +1,6 @@
 include GamingObjectsHelper
+include ActionView::Helpers::AssetUrlHelper
+
 
 class GamingObject < ActiveRecord::Base
     extend FriendlyId
@@ -52,5 +54,9 @@ class GamingObject < ActiveRecord::Base
         else
             nil
         end
+    end
+    
+    def image_src
+        image_url("#{image_path}")
     end
 end
