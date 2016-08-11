@@ -1,15 +1,5 @@
 class Api::GamingObjectsController < ApplicationController
     before_action :set_gaming_object, only: [:show]
-
-    def characters
-        gaming_objects = Character.all
-        render json: gaming_objects
-    end
-    
-    def maps
-        gaming_objects = Map.all
-        render json: gaming_objects
-    end
     
     def index
         gaming_objects = GamingObject.where(type: params[:type])

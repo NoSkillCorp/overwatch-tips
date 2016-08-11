@@ -17,11 +17,11 @@
 $(document).ready(function() {
   
   //A Click on any part of a tip redirects to the show of this tip
-  function clickTip(panel){
-    tip_url = panel.attr('data-tip-url');
+  function clickTip(element){
+    tip_url = element.closest(".tip_panel").attr('data-tip-url');
     window.location = tip_url;
   }
-  $(".description_and_footer").on('click', function(){
+  $(".description_and_footer, .tip_score, .tip_posneg_scores").on('click', function(){
     clickTip($(this));
   });
   

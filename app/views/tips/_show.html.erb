@@ -5,7 +5,7 @@
 
 
 <div class="<%= klass %>">
-    <div class="panel panel-default tip_panel <%= "grow" unless big_show %> <%= tip.is_voted?(@user) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>">
+    <div class="panel panel-default tip_panel <%= "grow" unless big_show %> <%= tip.is_voted?(@user) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>"  data-tip-url="<%=character_tip_url(tip.gaming_object, tip)%>">
       
       <div class="panel-body text-justify tip_body">
         <div class="">
@@ -46,7 +46,7 @@
           <% end %>
         <% end %>
         
-        <div class="description_and_footer" data-tip-url="<%=character_tip_url(tip.gaming_object, tip)%>">
+        <div class="description_and_footer">
           <span class="<%= 'smaller-description' if tip.score < 0 %> <%= 'big-show' if big_show %> tip_description">
             <%= raw description_with_links(tip.description) %>
           </span>
