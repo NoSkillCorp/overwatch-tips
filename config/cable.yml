@@ -1,0 +1,9 @@
+production:
+  adapter: redis
+  url: <%=ENV['REDIS_URL']%>
+  
+development:
+  adapter: async
+
+test:
+  adapter: async

@@ -3,6 +3,7 @@
 <head>
   <title>Overwatch-tips</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= action_cable_meta_tag %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
@@ -27,9 +28,15 @@
     ga('send', 'pageview');
 
   </script>
-
 </head>
 <body class="<%= controller_name == "home" && action_name == "index" ? @is_mobile ? "body-mobile-home" : "body-home" : "body-else" %>">
+  
+  <%= redux_store("ReduxStore", props: {
+      counter: {
+        tips: @tips_count,
+        votes: @votes_count
+      }
+  }) %>
   
   <%= render "layouts/header" %>
   

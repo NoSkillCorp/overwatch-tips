@@ -1,0 +1,12 @@
+{
+  "name": "Overwatch-tips.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client/app/index.js",
+  "keywords": ["overwatch"],
+  "author": "NoSkillsCorp",
+  "license": "ISC",
+  "scripts": {
+    "build": "(cd client && npm install && npm run build:production)"
+  }
+}

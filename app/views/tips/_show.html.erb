@@ -7,7 +7,7 @@
 <div class="<%= klass %>">
     <div class="panel panel-default tip_panel <%= "grow" unless big_show %> <%= tip.is_voted?(@user) ? "is_voted" : "is_not_voted" %>" id="tip_<%= tip.id %>"  data-tip-url="<%= character_tip_url(tip.gaming_object, tip) unless big_show %>">
       
-      <div class="panel-body text-justify tip_body">
+      <div class="panel-body text-justify">
         <div class="">
           <div class="pull-left tip_score_panel text-center">
             <div class="tip_score">
@@ -58,8 +58,6 @@
             <span class="time_ago pull-right"><%= time_ago_in_words(tip.created_at)%> ago</span>
           </div>
         </div>
-      
-        
       </div>      
       
       <% if tip.user == @user %>
@@ -67,6 +65,5 @@
           <%= render partial: "tips/edit_form", locals: {tip: tip} %>
         </div>
       <% end %>
-      
     </div>
 </div>

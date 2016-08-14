@@ -10,11 +10,7 @@ class Tip < ActiveRecord::Base
     
     scope :ordered_by_score, -> { joins(:votes).select("SUM(votes.weight) as score, tips.*").group('tips.id').order("score DESC") }
     
-    if(Rails.env.production?)
-        scope :ordered_by_vote_count, -> { joins(:votes).where("votes.weight > 0").where("votes.created_at" => (DateTime.now - 48.hours)..DateTime.now).select("COUNT(votes.id) - DATE_PART('days', NOW()::timestamp - tips.created_at::timestamp) as vote_count, tips.*").group('tips.id').order("vote_count DESC") }
-    else
-        scope :ordered_by_vote_count, -> { joins(:votes).where("votes.weight > 0").where("votes.created_at" => (DateTime.now - 48.hours)..DateTime.now).select("COUNT(votes.id) - (julianday('now') - julianday(tips.created_at)) as vote_count, tips.*").group('tips.id').order("vote_count DESC") }
-    end
+    scope :ordered_by_vote_count, -> { joins(:votes).where("votes.weight > 0").where("votes.created_at" => (DateTime.now - 48.hours)..DateTime.now).select("COUNT(votes.id) - DATE_PART('days', NOW()::timestamp - tips.created_at::timestamp) as vote_count, tips.*").group('tips.id').order("vote_count DESC") }
     
     scope :joins_last_vote, -> { joins(:votes).joins("LEFT OUTER JOIN votes other_votes ON votes.tip_id = other_votes.tip_id AND (votes.created_at < other_votes.created_at OR (votes.created_at = other_votes.created_at AND votes.id < other_votes.id))").where("other_votes.id IS NULL") }
     
