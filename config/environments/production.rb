@@ -91,6 +91,5 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   
   # URL to the websocket
-  # config.action_cable.url = "wss://overwatch-tips-gui.heroku.com/cable"
-  config.action_cable.allowed_request_origins = ['https://overwatch-tips-gui.herokuapp.com', 'http://overwatch-tips-gui.herokuapp.com']
+  config.action_cable.allowed_request_origins = ENV['AC_ALLOWED_ORIGINS'].try(:split, ";") 
 end
