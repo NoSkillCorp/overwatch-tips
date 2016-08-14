@@ -1,4 +1,4 @@
-class Add50Tips < ActiveRecord::Migration
+class Add50TipsWithSlugs < ActiveRecord::Migration
   def change
     character = Character.find_by(name: "Reaper")
     Tip.create(gaming_object: character, category: "as", description: "Reaper isn't actually invisible when he uses his Wraith Form. I've overheard on streams that people believe they're \"stealthed\" whenever they use his Wraith form, but it's primarily used as a tool to escape players when you're in danger, to reposition yourself in close-quarters to secure kills on targets that are foolish enough to follow you.")

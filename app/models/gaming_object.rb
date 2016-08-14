@@ -38,4 +38,23 @@ class GamingObject < ActiveRecord::Base
     def empty_categories_hash
         self.class::CATEGORIES.map{ |category| [category, []] }.to_h
     end
+    
+    #Get the tip with the highest score for this gaming_object
+    def highest_score_tip
+       Tip.where(gaming_object_id: self.id).ordered_by_score.first
+    end
+    
+    #rename & serialize of highest_score_tip() for API purposes
+    def best_tip
+        tip = self.highest_score_tip
+        if tip
+            SubTipSerializer.new(tip).to_hash
+        else
+            nil
+        end
+    end
+    
+    def image_src
+        ActionController::Base.helpers.asset_path(image_path)
+    end
 end

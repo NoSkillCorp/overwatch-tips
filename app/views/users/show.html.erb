@@ -1,0 +1,19 @@
+<h1 class="page-title text-center">Your Tips</h1>
+
+<% if @tips.present? %>
+    
+    <p class="text-center">All the tips you created from the beginning of time !</p>
+    
+    <div class="row">
+        <% @tips.each do |tip| %>
+            <%= render partial: "tips/show", locals: { tip: tip, with_gaming_object_description: true } %>
+        <% end %>
+    </div>
+    
+<% else %>
+
+    <p class="text-center">You didn't create any tip ! So, you're a 'vote only' person, mmh ?</p>
+    
+    <p class="text-center"><a href="<%= characters_path %>">Choose your favorite character</a> and create a tip right now !</p>
+
+<% end %>

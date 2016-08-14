@@ -12,10 +12,12 @@
     
     <%= render partial: "tips/show", locals: {tip: tip, big_show: true} %>
     
-    <div class="col-md-12">
-        <%= link_to character_tip_path(@random_next_tip.gaming_object, @random_next_tip), class: "btn btn-default" do %>
-            <i class="fa fa-random" aria-hidden="true"></i> Random
-        <% end %>
-    </div>
+    <% if @random_next_tip.present? %>
+        <div class="col-md-12">
+            <%= link_to character_tip_path(@random_next_tip.gaming_object, @random_next_tip), class: "btn btn-default" do %>
+                <i class="fa fa-random" aria-hidden="true"></i> Random
+            <% end %>
+        </div>
+    <% end %>
 </div>
 

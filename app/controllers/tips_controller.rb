@@ -9,6 +9,9 @@ class TipsController < ApplicationController
     @tip = Tip.new(tip_params.merge(user: @user))
     
     if @tip.save
+      # Auto upvote own tip at creation
+      @tip.upvote(@user)
+      # Send message via websocket
       broadcast
       render partial: 'tips/show', locals: { tip: @tip }
     else
@@ -18,13 +21,18 @@ class TipsController < ApplicationController
   
   def show
     #Gets one of the trending tips as the random next one
-    @random_next_tip = Tip.ordered_by_vote_count.where.not(id: @tip.id).sample
+    @random_next_tip = Tip.random(current_tip: @tip)
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @tip }
+    end
   end
   
   def update
     if @tip.user == @user
       if @tip.update(tip_params)
-        render json: { description: description_with_links(@tip.description) }
+        render json: { description: raw(description_with_links(@tip.description)) }
       else
         render json: @tip.errors, status: :unprocessable_entity
       end

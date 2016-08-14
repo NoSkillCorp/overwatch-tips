@@ -1,4 +1,4 @@
-class UpdateImgSources < ActiveRecord::Migration
+class PopulateMapsWithSlugs < ActiveRecord::Migration
   def change
     # m1 = Map.find_by(name: "Kings Row")
     # m1.image_path = "maps/KingsRow.png"

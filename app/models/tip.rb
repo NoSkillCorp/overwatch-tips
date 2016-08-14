@@ -9,7 +9,9 @@ class Tip < ActiveRecord::Base
     validates :description, presence: true, length: { maximum: 1000 }
     
     scope :ordered_by_score, -> { joins(:votes).select("SUM(votes.weight) as score, tips.*").group('tips.id').order("score DESC") }
-    scope :ordered_by_vote_count, -> { joins(:votes).where("votes.weight > 0").where("votes.created_at" => (DateTime.now - 48.hours)..DateTime.now).select("COUNT(votes.id) as vote_count, tips.*").group('tips.id').order("vote_count DESC") }
+    
+    scope :ordered_by_vote_count, -> { joins(:votes).where("votes.weight > 0").where("votes.created_at" => (DateTime.now - 48.hours)..DateTime.now).select("COUNT(votes.id) - DATE_PART('days', NOW()::timestamp - tips.created_at::timestamp) as vote_count, tips.*").group('tips.id').order("vote_count DESC") }
+    
     scope :joins_last_vote, -> { joins(:votes).joins("LEFT OUTER JOIN votes other_votes ON votes.tip_id = other_votes.tip_id AND (votes.created_at < other_votes.created_at OR (votes.created_at = other_votes.created_at AND votes.id < other_votes.id))").where("other_votes.id IS NULL") }
     
     def score
@@ -69,6 +71,18 @@ class Tip < ActiveRecord::Base
         end
     end
     
+    def playing_sentence
+        if gaming_object.is_a?(Character)
+            "Playing #{category} #{gaming_object.name}"
+        elsif gaming_object.is_a?(Map)
+            "Playing #{category} in #{gaming_object.name}"
+        end
+    end
+    
+    def gaming_object_type
+       gaming_object.type
+    end
+    
     def self.greatest_tips(number_of_tips, page_num=1)
         self.ordered_by_score.page(page_num).per(number_of_tips)
     end
@@ -81,4 +95,11 @@ class Tip < ActiveRecord::Base
         self.ordered_by_vote_count.page(page_num).per(number_of_tips)
     end
     
+    def self.random(**args)
+       current_tip_id = args[:current_tip].try(:id) || args[:current_tip_id]
+       random_tip_id = (current_tip_id ? Tip.where.not(id: current_tip_id) : Tip).pluck(:id).sample
+       random_tip = Tip.find(random_tip_id)
+       return random_tip.score >= 0 ? random_tip : self.random
+    end
+
 end
