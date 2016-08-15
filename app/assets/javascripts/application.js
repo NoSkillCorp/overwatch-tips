@@ -83,6 +83,11 @@ $(document).ready(function() {
     }
     bind_score_events(new_tip_panel);
     bind_edit_events(new_tip_panel);
+    //Bind tip click event
+    new_tip_panel.find(".tip_description, .tip_score, .tip_posneg_scores").on('click', function(){
+      clickTip($(this));
+    });
+  
     $('.form-'+category+'-description').val("");
   }
   
