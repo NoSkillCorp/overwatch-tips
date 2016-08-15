@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#Serializer for API
+gem 'active_model_serializers', '>= 0.10.0'
+
 #Icons
 gem "font-awesome-rails"
 #Pagination
