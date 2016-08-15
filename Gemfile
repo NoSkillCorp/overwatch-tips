@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-#Serializer for API
-gem 'active_model_serializers', '~> 0.10.0'
-
 #Icons
 gem "font-awesome-rails"
 #Pagination
@@ -11,7 +8,7 @@ gem 'kaminari'
 gem 'friendly_id', '~> 5.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
