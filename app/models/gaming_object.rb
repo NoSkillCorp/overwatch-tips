@@ -55,6 +55,6 @@ class GamingObject < ActiveRecord::Base
     end
     
     def image_src
-        ActionController::Base.helpers.asset_path(image_path)
+        image_path.present? ? ActionController::Base.helpers.asset_path(image_path) : ""
     end
 end
