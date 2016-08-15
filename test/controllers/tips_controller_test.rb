@@ -15,8 +15,10 @@ class TipsControllerTest < ActionController::TestCase
     user = User.create
     tip = Tip.create(description: "bla", category: "as", gaming_object: @character, user: user)
     assert_equal "bla", tip.description
-    post :update, params: { id: tip.id, description: "ratata" }, session: { cookies: { user_id: user.user_cookie } }
-    assert_equal "ratata", tip.description
+    
+    cookies["user_id"] = user.user_cookie
+    post :update, params: { id: tip.id, tip: { description: "ratata"} }
+    assert_equal "ratata", Tip.find(tip.id).description
     
   end
   
@@ -44,18 +46,26 @@ class TipsControllerTest < ActionController::TestCase
   end
   
   test "several people should be able to vote" do
-    tip = Tip.create(description: "bla", category: "as", gaming_object: @character)
+    user = User.create
+    tip = Tip.create(description: "bla", category: "as", gaming_object: @character, user: user)
     assert_equal 0, tip.score
+    
+    cookies["user_id"] = user.user_cookie
+    ap "downvoter 1 : #{user.user_cookie}"
     post :downvote, params: { id: tip.id }
     assert_equal (-1), tip.score
+    
     user2 = User.create
     cookies["user_id"] = user2.user_cookie
-    post :downvote, params: { id: tip.id }, cookies: { user_id: user2.user_cookie }
-    assert_equal (-2), tip.score
+    ap "downvoter 2 : #{user2.user_cookie}"
+    post :downvote, params: { id: tip.id }
+    assert_equal (-2), Tip.find(tip.id).score
+    
     user3 = User.create
     cookies["user_id"] = user3.user_cookie
-    post :upvote, params: { id: tip.id },  cookies: { user_id: user3.user_cookie }
-    assert_equal (-1), tip.score
+    ap "downvoter 3 : #{user3.user_cookie}"
+    post :upvote, params: { id: tip.id }
+    assert_equal (-1), Tip.find(tip.id).score
   end
   
 end

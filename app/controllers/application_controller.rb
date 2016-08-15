@@ -12,10 +12,14 @@ class ApplicationController < ActionController::Base
       user_ip_adress = request.remote_ip
       user_agent = request.user_agent
       user_cookie = cookies["user_id"]
+      #Attempt to find the user by its user_cookie
       @user = User.find_by(user_cookie: user_cookie)
       if user_cookie.blank? || @user.blank?
+        #If not found by user_cookie, attempt to find the user by its IP & user_agent
         @user = User.find_by(ip_adress: user_ip_adress, user_agent: user_agent)
+        #And if no user is found with ip & user_agent, then no user is set.
       else
+        #If the user is found by user_cookie, then update his IP & user_agent
         @user.update(user_agent: user_agent) if user_agent != @user.user_agent
         @user.update(ip_adress: user_ip_adress) if user_ip_adress != @user.ip_adress
       end
@@ -23,6 +27,8 @@ class ApplicationController < ActionController::Base
   
     #Find or Assign a user, when he tips or votes
     def assign_user
+      return @user if @user.present?
+      
       user_ip_adress = request.remote_ip
       user_agent = request.user_agent
       user_cookie = cookies["user_id"]
