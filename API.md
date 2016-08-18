@@ -78,7 +78,7 @@ You can ask for all the positive tips of a specific map by its slug or its id he
 > http://www.overwatch-tips.com/api/v1/maps/dorado/tips
 
 You can even filter the category of the tips by "defense", "offense" or "both" :
-> http://www.overwatch-tips.com/api/v1/maps/dorado/tips?category="defense
+> http://www.overwatch-tips.com/api/v1/maps/dorado/tips?category=defense
 
 
 
