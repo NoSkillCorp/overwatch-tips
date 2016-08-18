@@ -2,7 +2,7 @@ class Api::GamingObjectsController < ApplicationController
     before_action :set_gaming_object, only: [:show]
     
     def index
-        gaming_objects = GamingObject.where(type: params[:type])
+        gaming_objects = GamingObject.where(type: params[:type]).order(:name)
         render json: gaming_objects
     end
 
@@ -19,6 +19,6 @@ class Api::GamingObjectsController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def gaming_objects_params
-      params.permit(:id, :name, :slug, :type)
+      params.permit(:id, :type)
     end
 end

@@ -45,6 +45,14 @@ You can ask for a specific character by its slug or its id here :
 
 > http://www.overwatch-tips.com/api/v1/characters/1
 
+You can ask for all the positive tips of a specific character by its slug or its id here :
+> http://www.overwatch-tips.com/api/v1/characters/bastion/tips
+
+> http://www.overwatch-tips.com/api/v1/characters/1/tips
+
+You can even filter the category of the tips by "as", "with" or "against" :
+> http://www.overwatch-tips.com/api/v1/characters/bastion/tips?category=as
+
 ## Maps
 
 Here is an example of json of a map :

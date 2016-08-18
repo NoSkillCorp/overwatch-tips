@@ -2,8 +2,8 @@
 
 one:
   weight: 1
-  tip_id: 
+  tip_id: 1
 
 two:
   weight: 1
-  tip_id: 
+  tip_id: 3
