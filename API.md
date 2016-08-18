@@ -48,8 +48,6 @@ You can ask for a specific character by its slug or its id here :
 You can ask for all the positive tips of a specific character by its slug or its id here :
 > http://www.overwatch-tips.com/api/v1/characters/bastion/tips
 
-> http://www.overwatch-tips.com/api/v1/characters/1/tips
-
 You can even filter the category of the tips by "as", "with" or "against" :
 > http://www.overwatch-tips.com/api/v1/characters/bastion/tips?category=as
 
@@ -76,6 +74,11 @@ You can ask for a specific map by its slug or its id here :
 
 > http://www.overwatch-tips.com/api/v1/maps/22
 
+You can ask for all the positive tips of a specific map by its slug or its id here :
+> http://www.overwatch-tips.com/api/v1/maps/dorado/tips
+
+You can even filter the category of the tips by "defense", "offense" or "both" :
+> http://www.overwatch-tips.com/api/v1/maps/dorado/tips?category="defense
 
 
 

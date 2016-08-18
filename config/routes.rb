@@ -28,7 +28,9 @@ Rails.application.routes.draw do
     scope '/v1' do
       get 'tips/random', to: 'api/tips#random'
       
-      resources :maps, controller: "api/gaming_objects", type: "Map", only: [:index, :show]
+      resources :maps, controller: "api/gaming_objects", type: "Map", only: [:index, :show] do
+        resources :tips, controller: "api/tips", only: [:index]
+      end
       resources :characters, controller: "api/gaming_objects", type: "Character", only: [:index, :show] do
         resources :tips, controller: "api/tips", only: [:index]
       end
