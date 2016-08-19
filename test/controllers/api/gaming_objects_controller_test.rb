@@ -16,5 +16,11 @@ class Api::GamingObjectsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal Character.count, JSON.parse(@response.body).length
   end
+  
+  test "bad slug should make an error response" do
+    get :index, params: { type: "Character", id: "tata"}
+    assert_response :bad_request
+    assert_equal({"errors"=>"Bad id/slug argument : tata"}, JSON.parse(@response.body))
+  end
 
 end

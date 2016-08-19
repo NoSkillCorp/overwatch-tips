@@ -20,4 +20,15 @@ class Api::TipsControllerTest < ActionController::TestCase
     assert_equal 1, JSON.parse(@response.body).length
   end
   
+  test "bad category should make an error response" do
+    get :index, params: { type: "Character", character_id: "zenyatta", category: "defense" }
+    assert_response :bad_request
+    assert_equal({"errors"=>"Bad category argument : defense"}, JSON.parse(@response.body))
+  end
+
+  test "bad slug should make an error response" do
+    get :index, params: { type: "Character", character_id: "tata"}
+    assert_response :bad_request
+    assert_equal({"errors"=>"Bad id/slug argument : tata"}, JSON.parse(@response.body))
+  end
 end
