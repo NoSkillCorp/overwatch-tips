@@ -7,5 +7,10 @@ class UsersControllerTest < ActionController::TestCase
         get :show
         assert_response :success
     end
+    
+    test "register should update user" do
+       #post :register, params: {"email" => "dev@test.cnil", password: "123654", password_confirmation: "123654"} 
+       #assert_response :success
+    end
 
 end

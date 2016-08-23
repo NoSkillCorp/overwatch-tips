@@ -11,13 +11,19 @@ class User < ActiveRecord::Base
     
     before_save :assign_user_cookie, :set_is_registered
     
+    def register(args={})
+        self.email = args[:email]
+        self.password = args[:password]
+        self.password_confirmation = args[:password_confirmation]
+        self.is_registered = true
+        self.save
+    end
     
     #if we are about to save it for the first time and the email is not nil
     def set_is_registered
         if !self.persisted? && !self.email.nil?
             self.is_registered = true
         end
-        return
     end
     
     #assigns an unused user_cookie

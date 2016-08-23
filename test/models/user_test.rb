@@ -45,12 +45,23 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test "if the user is registered, password should equal password_confirmation" do
-      user = User.create(is_registered: true, email: "caca@bite.com", password: "123456789", password_confirmation: "23")
-      assert_equal({:password_confirmation=>["is invalid"]}, user.errors.messages)
+    user = User.create(is_registered: true, email: "caca@bite.com", password: "123456789", password_confirmation: "23")
+    assert_equal({:password_confirmation=>["is invalid"]}, user.errors.messages)
   end
   
   test "if the user is registered, password sould be between 8 and 128 characters" do
     user = User.create(is_registered: true, email: "caca@bite.com", password: "2", password_confirmation: "2")
     assert_equal({:password=>["should be between 6 and 128 characters"]}, user.errors.messages)
+  end
+  
+  test "register should update a user with email & encrypted password" do
+    user = User.create(ip_adress: "123.132.12.56", user_agent: "blah")
+    assert user.persisted?
+    user.register(email: "dev@test.com", password: "123456", password_confirmation: "123456")
+    
+    persisted_user = User.find(user.id)
+    assert_equal "dev@test.com", persisted_user.email
+    assert persisted_user.encrypted_password.present?
+    assert persisted_user.is_registered
   end
 end

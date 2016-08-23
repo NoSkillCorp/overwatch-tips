@@ -5,7 +5,7 @@
 
 <p class="text-center">
     <% if user_signed_in? %>
-        Gongratulations, you are registered !
+        Gongratulations, you are registered and signed in !
     <% else %>
         <%= form_tag(register_path, method: :post) do -%>
           <%= devise_error_messages! %>
@@ -15,10 +15,7 @@
           </div>
         
           <div class="field">
-            <%= label_tag :password %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
+            <%= label_tag :password %><br />
             <%= password_field_tag :password, "", autocomplete: "off" %>
           </div>
         
