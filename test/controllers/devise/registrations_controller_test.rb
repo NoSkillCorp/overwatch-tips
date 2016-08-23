@@ -13,11 +13,11 @@ class Devise::RegistrationsControllerTest < ActionController::TestCase
         end
     end
     
-    #quick check of a validation
-    # test "sign_up without email should not create user" do
-    #     assert_difference 'User.count', 0 do
-    #         post :create, params: { "user" => { "email" => "", "password" => "123456789", "password_confirmation" => "123456789" } }
-    #     end
-    # end
+    #quick check of a user validation, just to be sure
+    test "sign_up without email should not create user" do
+        assert_no_difference 'User.count' do
+            post :create, params: { "user" => { "email" => "", "password" => "123456789", "password_confirmation" => "123456789" } }
+        end
+    end
 
 end
