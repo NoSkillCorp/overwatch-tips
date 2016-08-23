@@ -34,6 +34,8 @@
   <%= render "layouts/header" %>
   
   <div class="main-container <%=  @container %>">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
   </div>
   
