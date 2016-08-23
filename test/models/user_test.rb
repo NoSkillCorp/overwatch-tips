@@ -19,33 +19,38 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 32, user_cookie
   end
   
-  test "if user is registerd, email should be present" do
-    user = User.create(is_registered: true, email: nil, password: "123456789")
+  test "if user is registered, email should be present" do
+    user = User.create(is_registered: true, email: nil, password: "123456789", password_confirmation: "123456789")
     assert_equal({email: ["is missing"]}, user.errors.messages)
   end
   
-  test "if user is registerd, email should be valid" do
-    user = User.create(is_registered: true, email: "bad mail", password: "123456789")
+  test "if user is registered, email should be valid" do
+    user = User.create(is_registered: true, email: "bad mail", password: "123456789", password_confirmation: "123456789")
     assert_equal({:email=>["is invalid"]}, user.errors.messages)
   end
   
-  test "if user is registerd, email should not be already used" do
+  test "if user is registered, email should not be already used" do
     #first, create a user with an email
-    existing_user = User.create(is_registered: true, email: "caca@bite.com", password: "123456789")
+    existing_user = User.create(is_registered: true, email: "caca@bite.com", password: "123456789", password_confirmation: "123456789")
     assert_not_nil existing_user.id
     
     #then check if we can create another user with the same email
-    user = User.create(is_registered: true, email: "caca@bite.com", password: "123456789")
+    user = User.create(is_registered: true, email: "caca@bite.com", password: "123456789", password_confirmation: "123456789")
     assert_equal({:email=>["is already used"]}, user.errors.messages)
   end
   
-  test "if the user is registerd, password sould be present" do
+  test "if the user is registered, password sould be present" do
     user = User.create(is_registered: true, email: "caca@bite.com")
     assert_equal({:password=>["is missing"]}, user.errors.messages)
   end
   
-  test "if the user is registerd, password sould be between 8 and 128 characters" do
-    user = User.create(is_registered: true, email: "caca@bite.com", password: "2")
+  test "if the user is registered, password should equal password_confirmation" do
+      user = User.create(is_registered: true, email: "caca@bite.com", password: "123456789", password_confirmation: "23")
+      assert_equal({:password_confirmation=>["is invalid"]}, user.errors.messages)
+  end
+  
+  test "if the user is registered, password sould be between 8 and 128 characters" do
+    user = User.create(is_registered: true, email: "caca@bite.com", password: "2", password_confirmation: "2")
     assert_equal({:password=>["should be between 6 and 128 characters"]}, user.errors.messages)
   end
 end
