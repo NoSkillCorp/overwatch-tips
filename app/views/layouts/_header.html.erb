@@ -30,14 +30,14 @@
             </ul>
             <ul class="nav navbar-nav navbar-right tips-and-votes-count">
                 <% if user_signed_in? %>
-                    <li class="sign_in_and_out">
+                    <li class="sign_out">
                         <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
                     </li>
                 <% else %>
-                    <li class="sign_in_and_out">
+                    <li class="log_in">
                         <%= link_to "Log in", new_user_session_path %>
                     </li>
-                    <li class="sign_in_and_out">
+                    <li class="sign_up">
                         <%= link_to "Sign up", new_user_registration_path %>
                     </li>
                 <% end %>
