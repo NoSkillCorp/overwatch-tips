@@ -3,48 +3,51 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  before_action :find_user, :count_votes_and_tips, :set_container
+  before_action :multi_authenticate, :count_votes_and_tips, :set_container
   
   private
   
-    #Find the user if it exists
-    def find_user
-      user_ip_adress = request.remote_ip
-      user_agent = request.user_agent
-      user_cookie = cookies["user_id"]
-      #Attempt to find the user by its user_cookie
-      @user = User.find_by(user_cookie: user_cookie)
-      if user_cookie.blank? || @user.blank?
-        #If not found by user_cookie, attempt to find the user by its IP & user_agent
-        @user = User.find_by(ip_adress: user_ip_adress, user_agent: user_agent)
-        #And if no user is found with ip & user_agent, then no user is set.
+    #find the user, either by devise authentication or by user_cookie
+    def multi_authenticate
+      if user_signed_in?
+        @user = current_user #from devise authentication
       else
-        #If the user is found by user_cookie, then update his IP & user_agent
-        @user.update(user_agent: user_agent) if user_agent != @user.user_agent
-        @user.update(ip_adress: user_ip_adress) if user_ip_adress != @user.ip_adress
+        @user = find_user(request, cookies) #find user by user_cookie
       end
     end
   
-    #Find or creates a user, when he tips or votes
+    #Find the user by user_cookie if it exists
+    def find_user(req, cookies_hash)
+      user = nil
+      user_ip_adress = req.remote_ip
+      user_agent = req.user_agent
+      user_cookie = cookies_hash["user_id"]
+      #Attempt to find the user by its user_cookie
+      user = User.find_by(user_cookie: user_cookie)
+      if user_cookie.blank? || user.blank?
+        #If not found by user_cookie, attempt to find the user by its IP & user_agent
+        user = User.find_by(ip_adress: user_ip_adress, user_agent: user_agent)
+      else
+        #If the user is found by user_cookie, then update his IP & user_agent
+        user.update(user_agent: user_agent) if user_agent != user.user_agent
+        user.update(ip_adress: user_ip_adress) if user_ip_adress != user.ip_adress
+      end
+      return user
+    end
+  
+    #Find or creates a user with a user_cookie
+    # -> used to create a user when he tips or votes and is not connected yet
     def assign_user
-      #If @user is already assigned (by find_user), stop here and don't create a user
+      #If @user is already assigned (by multi_authenticate), stop here and don't create a user
       return @user if @user.present?
-      
-      #TODO refacto all below
+
+      #Otherwise, generates a user with IP & user_agent
       user_ip_adress = request.remote_ip
       user_agent = request.user_agent
       user_cookie = cookies["user_id"]
-      @user = User.find_by(user_cookie: user_cookie)
-      if user_cookie.blank? || @user.blank?
-        @user = User.find_by(ip_adress: user_ip_adress, user_agent: user_agent)
-        if @user.blank?
-          @user = User.create(ip_adress: user_ip_adress, user_agent: user_agent) #generates a new user_cookie
-        end
-        cookies.permanent["user_id"] = { value: @user.user_cookie } #stores the user_cookie in the cookies of the client
-      else
-        @user.update(user_agent: user_agent) if user_agent != @user.user_agent
-        @user.update(ip_adress: user_ip_adress) if user_ip_adress != @user.ip_adress
-      end
+      
+      @user = User.create(ip_adress: user_ip_adress, user_agent: user_agent) #generates a new user with a user_cookie
+      cookies.permanent["user_id"] = { value: @user.user_cookie } #stores the user_cookie in the cookies of the client
     end
     
     def count_votes_and_tips
