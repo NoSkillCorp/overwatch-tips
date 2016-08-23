@@ -25,10 +25,12 @@ class ApplicationController < ActionController::Base
       end
     end
   
-    #Find or Assign a user, when he tips or votes
+    #Find or creates a user, when he tips or votes
     def assign_user
+      #If @user is already assigned (by find_user), stop here and don't create a user
       return @user if @user.present?
       
+      #TODO refacto all below
       user_ip_adress = request.remote_ip
       user_agent = request.user_agent
       user_cookie = cookies["user_id"]
