@@ -1,10 +1,21 @@
 class RegistredUserValidator < ActiveModel::Validator
   def validate(record)
+    #if user is registred (aka if you identify by devise instead of a just a cookie)
     if record.is_registered
-        record.errors[:email] << "is missing" if record.email.blank?
-        record.errors[:email] << "is already used" if User.find_by(email: record.email).present?
-        record.errors[:email] << "is invalid" unless record.email =~ Devise.email_regexp
-        record.errors[:password] << "should be between #{Devise.password_length.begin} and #{Devise.password_length.end} characters" if record.password.length.in?(Devise.password_length)
+        #Check email
+        if record.email.blank?
+            record.errors.add(:email, "is missing")
+        elsif record.email !~ Devise.email_regexp
+            record.errors.add(:email, :invalid)
+        elsif User.find_by(is_registered: true, email: record.email).present?
+            record.errors.add(:email, "is already used")
+        end
+        #Check password
+        if record.password.blank?
+            record.errors.add(:password, "is missing")
+        elsif !record.password.length.in?(Devise.password_length)
+            record.errors.add(:password, :invalid, message: "should be between #{Devise.password_length.begin} and #{Devise.password_length.end} characters")
+        end
     end
   end
 end
