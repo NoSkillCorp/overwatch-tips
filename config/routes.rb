@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index'
   get 'news', to: 'home#news'
   
-  get 'profile', to: 'users#show'
+  scope '/users' do
+    get 'profile', to: 'users#show'
+    post 'register', to: 'users#register'
+  end
   
   resources :characters, controller: :gaming_objects, type: "Character", only: [:index, :show] do
     resources :tips, only: [:show]

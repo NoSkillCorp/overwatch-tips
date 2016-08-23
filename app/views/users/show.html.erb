@@ -1,4 +1,40 @@
-<h1 class="page-title text-center">Your Tips</h1>
+
+
+
+<h1 class="page-title text-center">Profile</h1>
+
+<p class="text-center">
+    <% if user_signed_in? %>
+        Gongratulations, you are registered !
+    <% else %>
+        <%= form_tag(register_path, method: :post) do -%>
+          <%= devise_error_messages! %>
+          <div class="field">
+            <%= label_tag :email %><br />
+            <%= email_field_tag :email, "", autofocus: true, placeholder: "tracer@overwatch.com" %>
+          </div>
+        
+          <div class="field">
+            <%= label_tag :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= password_field_tag :password, "", autocomplete: "off" %>
+          </div>
+        
+          <div class="field">
+            <%= label_tag :password_confirmation %><br />
+            <%= password_field_tag :password_confirmation, "", autocomplete: "off" %>
+          </div>
+        
+          <div class="actions">
+            <%= submit_tag "Register", class: "btn btn-success" %>
+          </div>
+        <% end %>
+    <% end -%>
+</p>
+
+<h2 class="page-title text-center">Your tips</h2>
 
 <% if @tips.present? %>
     
