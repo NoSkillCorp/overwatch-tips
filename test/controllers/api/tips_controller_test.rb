@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Api::TipsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
 
   test "get a random positive tip" do
     get :random

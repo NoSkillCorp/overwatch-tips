@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class TipsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+  
   setup do
     @character = Character.create(name: "mycharac", description: "test")
   end

@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class Api::GamingObjectsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+  
   setup do
     @gaming_object = gaming_objects(:one)
   end
