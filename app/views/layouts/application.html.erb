@@ -33,9 +33,21 @@
   
   <%= render "layouts/header" %>
   
-  <div class="main-container <%=  @container %>">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+  <div class="main-container <%= @container %>">
+    
+      
+      <% if notice.present? || alert.present? %>
+        <%# notice & alerts get their own container if the main-container isn't one %>
+        <div class="<%= 'container' if @container.blank? %>">
+          <% if notice.present? %>
+            <p class="alert success-notice"><%= notice %></p>
+          <% end %>
+          <% if alert.present? %>
+            <p class="alert alert-notice"><%= alert %></p>
+          <% end %>
+        </div>
+      <% end %>
+      
       <%= yield %>
   </div>
   

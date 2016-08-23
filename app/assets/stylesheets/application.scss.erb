@@ -21,6 +21,7 @@
  * violet : 5D16AD, 37076D, 460B8A
  **************************************************************
  */
+
  
 body {
     font-family: 'Century-Gothic' !important;
@@ -100,4 +101,37 @@ html {
   transform: scale(1.04);
   cursor: pointer;
   cursor: hand;
+}
+
+
+//////////////////////////////////////////
+//          ALERT & NOTICE 
+
+ 
+//copy of bootstrap colors
+$brand-success: #5cb85c;
+$brand-dark-success: #55ab55;
+$brand-danger:  #d9534f;
+$brand-dark-danger:  #bf4946;
+
+.alert {
+  margin-top: 1rem;
+  cursor: pointer;
+  cursor: hand;
+  text-align: center;
+  color: white;
+}
+
+.success-notice {
+  background-color: $brand-success;
+}
+.success-notice:hover {
+  background-color: $brand-dark-success;
+}
+
+.alert-notice {
+  background-color: $brand-danger;
+}
+.alert-notice:hover {
+  background-color: $brand-dark-danger;
 }
