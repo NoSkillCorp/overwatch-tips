@@ -32,7 +32,7 @@ class UserTest < ActiveSupport::TestCase
   test "if user is registered, email should not be already used" do
     #first, create a user with an email
     existing_user = User.create(is_registered: true, email: "caca@bite.com", password: "123456789", password_confirmation: "123456789")
-    assert_not_nil existing_user.id
+    assert existing_user.persisted?
     
     #then check if we can create another user with the same email
     user = User.create(is_registered: true, email: "caca@bite.com", password: "123456789", password_confirmation: "123456789")

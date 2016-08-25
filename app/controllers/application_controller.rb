@@ -23,10 +23,10 @@ class ApplicationController < ActionController::Base
       user_agent = req.user_agent
       user_cookie = cookies_hash["user_id"]
       #Attempt to find the user by its user_cookie
-      user = User.find_by(user_cookie: user_cookie)
+      user = User.find_by(user_cookie: user_cookie, is_registered: false)
       if user_cookie.blank? || user.blank?
         #If not found by user_cookie, attempt to find the user by its IP & user_agent
-        user = User.find_by(ip_adress: user_ip_adress, user_agent: user_agent)
+        user = User.find_by(ip_adress: user_ip_adress, user_agent: user_agent, is_registered: false)
       else
         #If the user is found by user_cookie, then update his IP & user_agent
         user.update(user_agent: user_agent) if user_agent != user.user_agent

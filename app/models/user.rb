@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
         self.password = args[:password]
         self.password_confirmation = args[:password_confirmation]
         self.is_registered = true
+        self.user_cookie = nil # won't need the user_cookie after being registered
         self.save
     end
     
@@ -28,10 +29,10 @@ class User < ActiveRecord::Base
     
     #assigns an unused user_cookie
     def assign_user_cookie
-       self.user_cookie = User.generate_new_user_cookie if self.user_cookie.blank?
+       self.user_cookie = User.generate_new_user_cookie if self.user_cookie.blank? && !self.persisted?
     end
     
-    #generates an aunused user_cookie
+    #generates an unused user_cookie
     def self.generate_new_user_cookie
         user_cookie = SecureRandom.hex
         user_cookie = User.generate_new_user_cookie if User.find_by(user_cookie: user_cookie).present?
