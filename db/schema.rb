@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823104027) do
+ActiveRecord::Schema.define(version: 20160825114643) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20160823104027) do
     t.datetime "updated_at",       null: false
     t.integer  "gaming_object_id"
     t.string   "category"
-    t.string   "user_cookie"
+    t.integer  "user_id"
     t.index ["gaming_object_id"], name: "index_tips_on_gaming_object_id"
-    t.index ["user_cookie"], name: "index_tips_on_user_cookie"
+    t.index ["user_id"], name: "index_tips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,12 +76,12 @@ ActiveRecord::Schema.define(version: 20160823104027) do
   create_table "votes", force: :cascade do |t|
     t.integer  "weight"
     t.integer  "tip_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "user_cookie"
-    t.index ["tip_id", "user_cookie"], name: "index_votes_on_tip_id_and_user_cookie"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
     t.index ["tip_id"], name: "index_votes_on_tip_id"
-    t.index ["user_cookie"], name: "index_votes_on_user_cookie"
+    t.index ["tip_id"], name: "index_votes_on_tip_id_and_user_cookie"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end

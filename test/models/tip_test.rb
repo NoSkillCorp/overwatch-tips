@@ -6,7 +6,7 @@ class TipTest < ActiveSupport::TestCase
     @character = Character.create(name: "mymap", description: "test")
     @user_a= User.create
     @user_b = User.create
-    @tip = Tip.create(description: "test", gaming_object: @character, category: "as", user_cookie: @user_a.user_cookie)
+    @tip = Tip.create(description: "test", gaming_object: @character, category: "as", user: @user_a)
   end
   
   test "belongs_to user" do
@@ -18,7 +18,7 @@ class TipTest < ActiveSupport::TestCase
     assert_respond_to tip, :description
     assert_respond_to tip, :gaming_object_id
     assert_respond_to tip, :category
-    assert_respond_to tip, :user_cookie
+    assert_respond_to tip, :user_id
   end
   
   test "belongs_to gaming_object" do
@@ -26,22 +26,24 @@ class TipTest < ActiveSupport::TestCase
   end
   
   test "has_many votes" do
-    @tip.votes.build(weight: -1, user_cookie: "user_cookie1").save
-    @tip.votes.build(weight: -2, user_cookie: "user_cookie2").save
+    @tip.votes.build(weight: -1, user: @user_a).save
+    @tip.votes.build(weight: -2, user: @user_b).save
     assert_equal [-1, -2], @tip.votes.pluck(:weight)
   end
   
   test "score" do
-    @tip.votes.build(weight: -1, user_cookie: "user_cookie1").save
-    @tip.votes.build(weight: -2, user_cookie: "user_cookie2").save
+    @tip.votes.build(weight: -1, user: @user_a).save
+    @tip.votes.build(weight: -2, user: @user_b).save
     assert_equal(-3, @tip.score)
   end
   
   test "positive & negative score" do
-    @tip.votes.build(weight: -1, user_cookie: "user_cookie1").save
-    @tip.votes.build(weight: -1, user_cookie: "user_cookie2").save
-    @tip.votes.build(weight: 1, user_cookie: "user_cookie3").save
-    @tip.votes.build(weight: 1, user_cookie: "user_cookie4").save
+    @user_c = User.create
+    @user_d = User.create
+    @tip.votes.build(weight: -1, user: @user_a).save
+    @tip.votes.build(weight: -1, user: @user_b).save
+    @tip.votes.build(weight: 1, user: @user_c).save
+    @tip.votes.build(weight: 1, user: @user_d).save
     assert_equal(0, @tip.score)
     assert_equal(2, @tip.positive_score)
     assert_equal(2, @tip.negative_score)

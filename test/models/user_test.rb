@@ -4,7 +4,7 @@ class UserTest < ActiveSupport::TestCase
   test "has many votes" do
     user = User.create
     vote = Vote.create(user: user)
-    assert_equal user.user_cookie, vote.user_cookie
+    assert_equal user.id, vote.user_id
     assert_equal [vote], user.votes.to_a
   end
   

@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
     # :recoverable, :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable, :rememberable, :trackable #, :validatable
          
-    has_many :votes, foreign_key: :user_cookie, primary_key: :user_cookie
-    has_many :tips, foreign_key: :user_cookie, primary_key: :user_cookie
+    has_many :votes
+    has_many :tips
     
     validates :user_cookie, uniqueness: true
     validates_with RegisteredUserValidator #validates email & password if user is registered or if email is present
