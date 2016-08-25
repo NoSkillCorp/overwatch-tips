@@ -12,10 +12,11 @@ class UsersController < ApplicationController
             redirect_to :profile, alert: "Registration Impossible. Account already registered"
         else
             if @user.register(user_registration_params.to_h)
+                cookies.delete("user_id")
                 sign_in @user
                 redirect_to :profile, notice: "Account successfully registered. You can now login from anywhere !"
             else
-                redirect_to :profile
+                redirect_to :profile, alert: "Registration failed. #{@user.errors.full_messages.to_sentence}"
             end
         end
     end
