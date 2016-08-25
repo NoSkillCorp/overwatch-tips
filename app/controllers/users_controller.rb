@@ -11,8 +11,7 @@ class UsersController < ApplicationController
             #TODO : suprimmer cette possibilité en effaçant le user_cookie lors d'un register
             redirect_to :profile, alert: "Registration Impossible. Account already registered"
         else
-            ap user_registration_params.to_h
-            if @user.register(args=user_registration_params.to_h)
+            if @user.register(user_registration_params.to_h)
                 sign_in @user
                 redirect_to :profile, notice: "Account successfully registered. You can now login from anywhere !"
             else

@@ -9,8 +9,27 @@ class UsersControllerTest < ActionController::TestCase
     end
     
     test "register should update user" do
-       #post :register, params: {"email" => "dev@test.cnil", password: "123654", password_confirmation: "123654"} 
-       #assert_response :success
+        user = User.create()
+        #create a tip for the user to be able to register
+        Tip.create(user: user, description: "tip test", gaming_object: GamingObject.first, category: "as")
+        
+        cookies["user_id"] = user.user_cookie
+        post :register, params: {"email" => "dev@test.cnil", password: "123654", password_confirmation: "123654"} 
+        saved_user = User.find_by(email: "dev@test.cnil")
+        assert_not_nil saved_user
+        assert_equal saved_user.user_cookie, user.user_cookie
+    end
+    
+    #Tests one validation of the user just to be sure
+    test "register should update user when email/password invalid" do
+        user = User.create()
+        #create a tip for the user to be able to register
+        Tip.create(user: user, description: "tip test", gaming_object: GamingObject.first, category: "as")
+        
+        cookies["user_id"] = user.user_cookie
+        post :register, params: {"email" => "dev@test.cnil", password: "123", password_confirmation: "123"} 
+        saved_user = User.find_by(email: "dev@test.cnil")
+        assert_nil saved_user
     end
 
 end
