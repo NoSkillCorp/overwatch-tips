@@ -1,0 +1,28 @@
+<div class="row">
+  <%= form_tag(register_path, method: :post) do -%>
+    <%= devise_error_messages! %>
+    
+    <div class="field register-field-container col-md-12">
+      <%= label_tag :email %><br />
+      <%= email_field_tag :email, "", autofocus: true, placeholder: "tracer@overwatch.com", class: "register-field form-control" %>
+    </div>
+    
+    <div class="field register-field-container col-md-6">
+      <%= label_tag :password %><br />
+      <%= password_field_tag :password, "", autocomplete: "off", class: "register-field form-control" %>
+    </div>
+    
+    <div class="field register-field-container col-md-6">
+      <%= label_tag :password_confirmation %><br />
+      <%= password_field_tag :password_confirmation, "", autocomplete: "off", class: "register-field form-control" %>
+    </div>
+    
+    <div class="actions register-field-container col-md-12">
+      <%= submit_tag "Register", class: "btn btn-success register-field pull-right" %>
+    </div>
+    
+    <div class="col-md-12">
+        Already registered ? Try to <%= link_to "log in", new_user_session_path %> instead.
+    </div>
+  <% end %>
+</div>
