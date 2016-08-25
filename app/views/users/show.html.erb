@@ -5,7 +5,8 @@
 
 <p class="text-center">
     <% if user_signed_in? %>
-        Gongratulations, you are registered and signed in !
+        Gongratulations, you are registered and signed in !<br />
+        Email: <%= @user.email %>
     <% else %>
         <%= form_tag(register_path, method: :post) do -%>
           <%= devise_error_messages! %>
