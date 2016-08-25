@@ -15,7 +15,7 @@
                 <li class="<%='active' if controller_name == "gaming_objects" && params[:type] == "Map" %>">
                     <%= link_to "MAPS", maps_path %>
                 </li>
-                <% if @user.present? %>
+                <% if @user.present? && @user.persisted? %>
                     <li class="<%='active' if controller_name == "users" %>">
                         <%= link_to profile_path, class: "twitter-link" do %>
                             <i class="fa fa-star" aria-hidden="true"></i>

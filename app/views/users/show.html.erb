@@ -8,6 +8,8 @@
         Gongratulations, you are registered and signed in !<br />
         Email: <%= @user.email %>
     <% else %>
+        Register your profile to log in from everywhere !
+        
         <%= form_tag(register_path, method: :post) do -%>
           <%= devise_error_messages! %>
           <div class="field">
