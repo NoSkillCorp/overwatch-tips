@@ -1,5 +1,5 @@
 <div class="row">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| -%>
+  <%= form_for(@new_user, url: user_session_path) do |f| -%>
     
     <div class="field register-field-container col-md-12">
       <%= f.label :email %><br />
