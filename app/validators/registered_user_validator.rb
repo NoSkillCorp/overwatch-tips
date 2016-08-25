@@ -7,7 +7,7 @@ class RegisteredUserValidator < ActiveModel::Validator
             record.errors.add(:email, "is missing")
         elsif record.email !~ Devise.email_regexp
             record.errors.add(:email, :invalid)
-        elsif User.find_by(is_registered: true, email: record.email).present?
+        elsif User.where.not(id: record.id).find_by(is_registered: true, email: record.email).present?
             record.errors.add(:email, "is already used")
         end
         #Check password
