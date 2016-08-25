@@ -5,13 +5,17 @@
 
 <div class="row">
   <% if user_signed_in? %>
-    <div class="text-center col-md-12">
+    <div class="col-md-12">
       <div class="panel">
         <div class="panel-heading text-center">
           <h2>Gongratulations, you have a registered account !</h2>
         </div>
         <div class="panel-body">
-          Your email: <%= @user.email %>
+          Email: <%= @user.email %><br />
+          Votes count : <%= @user.votes.count %><br />
+          Tips count : <%= @user.tips.count %>
+
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger pull-right" %>
         </div>
       </div>
     </div>
