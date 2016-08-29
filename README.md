@@ -1,18 +1,21 @@
 #What is this?
-This website is made by NoSkillCorp which is no company. We wanted to help share tips and ideas in the terrific struggle that exists in Overwatch.
-There is no login, so content is completely anonymous.
+This website is made by NoSkillCorp which is no company. Just a bunch of guys working on a side project.
+We wanted to help share tips and ideas from the community of Overwatch players.
+Content is completely anonymous, and there is no login required to vote or create a tip.
 
-#Please, add this feature!
+#Can you add this feature I just thought about ?
 Yeah of course we can, we already have a bunch of extra features that we want to add, but we're open for any ideas.
+Send us a tweet [@0verwatchTips](https://twitter.com/0verwatchTips) and we'll look at your proposal.
 
-#OH MY GOD, that's awesome, I need to contribute!
-Yeah man, you should! Open an issue or make pull requests as much as you want.
+#I want to contribute
+And you should ! Open an issue or make a pull request as much as you want.
+If everyone could do this instead of requesting features, that would be great.
 
-#Tech
-The website is built using Rails & jQuery and there are React components that will be added soon.
+The website is built using [Ruby on Rails](http://rubyonrails.org/)
 
-To run the website simply fork the Github and run `bundle install`, `rake db:migrate` and `rails s` and you should be ready to go.
+To run the website simply fork the master and run `bundle install`, `rake db:migrate`.
+`rails s` to launch the server and you should be ready to go.
 
 #Ideas? 
 
-If you have any ideas, feel free to contact us.
+If you have any idea or whatever, feel free to send us a tweet [@0verwatchTips](https://twitter.com/0verwatchTips)
