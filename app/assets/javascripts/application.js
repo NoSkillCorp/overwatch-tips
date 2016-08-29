@@ -16,9 +16,22 @@
 
 $(document).ready(function() {
   
+  //show the api key generated
+  $("#new_api_key, #refresh_api_key").on('ajax:success', function(e, data, status, xhr){
+    var api_key = data["api_key"]
+    $("#api_key_container").val(api_key);
+    $("#api_key_with_button").removeClass("hidden");
+    $("#new_api_key").remove()
+    
+  }).on('ajax:error',function(e, xhr, status, error){
+    console.log(status);
+  });
+  
+  // Simple dismiss on click for alert panels
   $(".alert").on('click', function(){
     $(this).remove();
   });
+  
   
   //A Click on any part of a tip redirects to the show of this tip
   function clickTip(element){

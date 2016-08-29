@@ -27,7 +27,7 @@ class UsersController < ApplicationController
        #render json: @user.assign_new_api_key
        
        if @user.assign_new_api_key
-           render json: @user.api_key
+           render json: { api_key: @user.api_key }
        else
            render json: @user.errors, status: :unprocessable_entity
        end

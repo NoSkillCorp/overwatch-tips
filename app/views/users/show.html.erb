@@ -5,20 +5,53 @@
 
 <div class="row">
   <% if user_signed_in? %>
+  
     <div class="col-md-12">
       <div class="panel">
         <div class="panel-heading text-center">
           <h2>Gongratulations, you have a registered account !</h2>
         </div>
-        <div class="panel-body">
+        <div class="panel-body text-center">
           Email: <%= @user.email %><br />
-          Votes count : <%= @user.votes.count %><br />
-          Tips count : <%= @user.tips.count %>
-
+          Tips : <%= @user.tips.count %> / Votes : <%= @user.votes.count %><br />
+          
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger pull-right" %>
         </div>
       </div>
     </div>
+    
+    <div class="col-md-12">
+      
+      <div class="panel">
+          <div class="panel-heading text-center dropdown-link">
+             <h3><i class="fa fa-caret-right" aria-hidden="true"></i> I'm a developer and I want to use the API</h3>
+          </div>
+          <div class="panel-body text-center dropdown-content row">
+            <div class="col-md-12">
+              Ok then, check out the <%= link_to "documentation", "https://github.com/NoSkillCorp/overwatch-tips/blob/master/API.md", target: :blank %> of our API<br />
+            </div>
+            <div class="col-md-12" style="margin-top: 1rem;">
+              This is your API key : 
+              
+              <span id="api_key_with_button" class="<%='hidden' if @user.api_key.blank? %>">
+                <input id="api_key_container" size="37" type="text" value="<%= @user.api_key %>" readonly>
+                <span>
+                  <%= link_to new_api_key_path, remote: true, class: "btn btn-default", id:"refresh_api_key" do %>
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                  <% end %>
+                </span>
+              </span>
+                          
+              <%= link_to new_api_key_path, remote: true, class: "btn btn-default", id:"new_api_key" do %>
+                <i class="fa fa-key" aria-hidden="true"></i> Get a key
+              <% end if @user.api_key.blank? %>
+            </div>
+
+          </div>
+      </div>
+    </div>
+
+    
   <% else %>
   
     <div class="col-md-8 col-md-offset-2">
