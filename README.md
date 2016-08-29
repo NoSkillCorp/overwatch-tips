@@ -1,5 +1,5 @@
 #What is this?
-This website is made by NoSkillCorp which is no company. Just a bunch of guys working on a side project.
+[Overwatch-Tips.com](http://www.overwatch-tips.com) is made by NoSkillCorp which is no company. Just a bunch of guys working on a side project.
 We wanted to help share tips and ideas from the community of Overwatch players.
 Content is completely anonymous, and there is no login required to vote or create a tip.
 
