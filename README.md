@@ -16,6 +16,11 @@ The website is built using [Ruby on Rails](http://rubyonrails.org/)
 To run the website simply fork the master and run `bundle install`, `rake db:migrate`.
 `rails s` to launch the server and you should be ready to go.
 
+#Overwatch Tips API
+
+An API is available if you want to create a chatbot or whatever using tips from [overwatch-tips.com](http://www.overwatch-tips.com)
+See the documentation available [here](https://github.com/NoSkillCorp/overwatch-tips/blob/master/API.md).
+
 #Ideas? 
 
 If you have any idea or whatever, feel free to send us a tweet [@0verwatchTips](https://twitter.com/0verwatchTips)
