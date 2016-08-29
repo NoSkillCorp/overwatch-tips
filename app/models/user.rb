@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     validates :user_cookie, uniqueness: true, allow_blank: true
     validates_with RegisteredUserValidator #validates email & password if user is registered or if email is present
     
-    before_save :assign_user_cookie, :set_is_registered
+    before_save :assign_user_cookie_or_register
     
     def register(args={})
         self.email = args[:email]
@@ -19,17 +19,17 @@ class User < ActiveRecord::Base
         self.user_cookie = nil # won't need the user_cookie after being registered
         self.save
     end
-    
-    #if we are about to save it for the first time and the email is not nil
-    def set_is_registered
-        if !self.persisted? && !self.email.nil?
-            self.is_registered = true
+
+    #If we're about to create a user,
+    # set is_registered at true if email is not nil
+    # assign a user_cookie if not registering
+    def assign_user_cookie_or_register
+        if !self.persisted?
+            self.is_registered = true if !self.email.nil?
+            if !self.is_registered
+                self.user_cookie = User.generate_new_user_cookie if self.user_cookie.blank?
+            end
         end
-    end
-    
-    #assigns an unused user_cookie
-    def assign_user_cookie
-       self.user_cookie = User.generate_new_user_cookie if self.user_cookie.blank? && !self.persisted?
     end
     
     #generates an unused user_cookie
