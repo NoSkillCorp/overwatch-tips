@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   scope '/users' do
     get 'profile', to: 'users#show'
     post 'register', to: 'users#register'
+    get 'new_api_key', to: 'users#new_api_key'
   end
   
   resources :characters, controller: :gaming_objects, type: "Character", only: [:index, :show] do

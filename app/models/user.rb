@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
         end
     end
     
-    #assigns an unused user_cookie
+    #assigns an unused user_cookie if we're about to save the user for the first time
     def assign_user_cookie
        self.user_cookie = User.generate_new_user_cookie if self.user_cookie.blank? && !self.persisted?
     end
@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
     def assign_new_api_key
         self.api_key = User.generate_new_api_key
         self.save
+        return self.api_key
     end
     
     #generates an unused api_key

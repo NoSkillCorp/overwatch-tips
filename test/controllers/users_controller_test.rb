@@ -36,5 +36,15 @@ class UsersControllerTest < ActionController::TestCase
         saved_user = User.find_by(email: "dev@test.cnil")
         assert_nil saved_user
     end
+    
+    test "new_api_key should generate and return an api_key" do
+        user = User.create(is_registered: true, email: "dev@dev.com", password: "123456789", password_confirmation: "123456789")
+        sign_in user
+        get :new_api_key
+        api_key = response.body
+        assert_equal String, api_key.class
+        assert_equal 32, api_key.length
+        assert_equal User.find(user.id).api_key, api_key
+    end
 
 end

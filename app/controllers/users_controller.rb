@@ -20,8 +20,20 @@ class UsersController < ApplicationController
         end
     end
     
+    def new_api_key
+       if !user_signed_in?
+           render json: {"errors" => "You must be logged in" }, status: :internal_server_error and return
+       end
+       #render json: @user.assign_new_api_key
+       
+       if @user.assign_new_api_key
+           render json: @user.api_key
+       else
+           render json: @user.errors, status: :unprocessable_entity
+       end
+    end
+    
     def user_registration_params
        params.permit(:email, :password, :password_confirmation)
     end
-    
 end

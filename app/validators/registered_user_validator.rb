@@ -12,7 +12,7 @@ class RegisteredUserValidator < ActiveModel::Validator
         end
         #Check password
         if record.password.blank?
-            record.errors.add(:password, "is missing")
+            record.errors.add(:password, "is missing") if record.encrypted_password.blank?
         elsif !record.password.length.in?(Devise.password_length)
             record.errors.add(:password, :invalid, message: "should be between #{Devise.password_length.begin} and #{Devise.password_length.end} characters")
         elsif record.password != record.password_confirmation
