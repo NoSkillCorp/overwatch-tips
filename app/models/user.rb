@@ -38,5 +38,20 @@ class User < ActiveRecord::Base
         user_cookie = User.generate_new_user_cookie if User.find_by(user_cookie: user_cookie, is_registered: false).present?
         return user_cookie
     end
+    
+    #assigns and save an unused api_key
+    def assign_new_api_key
+        self.api_key = User.generate_new_api_key
+        self.save
+    end
+    
+    #generates an unused api_key
+    def self.generate_new_api_key
+         api_key = SecureRandom.hex
+         api_key = User.self_generate_new_api_key if User.find_by(api_key: api_key).present?
+         return api_key
+    end
+    
+    
 
 end

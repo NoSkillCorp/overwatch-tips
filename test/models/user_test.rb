@@ -13,10 +13,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil user.user_cookie
   end
 
-  test "generate_new_user_cookie" do
-    user_cookie = User.generate_new_user_cookie.length
-    assert_equal Fixnum, user_cookie.class
-    assert_equal 32, user_cookie
+  test "generate_new_user_cookie should assign a user_cookie" do
+    user_cookie = User.generate_new_user_cookie
+    assert_equal String, user_cookie.class
+    assert_equal 32, user_cookie.length
   end
   
   test "if user is registered, email should be present" do
@@ -63,5 +63,19 @@ class UserTest < ActiveSupport::TestCase
     assert_equal "dev@test.com", persisted_user.email
     assert persisted_user.encrypted_password.present?
     assert persisted_user.is_registered
+  end
+  
+  test "generate_new_api_key should generate an unused api key" do 
+    api_key = User.generate_new_api_key
+    assert_equal String, api_key.class
+    assert_equal 32, api_key.length
+  end
+  
+  test "assign_new_api_key should generate and save a new api_key" do
+    user = User.create
+    assert_nil user.api_key
+    user.assign_new_api_key
+    assert_not_nil user.api_key
+    assert_not_nil User.find(user.id).api_key
   end
 end
