@@ -34,7 +34,7 @@
               This is your API key : 
               
               <span id="api_key_with_button" class="<%='hidden' if @user.api_key.blank? %>">
-                <input id="api_key_container" size="37" type="text" value="<%= @user.api_key %>" readonly>
+                <input id="api_key_container" size="40" type="text" value="<%= @user.api_key %>" readonly>
                 <span>
                   <%= link_to new_api_key_path, remote: true, class: "btn btn-default", id:"refresh_api_key" do %>
                     <i class="fa fa-refresh" aria-hidden="true"></i>
